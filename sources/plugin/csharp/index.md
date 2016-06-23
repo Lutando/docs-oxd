@@ -9,6 +9,7 @@ to access user information from a OpenID Connect Provider (OP) by using the OxD 
 
 * [Code on GitHub](https://github.com/GluuFederation/oxd-csharp).
 * [Tests on GitHub](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client).
+* [API Documentation(CSharpDocs)](https://oxd.gluu.org/api-docs/csharp/2.4.4/).
 
 ## Installation
 
