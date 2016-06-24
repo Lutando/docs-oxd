@@ -34,6 +34,7 @@ you can write your own by implementing methods for this protocol.
     - [Java](./plugin/java/index.md)
     - [Node](./plugin/node/index.md)
     - [Ruby](./plugin/ruby/index.md)
+    - [Csharp](./plugin/csharp/index.md)
 - [oxD Plugins](./plugin/index.md)
     - [Open Source Plugins](./plugin/php/index.md)
         - [Wordpress plugin](./plugin/php/cms/wordpress/index.md)

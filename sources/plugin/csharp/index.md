@@ -7,18 +7,20 @@ oxD server. This can be used to access the OpenID connect Authorization end poin
 the Gluu Server via the oxD RP. This library provides the function calls required by a website 
 to access user information from a OpenID Connect Provider (OP) by using the OxD as the Relying Party (RP).
 
+* [Code on GitHub](https://github.com/GluuFederation/oxd-csharp).
+* [Tests on GitHub](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client).
+* [API Documentation(CSharpDocs)](https://oxd.gluu.org/api-docs/csharp/2.4.4/).
+
 ## Installation
 
 Note : Gluu server and oxD-server needs to be installed in the hosting server to use oxD-node library with your application.
-
-* To download and install Gluu server [click me](http://www.gluu.org/docs/).
-* To download and install oxD server [click me](http://ox.gluu.org/doku.php?id=oxd:rp).
-* For oxD server configuration [click me](http://ox.gluu.org/doku.php?id=oxd:home&s[]=mvn).
+ 
+* To download and install oxD server [click me](https://www.gluu.org/docs-oxd/2.4.4/).
+* For oxD server configuration [click me](https://www.gluu.org/docs-oxd/2.4.4/).
 
 ## How to use
 
 * oxd-csharp is oxD Server client implemented in C# language which acts according to [Protocol](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/).
-* All test classes using [CommonClasses](https://github.com/GluuFederation/oxd-csharp/tree/master/TCP/CommonClasses) and [ResponseClasses](https://github.com/GluuFederation/oxd-csharp/tree/master/TCP/ResponseClasses).		
 
 ## Register Site
 
@@ -95,13 +97,185 @@ Note : Gluu server and oxD-server needs to be installed in the hosting server to
                 return null;
             }
         }	
-		
-update_site_registration class using [TCP.CommonClasses](https://github.com/GluuFederation/oxd-csharp/tree/master/TCP/CommonClasses) and [TCP.ResponseClasses](https://github.com/GluuFederation/oxd-csharp/tree/master/TCP/ResponseClasses).		
-
+	
 * Parameters necessary for to request update_site_registration protocol
 	* op_host
 	* port 	
 
 * Response 
 	* oxd-id (Type: String)
-	 	
+	
+## Get Authorization Url	
+
+		public string GetAuthorizationURL(string host, int port)
+        {
+            try
+            {
+                CommandClient client = new CommandClient(host, port);
+
+                GetAuthorizationUrlParams param = new GetAuthorizationUrlParams();
+                param.SetOxdId(StoredValues._oxd_id);
+                param.SetAcrValues(new List<string>());
+
+                Command cmd = new Command(CommandType.get_authorization_url);
+                cmd.setParamsObject(param);
+
+                string response = client.send(cmd);
+                GetAuthorizationUrlResponse res = new GetAuthorizationUrlResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
+
+                Assert.IsNotNull(res);
+                Assert.IsTrue(!String.IsNullOrEmpty(res.getAuthorizationUrl()));
+                return res.getAuthorizationUrl();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Logger.Debug(ex.Message);
+                return ex.Message;
+            }
+        }
+		
+* Parameters necessary for to request get_authorization_url protocol
+	* op_host
+	* port 	
+
+* Response 
+	* authorization_url (Type: String)	
+
+## Get Tokens By Code	
+
+		public GetTokensByCodeResponse GetTokenByCode(string host, int port, string userId, string userSecret)
+        {
+            try
+            {
+                CommandClient client = new CommandClient(host, port);
+                GetTokensByCodeParams param = new GetTokensByCodeParams();
+                param.SetOxdId(StoredValues._oxd_id);
+                param.SetCode(get_authorization_code.GetAuthorizationCode(host, port, userId, userSecret));
+                param.SetScopes(Lists.newArrayList(new string[] { "openid", "profile" }));
+                Command cmd = new Command(CommandType.get_tokens_by_code);
+                cmd.setParamsObject(param);
+                string commandresponse = client.send(cmd);
+                GetTokensByCodeResponse response = new GetTokensByCodeResponse(JsonConvert.DeserializeObject<dynamic>(commandresponse).data);
+                Assert.IsNotNull(response);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Logger.Debug(ex.Message);
+                return null;
+            }
+        }
+		
+		
+		
+* Note : GetTokenByCode method further calling GetAuthorizationCode for getting Authorization code to be used in GetTokenByCode method
+
+		public static string GetAuthorizationCode(string host, int port, string userId, string userSecret)
+        {
+            try
+            {
+                CommandClient client = new CommandClient(host, port);
+                GetAuthorizationCodeParams param = new GetAuthorizationCodeParams();
+                param.SetOxdId(StoredValues._oxd_id);
+                param.SetUserName(userId);
+                param.SetPassword(userSecret);
+                param.SetAcrValues(new List<string>());
+                Command cmd = new Command(CommandType.get_authorization_code);
+                cmd.setParamsObject(param);
+                string response = client.send(cmd);
+                GetAuthorizationCodeResponse res = new GetAuthorizationCodeResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
+                Assert.IsNotNull(res);
+                Assert.IsTrue(!String.IsNullOrEmpty(res.getCode()));
+                return res.getCode();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Logger.Debug(ex.Message);
+                return ex.Message;
+            }
+        }
+		
+* Parameters necessary for to request get_tokens_by_code protocol
+	* op_host
+	* port 	
+	* userId
+	* userSecret
+
+* Response 
+	* access_token (Type: String)		
+	
+## Get User Info
+
+		public GetUserInfoResponse GetUserInfo(string host, int port, string accessToken)
+        {
+            try
+            {
+                CommandClient client = new CommandClient(host, port);
+
+                GetUserInfoParams param = new GetUserInfoParams();
+                param.setOxdId(StoredValues._oxd_id);
+                param.setAccessToken(accessToken);
+
+                Command cmd = new Command(CommandType.get_user_info);
+                cmd.setParamsObject(param);
+
+                string response = client.send(cmd);
+                GetUserInfoResponse res = new GetUserInfoResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
+                Assert.IsNotNull(res);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Logger.Debug(ex.Message);
+                return null;
+            }
+        }	
+		
+* Parameters necessary for to request get_user_info protocol
+	* op_host
+	* port 	
+	* accessToken 
+
+* Response 
+	* response_claims (Type: Array)		
+	
+	
+##Logout
+
+		public LogoutResponse GetLogoutURL(string host, int port)
+        {
+            try
+            {
+                CommandClient client = new CommandClient(host, port);
+
+                GetLogoutUrlParams param = new GetLogoutUrlParams();
+                param.setOxdId(StoredValues._oxd_id);
+                param.setIdTokenHint("dummy_token"); 
+                param.setState(Guid.NewGuid().ToString());
+
+                Command cmd = new Command(CommandType.get_logout_uri);
+                cmd.setParamsObject(param);
+
+                string response = client.send(cmd);
+                LogoutResponse res = new LogoutResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
+                Assert.IsNotNull(res);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Logger.Debug(ex.Message);
+                return null;
+            }
+        }	
+		
+* Parameters necessary for to request get_logout_uri protocol
+	* op_host
+	* port 
+
+* Response 
+	* response_html (Type: String)			
