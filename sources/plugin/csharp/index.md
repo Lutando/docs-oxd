@@ -13,7 +13,7 @@ to access user information from a OpenID Connect Provider (OP) by using the OxD 
 
 ## Installation
 
-Note : Gluu server and oxD-server needs to be installed in the hosting server to use oxD-node library with your application.
+Note : Gluu server and oxD-server needs to be installed in the hosting server to use oxD-CSharp library with your application.
  
 * To download and install oxD server [click me](https://www.gluu.org/docs-oxd/2.4.4/).
 * For oxD server configuration [click me](https://www.gluu.org/docs-oxd/2.4.4/).
