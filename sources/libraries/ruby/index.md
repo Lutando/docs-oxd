@@ -69,10 +69,10 @@ def login
 			scopes = params[:scope].split("+")
 			@access_token = @oxd_command.get_tokens_by_code( params[:code], scopes, params[:state]) 
 		end
-        session.delete('oxd_access_token') if(session[:oxd_access_token].present?)
-    	session[:oxd_access_token] = @access_token
-    	session[:state] = params[:state]
-    	session[:session_state] = params[:session_state]
+	        session.delete('oxd_access_token') if(session[:oxd_access_token].present?)
+	    	session[:oxd_access_token] = @access_token
+	    	session[:state] = params[:state]
+	    	session[:session_state] = params[:session_state]
 		@user = @oxd_command.get_user_info(session[:oxd_access_token]) 			
 	end
 end
@@ -94,7 +94,7 @@ condition2 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/de
 response = @uma_command.uma_rs_protect # Register above resources with UMA RS
 render :template => "uma/index", :locals => { :protect_resources_response => response } 
 	
-	@uma_command.uma_rp_get_rpt(false) # Get RPT       
+@uma_command.uma_rp_get_rpt(false) # Get RPT       
 response = @uma_command.uma_rs_check_access('/photo', 'GET')        
 response = @uma_command.uma_rp_authorize_rpt
 
