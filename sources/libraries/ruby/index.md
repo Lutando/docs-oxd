@@ -82,7 +82,7 @@ def logout
 end
 ```
 
-### UMA Commands sample usage
+### UMA Commands sample
 
 ``` ruby
 condition1 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/dev/actions/add"]}
