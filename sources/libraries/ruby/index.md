@@ -55,26 +55,21 @@ protected
 ### OP commands sample
 
 ```ruby
-def register_site		
-	if(!@oxd_command.getOxdId.present?)			
-		@oxd_command.register_site # Register site and store the returned oxd_id in config
-    end
-    authorization_url = @oxd_command.get_authorization_url
-    redirect_to authorization_url # redirect user to obtained authorization_url to authenticate
+def register_site			
+	@oxd_command.register_site 
+	authorization_url = @oxd_command.get_authorization_url
+	redirect_to authorization_url
 end
 
 def login
-	if(@oxd_command.getOxdId.present?)
-		if (params[:code].present? && params[:state].present?)
-			scopes = params[:scope].split("+")
-			@access_token = @oxd_command.get_tokens_by_code( params[:code], scopes, params[:state]) 
-		end
-	        session.delete('oxd_access_token') if(session[:oxd_access_token].present?)
-	    	session[:oxd_access_token] = @access_token
-	    	session[:state] = params[:state]
-	    	session[:session_state] = params[:session_state]
-		@user = @oxd_command.get_user_info(session[:oxd_access_token]) 			
+	if (params[:code].present? && params[:state].present?)
+		@access_token = @oxd_command.get_tokens_by_code( params[:code], params[:scope].split("+"), params[:state]) 
 	end
+        session.delete('oxd_access_token') if(session[:oxd_access_token].present?)
+    	session[:oxd_access_token] = @access_token
+    	session[:state] = params[:state]
+    	session[:session_state] = params[:session_state]
+	@user = @oxd_command.get_user_info(session[:oxd_access_token]) 	
 end
 
 def logout
