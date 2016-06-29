@@ -79,13 +79,15 @@ end
 
 def logout
 	if(session[:oxd_access_token])
-		@logout_url = @oxd_command.get_logout_uri(session[:oxd_access_token], session[:state], session[:session_state])
+		@logout_url = @oxd_command.get_logout_uri(
+				session[:oxd_access_token], session[:state], session[:session_state]
+			)
 		redirect_to @logout_url
 	end	    
 end
 ```
 
-### UMA Commands sample
+### UMA Commands sample usage
 
 ``` ruby
 condition1 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/dev/actions/add"]}
@@ -98,7 +100,7 @@ render :template => "uma/index", :locals => { :protect_resources_response => res
 response = @uma_command.uma_rs_check_access('/photo', 'GET')        
 response = @uma_command.uma_rp_authorize_rpt
 
-scopes = ["http://photoz.example.com/dev/actions/add","http://photoz.example.com/dev/actions/view","http://photoz.example.com/dev/actions/edit"]
+scopes = ["http://photoz.example.com/dev/actions/add","http://photoz.example.com/dev/actions/view"]
 gat = @uma_command.uma_rp_get_gat(scopes)
 ```
 
