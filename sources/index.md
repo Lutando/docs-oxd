@@ -25,6 +25,7 @@ The full software license can be [read here](https://github.com/GluuFederation/o
     - [oxd-php](./libraries/php/index.md) - Php implementation of client
     - [oxd-python](./libraries/python/index.md) - Python implementation of client
     - [oxd-node](./libraries/node/index.md) - Node.js implementation of client
+    - [oxd-ruby](./libraries/ruby/index.md) - Ruby implementation of client  
 - [oxD plugins](./libraries/php/index.md) (more high-level implentation which is based on oxd library.
 - [Protocol](./oxdserver/index.md) oxd provides REST API's. If you can't find a client for your language, 
 you can write your own by implementing methods for this protocol. 
