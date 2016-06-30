@@ -96,7 +96,8 @@ def protect_resources
 end
 
  def check_access
-    response = @uma_command.uma_rs_check_access('/photo', 'GET')  # Pass the resource path and http method to check access
+     # Pass the resource path and http method to check access
+    response = @uma_command.uma_rs_check_access('/photo', 'GET') 
 end
 ```
 
