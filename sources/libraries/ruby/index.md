@@ -84,19 +84,40 @@ end
 
 ### UMA Commands sample
 
-``` ruby
-condition1 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/dev/actions/add"]}
-condition2 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/dev/actions/view"]}
-@uma_command.uma_add_resource("/photo", condition1, condition2)
-response = @uma_command.uma_rs_protect # Register above resources with UMA RS
-render :template => "uma/index", :locals => { :protect_resources_response => response } 
-	
-@uma_command.uma_rp_get_rpt(false) # Get RPT       
-response = @uma_command.uma_rs_check_access('/photo', 'GET')        
-response = @uma_command.uma_rp_authorize_rpt
+#### UMA RS commands
 
-scopes = ["http://photoz.example.com/dev/actions/add","http://photoz.example.com/dev/actions/view"]
-gat = @uma_command.uma_rp_get_gat(scopes)
+```ruby
+def protect_resources
+	condition1 = {:httpMethods => ["GET"], :scopes => ["http://photoz.example.com/dev/actions/view"]}
+	condition2 = {:httpMethods => ["PUT", "POST"], :scopes => ["http://photoz.example.com/dev/actions/add"]}
+	@uma_command.uma_add_resource("/photo", condition1, condition2)
+
+    response = @uma_command.uma_rs_protect # Register above resources with UMA RS
+end
+
+ def check_access
+    response = @uma_command.uma_rs_check_access('/photo', 'GET')  # Pass the resource path and http method to check access
+end
+```
+
+#### UMA RP commands
+
+```ruby
+def get_rpt
+    rpt = @uma_command.uma_rp_get_rpt(false) # Get RPT
+end
+
+def authorize_rpt
+	response = @uma_command.uma_rp_authorize_rpt # Authorize RPT
+end
+```
+#### Get GAT
+
+```ruby
+def get_gat 
+    scopes = ["http://photoz.example.com/dev/actions/add","http://photoz.example.com/dev/actions/view"]
+	gat = @uma_command.uma_rp_get_gat(scopes) # Pass scopes array to get GAT
+end
 ```
 
 ## Log Files
