@@ -34,6 +34,7 @@ you can write your own by implementing methods for this protocol.
 
 - [oxD Server](./oxdserver/index.md)
     - [Installation](./oxdserver/install/index.md)
+    - [Configuration](./oxdserver/conf/index.md)
     - [Other Information](./oxdserver/other/index.md)
     - [Logs](./oxdserver/logs/index.md)
 - oxD Libraries
