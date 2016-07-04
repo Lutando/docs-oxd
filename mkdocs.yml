@@ -13,6 +13,7 @@ pages:
 # oxD Server
 - [oxdserver/index.md, oxD Server, Protocol]
 - [oxdserver/install/index.md, oxD Server, Installation]
+- [oxdserver/conf/index.md, oxD Server, Configuration]
 - [oxdserver/logs/index.md, oxD Server, Logs]
 - [oxdserver/other/index.md,oxD Server, Other Information]
 
