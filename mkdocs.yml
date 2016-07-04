@@ -13,26 +13,23 @@ pages:
 # oxD Server
 - [oxdserver/index.md, oxD Server, Protocol]
 - [oxdserver/install/index.md, oxD Server, Installation]
-- [oxdserver/run/index.md, oxD Server, Run]
-- [oxdserver/troubleshooting/index.md, oxD Server, Troubleshooting]
+- [oxdserver/logs/index.md, oxD Server, Logs]
+- [oxdserver/other/index.md,oxD Server, Other Information]
+
+
+# Libraries
+
+- [libraries/python/index.md, Libraries, Python]
+- [libraries/java/index.md, Libraries, Java]
+- [libraries/php/index.md, Libraries, PHP]
+- [libraries/node/index.md, Libraries, Node]
+- [libraries/ruby/index.md, Libraries, Ruby]
 
 # Plugins
-- [plugin/index.md, Libraries, Introduction]
-- [plugin/python/index.md, Libraries, Python]
-- [plugin/java/index.md, Libraries, Java]
-- [plugin/php/library/index.md, Libraries, PHP]
-- [plugin/node/index.md, Libraries, Node]
-- [plugin/ruby/index.md, Libraries, Ruby]
-- [plugin/csharp/index.md, Libraries, CSharp]
-
-- [plugin/php/index.md, Plugins, Php]
-- [plugin/php/cms/index.md, CMS]
-- [plugin/php/cms/wordpress/index.md, CMS, Wordpress plugin]
-- [plugin/php/cms/magento/index.md, CMS, Magento extension]
-- [plugin/php/cms/drupal/index.md, CMS, Drupal module]
-- [plugin/php/cms/opencart/index.md, CMS, OpenCart module]
-- [plugin/php/crm/index.md, CRM]
-- [plugin/php/crm/sugarcrm/index.md, CRM, SugarCRM module]
-- [plugin/php/crm/suitecrm/index.md, CRM, SuiteCRM module]
-- [plugin/php/WebMail/index.md, WebMail]
-- [plugin/php/WebMail/roundcube/index.md, WebMail, RoundCube plugin]
+- [plugin/wordpress/index.md, Plugin, Wordpress]
+- [plugin/magento/index.md, Plugin, Magento]
+- [plugin/drupal/index.md, Plugin, Drupal]
+- [plugin/opencart/index.md, Plugin, OpenCart]
+- [plugin/sugarcrm/index.md, Plugin, SugarCRM]
+- [plugin/suitecrm/index.md, Plugin, SuiteCRM]
+- [plugin/roundcube/index.md, Plugin, RoundCube]
