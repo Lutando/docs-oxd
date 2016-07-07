@@ -14,14 +14,14 @@ oxD code is available in  [Github](https://github.com/GluuFederation/oxd). Maven
 ### Windows
 It is not necessary to install oxD in Windows, it can be downloaded and run. The oxD server is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server).
 
-1. Download oxd Server according to you CE installation (for CE 2.4.3 please download oxd 2.4.3)[oxd-server-2.4.3-Final.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
+1. Download oxd Server according to your CE installation (for CE 2.4.4 please download oxd 2.4.4)[oxd-server-2.4.4-Final.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4.Final/oxd-server-2.4.3.Final-distribution.zip)
 2. Unzip the file in `oxd-server` folder. The folder name is for reference only; any other name will work as well.
 3. Run `oxd-server/bin/oxd-start.bat`
 
 ### Unix
 It is not necessary to install oxD in Unix, it can be downloaded and run. The oxD server is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server/).
 
-1. Download xd Server according to you CE installation (for CE 2.4.3 please download oxd 2.4.3)[oxd-server-2.4.3-Final-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
+1. Download oxd Server according to your CE installation (for CE 2.4.4 please download oxd 2.4.4)[oxd-server-2.4.4-Final-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
 2. Unzip the file in `oxd-server` folder. The folder name is for reference only; any other name will work as well.
 3. Run `oxd-server/bin/oxd-start.sh`
 
