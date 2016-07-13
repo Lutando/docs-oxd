@@ -85,7 +85,7 @@ oxd.Request.oxd_id = "your site id";
 oxd.Request.access_token = "access_token from OP redirect url";
 oxd.get_user_info(oxd.Request,function(response){
 });
-  ```
+```
 
 #### 6) get_logout_uri
 
