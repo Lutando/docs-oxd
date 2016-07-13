@@ -25,6 +25,7 @@ pages:
 - [libraries/php/index.md, Libraries, PHP]
 - [libraries/node/index.md, Libraries, Node]
 - [libraries/ruby/index.md, Libraries, Ruby]
+- [libraries/csharp/index.md, Libraries, CSharp]
 
 # Plugins
 - [plugin/wordpress/index.md, Plugin, Wordpress]
