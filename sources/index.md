@@ -1,4 +1,4 @@
-# Welcome to the oxD Documentation
+# Welcome to the oxd Documentation
 
 # Introduction
 
