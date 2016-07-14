@@ -1,5 +1,5 @@
-site_name: oxD Docs
-site_description: Documenation for oxD
+site_name: oxd Docs
+site_description: Documenation for oxd OpenID Connect and UMA client software
 site_favicon: '/img/gluu_favicon.ico'
 copyright: Copyright &copy; 2014, Gluu, Inc.
 docs_dir: sources 
@@ -10,12 +10,12 @@ pages:
  
 - [index.md, Home]
 
-# oxD Server
-- [oxdserver/index.md, oxD Server, Protocol]
-- [oxdserver/install/index.md, oxD Server, Installation]
-- [oxdserver/conf/index.md, oxD Server, Configuration]
-- [oxdserver/logs/index.md, oxD Server, Logs]
-- [oxdserver/other/index.md,oxD Server, Other Information]
+# oxd Server
+- [oxdserver/index.md, oxd Server, Protocol]
+- [oxdserver/install/index.md, oxd Server, Installation]
+- [oxdserver/conf/index.md, oxd Server, Configuration]
+- [oxdserver/logs/index.md, oxd Server, Logs]
+- [oxdserver/other/index.md,oxd Server, Other Information]
 
 
 # Libraries
