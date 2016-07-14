@@ -4,8 +4,8 @@ RoundCube GLUU SSO plugin
 
 RoundCube-GLUU-SSO plugin gives access for login to your RoundCube site, with the help of GLUU server.
 
-There are already 2 versions of RoundCube-GLUU-SSO (2.4.2 and 2.4.3) plugins, each in its turn is working with oxD and GLUU servers.
-For example if you are using RoundCube-gluu-sso-2.4.2 plugin, you need to connect with oxD-server-2.4.2.
+There are already 2 versions of RoundCube-GLUU-SSO (2.4.2 and 2.4.3) plugins, each in its turn is working with oxd and GLUU servers.
+For example if you are using RoundCube-gluu-sso-2.4.2 plugin, you need to connect with oxd-server-2.4.2.
 
 Now I want to explain in details how to use plugin step by step. 
 
@@ -19,19 +19,19 @@ If you want to use external gluu server, You can not do this step.
 
 [Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
 
-## Step 2. Download oxD-server 
+## Step 2. Download oxd-server 
 
 (version 2.4.2 or 2.4.3)
 
-[Download oxD-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
+[Download oxd-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
 
 or
 
-[Download oxD-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
+[Download oxd-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
 
-## Step 3. Unzip and run oXD-server
+## Step 3. Unzip and run oxd-server
  
-1. Unzip your oxD-server. 
+1. Unzip your oxd-server. 
 2. Open the command line and navigate to the extracted folder in the conf directory.
 3. Open oxd-conf.json file.  
 4. If your server is using 8099 port, please change "port" number to free port, which is not used.
@@ -51,7 +51,7 @@ or
 
 [Download RoundCube-gluu-sso-2.4.3 plugin](https://raw.githubusercontent.com/GluuFederation/gluu-sso-RoundCube-plugin/master/Gluu_sso_243/Gluu_sso_243.zip).
 
-For example if you are using gluu-server-2.4.2 it is necessary to use oxD-server-2.4.2 and SuiteCRM-gluu-sso-2.4.2-plugin
+For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server-2.4.2 and SuiteCRM-gluu-sso-2.4.2-plugin
 
 ## Step 5. Installing Plugins and Activating Plugins
  
@@ -74,9 +74,9 @@ To disable a plugin, just remove it from the list.
 
 If You are successfully registered in gluu server, you will see bottom page.
 
-![oxD_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-RoundCube-plugin/master/docu/7.png)
+![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-RoundCube-plugin/master/docu/7.png)
 
-For making sure go to your gluu server / OpenID Connect / Clients and search for your oxD ID
+For making sure go to your gluu server / OpenID Connect / Clients and search for your oxd ID
 
 If you want to reset configurations click on Reset configurations button.
 
