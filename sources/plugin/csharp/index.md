@@ -1,11 +1,10 @@
-## oxD-CSharp
+## oxd-CSharp
  
-CSharp Client Library for the [Gluu oxD](https://www.gluu.org/docs-oxd/2.4.4/) 
+CSharp Client Library for the [Gluu oxd](https://www.gluu.org/docs-oxd/2.4.4/) 
 
-oxdCsharp is a thin wrapper around the [communication protocol](https://www.gluu.org/docs-oxd/oxdserver/) of 
-oxD server. This can be used to access the OpenID connect Authorization end points of 
-the Gluu Server via the oxD RP. This library provides the function calls required by a website 
-to access user information from a OpenID Connect Provider (OP) by using the OxD as the Relying Party (RP).
+oxd server. This can be used to access the OpenID connect Authorization end points of 
+the Gluu Server via the oxd RP. This library provides the function calls required by a website 
+to access user information from a OpenID Connect Provider (OP) by using the oxd as the Relying Party (RP).
 
 * [Code on GitHub](https://github.com/GluuFederation/oxd-csharp).
 * [Tests on GitHub](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client).
@@ -13,14 +12,14 @@ to access user information from a OpenID Connect Provider (OP) by using the OxD 
 
 ## Installation
 
-Note : Gluu server and oxD-server needs to be installed in the hosting server to use oxD-CSharp library with your application.
+Note : Gluu server and oxd-server needs to be installed in the hosting server to use oxd-CSharp library with your application.
  
-* To download and install oxD server [click me](https://www.gluu.org/docs-oxd/2.4.4/).
-* For oxD server configuration [click me](https://www.gluu.org/docs-oxd/2.4.4/).
+* To download and install oxd server [click me](https://www.gluu.org/docs-oxd/2.4.4/).
+* For oxd server configuration [click me](https://www.gluu.org/docs-oxd/2.4.4/).
 
 ## How to use
 
-* oxd-csharp is oxD Server client implemented in C# language which acts according to [Protocol](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/).
+* oxd-csharp is oxd Server client implemented in C# language which acts according to [Protocol](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/).
 
 ## Register Site
 
