@@ -4,8 +4,8 @@ Magento GLUU SSO extension
 
 MAGENTO-GLUU-SSO extension gives access for login to your Magento site, with the help of GLUU server.
 
-There are already 2 versions of MAGENTO-GLUU-SSO (2.4.2.0 and 2.4.3.0) extensions, each in its turn is working with oxD and GLUU servers.
-For example if you are using MAGENTO-gluu-sso-2.4.2.0 extension, you need to connect with oxD-server-2.4.2.
+There are already 2 versions of MAGENTO-GLUU-SSO (2.4.2.0 and 2.4.3.0) extensions, each in its turn is working with oxd and GLUU servers.
+For example if you are using MAGENTO-gluu-sso-2.4.2.0 extension, you need to connect with oxd-server-2.4.2.
 
 Now I want to explain in details how to use extension step by step. 
 
@@ -19,19 +19,19 @@ If you want to use external gluu server, You can not do this step.
 
 [Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
 
-## Step 2. Download oxD-server 
+## Step 2. Download oxd-server 
 
 (version 2.4.2 or 2.4.3)
 
-[Download oxD-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
+[Download oxd-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
 
 or
 
-[Download oxD-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
+[Download oxd-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
 
-## Step 3. Unzip and run oXD-server
+## Step 3. Unzip and run oxd-server
  
-1. Unzip your oxD-server. 
+1. Unzip your oxd-server. 
 2. Open the command line and navigate to the extracted folder in the conf directory.
 3. Open oxd-conf.json file.  
 4. If your server is using 8099 port, please change "port" number to free port, which is not used.
@@ -51,7 +51,7 @@ or
 
 [Download Magento-gluu-sso-2.4.3.0 extension](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/Magento_gluu_SSO_2.4.3.0/Magento_gluu_SSO-2.4.3.0.tgz).
 
-For example if you are using gluu-server-2.4.2 it is necessary to use oxD-server-2.4.2 and Magento-gluu-sso-2.4.2.0-extension
+For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server-2.4.2 and Magento-gluu-sso-2.4.2.0-extension
 
 ## Step 5. Disable cache
  
@@ -86,7 +86,7 @@ For example if you are using gluu-server-2.4.2 it is necessary to use oxD-server
 
 If You are successfully registered in gluu server, you will see bottom page.
 
-![oxD_id](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/m2.png)
+![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/m2.png)
 
 For making sure go to your gluu server / OpenID Connect / Clients and search for your oxD ID
 
