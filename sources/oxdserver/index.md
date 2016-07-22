@@ -110,8 +110,9 @@ Request:
 {
     "command":"get_authorization_url",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"
-        "acr_values":["basic", "duo"]                         <- optional, may be skipped (default: basic)
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
+        "acr_values":["basic", "duo"],                         <- optional, may be skipped (default: basic)
+        "prompt":"login"                                       <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
     }
 }
 ```
