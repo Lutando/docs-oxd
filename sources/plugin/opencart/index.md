@@ -1,6 +1,8 @@
 OPENCART OpenID Connect Single Sign-On (SSO) Extension by Gluu 
 =========================
-![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/plugin.jpg)
+## Link to OpenCart marketplace  
+
+[Go to OpenCart marketplace](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=27180&filter_search=Gluu).
 
 OpenID Connect Single Sign-On (SSO) Extension by Gluu gives access for login to your OpenCart site, with the help of GLUU server.
 
