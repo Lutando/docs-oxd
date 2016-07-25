@@ -20,6 +20,18 @@ Web site configuration:
 ```
 oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID that does not exist yet on oxD Server.
 
+
+# Overview of entire process
+
+### OpenID Connect - Authorization Code Grant overview
+
+```
+1. Register site
+2. Get authorization URL (which should be used to redirect end-user to Gluu Server for authentication and authorization)
+3. Gluu Server redirects back with code
+4. Call get_tokens_by_code to obtain Access & ID Tokens
+```
+
 # Library/Plugin (Python/PHP/Java)
 
 Library must support following commands:
