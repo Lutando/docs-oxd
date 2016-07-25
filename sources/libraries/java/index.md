@@ -9,35 +9,65 @@ oxd-java is oxD Server client implemented in Java language which acts according 
 
 [API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
 
-Sample how to use oxd-java.
+## OpenID Connect - Authorization Code Grant overview
 
+```
+1. Register site
+2. Get authorization URL (which should be used to redirect end-user to Gluu Server for authentication and authorization)
+3. Gluu Server redirects back with code
+4. Call get_tokens_by_code to obtain Access & ID Tokens
+```
 
+### Register site
 ```java
  CommandClient client = null;
  try {
      client = new CommandClient(host, port);
-     final AuthorizationCodeFlowParams commandParams = new AuthorizationCodeFlowParams();
-     commandParams.setClientId(clientId);
-     commandParams.setClientSecret(clientSecret);
-     commandParams.setDiscoveryUrl(discoveryUrl);
-     commandParams.setNonce(UUID.randomUUID().toString());
-     commandParams.setRedirectUrl(redirectUrl);
-     commandParams.setScope("openid");
-     commandParams.setUserId(userId);
-     commandParams.setUserSecret(userSecret);
 
-     final Command command = new Command(CommandType.AUTHORIZATION_CODE_FLOW);
+     final RegisterSiteParams commandParams = new RegisterSiteParams();
+     commandParams.setOpHost(opHost);
+     commandParams.setAuthorizationRedirectUri(redirectUrl);
+     commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
+     commandParams.setClientLogoutUri(Lists.newArrayList(logoutUri));
+     commandParams.setScope(Lists.newArrayList("openid", "uma_protection", "uma_authorization"));
+
+     final Command command = new Command(CommandType.REGISTER_SITE);
      command.setParamsObject(commandParams);
-     final AuthorizationCodeFlowResponse resp = client.send(command).dataAsResponse(AuthorizationCodeFlowResponse.class);
 
-     assertNotNull(resp);
-     notEmpty(resp.getAccessToken());
-     notEmpty(resp.getAuthorizationCode());
-     notEmpty(resp.getIdToken());
-     notEmpty(resp.getRefreshToken());
-     notEmpty(resp.getScope());
+     final RegisterSiteResponse site = client.send(command).dataAsResponse(RegisterSiteResponse.class);
+
+     // more code here
  } finally {
      CommandClient.closeQuietly(client);
  }
 ```
 
+### Get authorization URL
+```java
+final GetAuthorizationUrlParams commandParams = new GetAuthorizationUrlParams();
+commandParams.setOxdId(site.getOxdId());
+
+final Command command = new Command(CommandType.GET_AUTHORIZATION_URL);
+command.setParamsObject(commandParams);
+
+final GetAuthorizationUrlResponse resp = client.send(command).dataAsResponse(GetAuthorizationUrlResponse.class);
+String authorizationUrl = resp.getAuthorizationUrl());
+```
+
+### Get token by code
+```java
+
+// after login to Authorization Server (authorizationUrl) it redirects back to redirect_uri (registered by register_site command)
+// and returns back code. This code must be used to obtain tokens
+
+final GetTokensByCodeParams commandParams = new GetTokensByCodeParams();
+commandParams.setOxdId(site.getOxdId());
+commandParams.setCode(code);
+
+final Command command = new Command(CommandType.GET_TOKENS_BY_CODE).setParamsObject(commandParams);
+
+final GetTokensByCodeResponse resp = client.send(command).dataAsResponse(GetTokensByCodeResponse.class);
+String accessToken = resp.getAccessToken();
+String idToken = resp.getIdToken();
+
+```
