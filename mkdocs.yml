@@ -35,3 +35,11 @@ pages:
 - [plugin/sugarcrm/index.md, Plugin, SugarCRM]
 - [plugin/suitecrm/index.md, Plugin, SuiteCRM]
 - [plugin/roundcube/index.md, Plugin, RoundCube]
+
+# Framework
+- [framework/spring/index.md, Framework, Spring]
+- [framework/play/index.md, Framework, Play]
+- [framework/ruby/index.md, Framework, Ruby on Rails]
+- [framework/python/index.md, Framework, Python Flask]
+- [framework/node/index.md, Framework, Node/Express]
+
