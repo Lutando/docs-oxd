@@ -34,7 +34,8 @@ This is a good document any more information about this library.
 ## Section 3 - Config
 
 Developers should be able to persist configuration and registration properties 
-on the file system. Optional DB or other storage is also ok.
+on the file system. Optional DB or other storage is also ok. These would be configuration
+for your library--not oxd configuration which is documented in the oxd docs.
 
 ## Section 4 - Sample Code
 
