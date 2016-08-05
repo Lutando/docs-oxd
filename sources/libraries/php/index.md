@@ -1,90 +1,77 @@
-# Oxd-php
+# oxd-php
 
-This is the PHP Client Library for Gluu oxd Server Relaying Party (RP). It is a thin wrapper around the communication protocol of oxd Server which can be used to access the OpenID Connect and UMA Authorization end-points of Gluu Server. This library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the oxd as the RP.
-
-[Github sources for library](https://github.com/GluuFederation/oxd-php)
-
-[Github sources for api (for using composer)](https://github.com/GluuFederation/oxdphpapi)
-
-[API Docs](https://oxd.gluu.org/api-docs/oxd-php/2.4.4/)
+This is the PHP Client Library for Gluu oxd Server Relying Party (RP). It is a 
+thin wrapper around the communication protocol of oxd Server which can be used to 
+access the OpenID Connect and UMA Authorization end-points of the Gluu Server. 
+For more information about oxd visit [https://oxd.gluu.org](https://oxd.gluu.org)
 
 ## Installation
 
-### Prerequisite
-The PHP Client library depends on Gluu oxd Server. Please see [this document](https://oxd.gluu.org/docs/oxdserver/install/) to install oxd Server.
+### Source
 
-### Install Instructions
-
-### Using the PHP Library to build your website (using example)
+oxd-php source is available on github:
 
 - [Github sources](https://github.com/GluuFederation/oxd-php)
 - [Tests on github (client.example.com)](https://github.com/GluuFederation/oxd-php/tree/master/client.example.com)
 
-You can use Composer or simply Download the Release
 
-### oxd-php-api (with namespaces) for composer
+### Composer: oxd-php-api
 
-- [Github sources](https://github.com/GluuFederation/oxdphpapi)
-- [Tests on github](https://github.com/GluuFederation/oxdphpapi/tree/master/protocolTests)
+- [Compose API source](https://github.com/GluuFederation/oxdphpapi)
+- [Library version 2.4.4](https://github.com/GluuFederation/oxdphpapi/releases/tag/v2.4.4)
+- [Composer API tests](https://github.com/GluuFederation/oxdphpapi/tree/master/protocolTests)
 
-The preferred method is via [composer](https://getcomposer.org). Follow the [installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not already have composer installed.
-Once composer is installed, execute the following command in your project root to install this library:
+This is the preferred method. See the [composer](https://getcomposer.org) website for 
+[installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not 
+already have it installed. 
 
-* composer install `composer require "gluufederation/oxdphpapi": "2.4.4"`
+To install oxd-php-api via Composer, execute the following command 
+in your project root:
 
-- [API version 2.4.4](https://github.com/GluuFederation/oxdphpapi/releases/tag/v2.4.4).
+```
+$ composer install `composer require "gluufederation/oxdphpapi": "2.4.4"`
 
-### oxd-php-library simply Download
+```
 
-You can use simply Download the Release
-
-- [Library version 2.4.4](https://github.com/GluuFederation/oxd-php/releases/tag/v2.4.4).
-
-### Attention 
-
-   - Every version library or api is working with corresponding version of oxd server.
-   - Library will not be working if your host does not have https://.
-
+**Note**: This library will not be working if your host does not have **https://**
 
 ## Configuration 
 
-Configuration file is located in 'oxdlibrary/oxd-rp-settings.json' file in
-distribution package.
-
-(Save this as a file called `oxd-rp-settings.json`)
+The oxd-php configuration file is located in 'oxdlibrary/oxd-rp-settings.json'.
+The values here are used during registration. For a full list of supported
+oxd configuration parameters, see the 
+[oxd documentation](https://oxd.gluu.org/docs/oxdserver/#register-site)
+Below is a sample of a minimal configuration data set needed for registration:
 
 ``` {.code }
 {
-    "op_host": "",
+    "op_host": "https://op.example.com",
     "oxd_host_ip": "127.0.0.1",
     "oxd_host_port":8099,
-    "authorization_redirect_uri" : "",
-    "logout_redirect_uri" : "",
-    "scope" : [ "openid", "profile","uma_protection","uma_authorization" ],
-    "application_type" : "web",
-    "redirect_uris" : [ "" ],
-    "response_types" : ["code"],
-    "grant_types":["authorization_code"],
+    "redirect_uris" : [ "https://www.myapplication.com/welcome" ],
+    "logout_redirect_uri" : "https://www.myapplication.com/logout",
+    "scope" : [ "openid", "profile"],
     "acr_values" : [ "basic", "duo","u2f","gplus", "oxpush2" ]
 }
                         
 ```
 
--   op_host - host of your gluu server url
--   oxd_host_port - port of oxd socket
--   oxd_host_ip - flag to restrict communication to localhost only (if false then it's not restricted to localhost only)
+-   op_host - URL of your OpenID Connect Provide
+-   oxd_host_ip - IP of your oxd_host, use 127.0.0.1 for localhost
+-   oxd_host_port - oxd port or socket
 
-PHP classes parameters and function description for communicating with oxd. [Php library description](https://oxd.gluu.org/docs/).
+
+## API Description
 
 Connecting to oxd server is doing via class Client\_Socket\_OXD\_RP
 [Client\_Socket\_OXD\_RP.php]
 
-## Using oxd PHP
 
 ### Client\_Socket\_OXD\_RP.php 
 
-Client\_Socket\_OXD\_RP class is base class for connecting to oxd server. It is given all parameters from oxd-rp-settings.json for connection and parameters saving to static values in class Oxd\_RP\_config.
-
+Client\_Socket\_OXD\_RP class is the base class for connecting to the oxd server. 
+It is given all parameters from oxd-rp-settings.json that are used for
+registration, and which is saved to static values in the class Oxd\_RP\_config.
 
 ### Oxd\_RP\_config.php 
 
@@ -106,9 +93,9 @@ class Oxd_RP_config
                         
 ```
 
-Base class for protocols is abstract Client\_OXD\_RP.php, for which extends all protocols classes.
+Client\_OXD\_RP.php is the base class which all classes extend.
 
--   [Clinet\_OXD\_RP.php ](#Clinet\_OXD\_RP)
+-   [Client\_OXD\_RP.php ](#Clinet\_OXD\_RP)
 -   [Register\_site.php ](#Register_site)
 -   [Update\_site\_registration.php](#Update_site_registration)
 -   [Get\_authorization\_url.php](#Get_authorization_url)
@@ -121,10 +108,10 @@ Base class for protocols is abstract Client\_OXD\_RP.php, for which extends all 
 -   [Uma\_rp\_authorize\_rpt.php](#Uma_rp_authorize_rpt)
 -   [Uma\_rp\_get\_gat.php](#Uma_rp_get_gat)
 
-### Clinet\_OXD\_RP.php 
+### Client\_OXD\_RP.php 
 
 [Class description](https://oxd.gluu.org/api-docs/oxd-php/2.4.4/classes/Clinet_OXD_RP.html).
-Client_OXD_RP class is abstract class, which extend from [Client_Socket_OXD_RP class](https://oxd.gluu.org/api-docs/oxd-php/2.4.4/classes/Client_Socket_OXD_RP.html)..
+Client_OXD_RP class is an abstract class, which extends [Client_Socket_OXD_RP class](https://oxd.gluu.org/api-docs/oxd-php/2.4.4/classes/Client_Socket_OXD_RP.html)..
 
 ### Register\_site.php 
 
