@@ -1,17 +1,32 @@
-# Goal
+# oxd server overview
 
-- It is super simple to protect web site by OpenID Connect or UMA (using specific library, e.g. python/php/java)
-- Implementation of new library/plugin (on any language) is simple (convenient for Gluu library support)
+oxd makes it super simple to authenticate a person with OpenID Connect, to 
+use OAuth2 to protect a website or API, or to obtain a token to access
+an OAuth2 protected resource.
 
-oxD Server is designed to work as standalone application (without Web Application Container, e.g. tomcat). It communicates via socket. oxD is restricted to `localhost` by default.
+oxD Server is designed to work as standalone application (without Web Application Container, 
+e.g. tomcat). oxD is a mediator--it provides methods that make it easier for 
+developers to use OAuth2 protocols. By default, it is restricted to `localhost`--so
+the oxd server should be installed on each server that has web applications. 
+ 
+oxd API's are normally called via native libraries--currently for Php, Java, Python,
+node, Ruby and C#.
 
-# Web site protection with oxD
+oxd is commercial software. There is a free version that is limited to two transactions
+per second, which may be enough for many low volume sites. For more information on 
+purchasing a commercial version of oxd, see the [website](http://oxd.gluu.org)
 
-Web site communicates with oxD Server via library (python/php/java). Library provides all convenient methods to web site code which in background call oxD Server. Concrete library depends on programming language used by a web site. Here for simplicity we use Java as sample.
+## Web site protection with oxD
+
+Libraries provide convenient methods to the web site developer which 
+to call the oxd Server. The concrete library depends on the programming language 
+used by a web site. We will use Java as an example on this page.
 
 ![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 
-First of all web site must register itself with oxD Server via registration command (using java/python/php library). With registration it gets oxd_id from oxD Server. oxd_id must be passed to all commands.
+First of all, the web site must register itself with oxD Server via registration 
+command (using java/python/php library). With registration it gets oxd_id from oxD Server. 
+oxd_id must be passed to all commands.
 
 Web site configuration:
 ```
@@ -21,7 +36,7 @@ Web site configuration:
 oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID that does not exist yet on oxD Server.
 
 
-# Overview of entire process
+## Overview of entire process
 
 ### OpenID Connect - Authorization Code Grant overview
 
@@ -30,13 +45,15 @@ oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any
 2. Get authorization URL (which should be used to redirect end-user to Gluu Server for authentication and authorization)
 3. Gluu Server redirects back with code
 4. Call get_tokens_by_code to obtain Access & ID Tokens
+5. Use access token to obtain user claims
+6. Logout
 ```
 
-# Library/Plugin (Python/PHP/Java)
+## Library/Plugin (Python/PHP/Java)
 
 Library must support following commands:
 
-## Register site
+### Register site
 
 During registration operation oxd dynamically register client for web site and keeps it in configuration.
 
@@ -75,7 +92,7 @@ Response:
 }
 ```
 
-## Update site registration
+### Update site registration
 
 For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
@@ -110,7 +127,7 @@ Response:
 ```
 
 
-## Get authorization url
+### Get authorization url
 
 Note: authorization_code grant type
 
@@ -145,7 +162,7 @@ Response:
 }
 ```
 
-## Get Tokens (ID & Access) by Code
+### Get Tokens (ID & Access) by Code
 
 Note: Library (php/python/java/node) must provide utility methods for web site to parse response from OP and send parsed code and state parameters to oxd:
 
@@ -193,7 +210,7 @@ Response:
 }
 ```
 
-## Get User Info
+### Get User Info
 
 For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
@@ -228,7 +245,7 @@ Response:
 }
 ```
 
-## Log out URI
+### Log out URI
 
 For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
@@ -258,9 +275,9 @@ Response:
 }
 ```
 
-# UMA
+## UMA
 
-## UMA Resource Server
+### UMA Resource Server
 
 oxD Client Library used by Resource Server application MUST:
 
@@ -543,7 +560,7 @@ Response:
 }
 ```
 
-# References
+## References
 
 - [UMA 1.0.1 Specification](https://docs.kantarainitiative.org/uma/rec-uma-core.html#permission-failure-to-client)
 - [Sample RS of Java Resteasy HTTP interceptor of uma-rs](https://github.com/GluuFederation/uma-rs/blob/master/uma-rs-resteasy/src/main/java/org/xdi/oxd/rs/protect/resteasy/RptPreProcessInterceptor.java)

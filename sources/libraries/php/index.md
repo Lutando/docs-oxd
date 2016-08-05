@@ -1,8 +1,11 @@
 # oxd-php
 
-This is the PHP Client Library for Gluu oxd Server Relying Party (RP). It is a 
-thin wrapper around the communication protocol of oxd Server which can be used to 
-access the OpenID Connect and UMA Authorization end-points of the Gluu Server. 
+This library is a PHP client for the oxd Relying Party (RP) server. It is a 
+thin wrapper around the [oxd communication protocol](https://oxd.gluu.org/docs/oxdserver/),
+which can be used to authenticate a person using an OpenID Connect Provider, to 
+register and protect resources using Gluu's UMA or Oauth2 Authorization endpoints,
+or to obtain a token to access OAuth2 protected resources.
+
 For more information about oxd visit [https://oxd.gluu.org](https://oxd.gluu.org)
 
 ## Installation
