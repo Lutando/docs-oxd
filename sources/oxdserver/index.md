@@ -67,16 +67,26 @@ Request:
 {
     "command":"register_site",
     "params": {
-        "op_host":"https://ce-dev.gluu.org"                        <- REQUIRED public address of the OP (CE Server)
-        "authorization_redirect_uri": "https://client.example.org/cb",<- REQUIRED public address of the site
-        "logout_redirect_uri": "https://client.example.org/cb",    <- OPTIONAL public address of the site
-        "application_type":"web",                                  <- OPTIONAL, default web (can be "native")
-        "redirect_uris": ["https://client.example.org/cb"],        <- OPTIONAL
-        "acr_values":[""],                                         <- OPTIONAL
-        "client_jwks_uri":"",                                      <- OPTIONAL
-        "client_token_endpoint_auth_method":"",                    <- OPTIONAL
-        "client_request_uris":[],                                  <- OPTIONAL
-        "contacts":["yuriy@gluu.org"]                              <- OPTIONAL
+        "op_host":"https://ce-dev.gluu.org"                            <- REQUIRED public address of the OP (CE Server)
+        "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED public address of the site
+        "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL public address of the site
+        "application_type":"web",                                      <- OPTIONAL, default web (can be also "native")
+        "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
+        "response_types": ["code", "id_token", "token"]                <- REQUIRED defines authorization flow, please check OpenID Connect spec for more details. Possible values; code, token, id_token
+        "grant_types": ["authorization_code"]                          <- OPTIONAL Possible values: authorization_code, implicit, client_credentials, oxauth_exchange_token, password
+        "scope":["openid"],                                            <- OPTIONAL scopes of the client (openid, profile, uma_authorization, uma_protection)
+        "acr_values":["basic"],                                        <- OPTIONAL
+        "client_jwks_uri":"",                                          <- OPTIONAL
+        "client_token_endpoint_auth_method":"",                        <- OPTIONAL
+        "client_request_uris":[],                                      <- OPTIONAL
+        "client_logout_uris":[],                                       <- OPTIONAL
+        "client_sector_identifier_uri":[],                             <- OPTIONAL
+        "contacts":["yuriy@gluu.org"],                                 <- OPTIONAL
+        "ui_locales":[],                                               <- OPTIONAL
+        "claims_locales":[],                                           <- OPTIONAL
+
+        "client_id":"<client id of existing client>",                  <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+        "client_secret":"<client secret of existing client>",          <- OPTIONAL must be used together with client_secret.
     }
 }
 ```
@@ -102,18 +112,25 @@ Request:
 {
     "command":"update_site_registration",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "authorization_redirect_uri": "https://client.example.org/cb",<- REQUIRED public address of the site
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",           <- REQUIRED
+        "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL public address of the site
         "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL public address of the site
         "client_logout_uris":["https://client.example.org/logout"],<-OPTIONAL
         "application_type":"web",                                  <- OPTIONAL, default web (can be "native")
+        "response_type":["code"],                                  <- OPTIONAL
         "grant_types":[],                                          <- OPTIONAL
         "redirect_uris": ["https://client.example.org/cb"],        <- OPTIONAL
+        "scope": ["profile"],                                      <- OPTIONAL
         "acr_values":[""],                                         <- OPTIONAL
+        "client_secret_expires_at":1335205592410                   <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
         "client_jwks_uri":"",                                      <- OPTIONAL
         "client_token_endpoint_auth_method":"",                    <- OPTIONAL
         "client_request_uris":[],                                  <- OPTIONAL
+        "client_logout_uris":[],                                   <- OPTIONAL
+        "client_sector_identifier_uri":"",                         <- OPTIONAL
         "contacts":["yuriy@gluu.org"]                              <- OPTIONAL
+        "ui_locales":[],                                           <- OPTIONAL
+        "claims_locales":[],                                       <- OPTIONAL
     }
 }
 ```
