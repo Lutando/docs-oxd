@@ -1,4 +1,4 @@
-## oxd-CSharp
+# oxd-CSharp
  
 CSharp Client Library for the [Gluu oxd](https://www.gluu.org/docs-oxd/2.4.4/) 
 
@@ -10,18 +10,18 @@ to access user information from a OpenID Connect Provider (OP) by using the oxd 
 * [Tests on GitHub](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client).
 * [API Documentation(CSharpDocs)](https://oxd.gluu.org/api-docs/csharp/2.4.4/).
 
-## Installation
+## Install oxD Server
+Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-Note : Gluu server and oxd-server needs to be installed in the hosting server to use oxd-CSharp library with your application.
- 
-* To download and install oxd server [click me](https://www.gluu.org/docs-oxd/2.4.4/).
-* For oxd server configuration [click me](https://www.gluu.org/docs-oxd/2.4.4/).
+[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
 
-## How to use
+[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
+
+[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 * oxd-csharp is oxd Server client implemented in C# language which acts according to [Protocol](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/).
 
-## Register Site
+### Register Site
 
 		public RegisterSiteResponse RegisterSite(string host, int port, string redirectUrl)
         {
@@ -60,7 +60,7 @@ Note : Gluu server and oxd-server needs to be installed in the hosting server to
 * Response 
 	* oxd-id (Type: String)	
 	
-## Update Site Registeration
+### Update Site Registeration
 
 		public UpdateSiteResponse UpdateSiteRegisteration(string host, int port)
         {
@@ -104,7 +104,7 @@ Note : Gluu server and oxd-server needs to be installed in the hosting server to
 * Response 
 	* oxd-id (Type: String)
 	
-## Get Authorization Url	
+### Get Authorization Url	
 
 		public string GetAuthorizationURL(string host, int port)
         {
@@ -141,7 +141,7 @@ Note : Gluu server and oxd-server needs to be installed in the hosting server to
 * Response 
 	* authorization_url (Type: String)	
 
-## Get Tokens By Code	
+### Get Tokens By Code	
 
 		public GetTokensByCodeResponse GetTokenByCode(string host, int port, string userId, string userSecret)
         {
@@ -206,7 +206,7 @@ Note : Gluu server and oxd-server needs to be installed in the hosting server to
 * Response 
 	* access_token (Type: String)		
 	
-## Get User Info
+### Get User Info
 
 		public GetUserInfoResponse GetUserInfo(string host, int port, string accessToken)
         {
@@ -243,7 +243,7 @@ Note : Gluu server and oxd-server needs to be installed in the hosting server to
 	* response_claims (Type: Array)		
 	
 	
-##Logout
+### Logout
 
 		public LogoutResponse GetLogoutURL(string host, int port)
         {

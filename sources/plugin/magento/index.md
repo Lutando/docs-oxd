@@ -1,59 +1,21 @@
-Magento GLUU SSO extension 
-=========================
+# Magento GLUU SSO Extension 
+
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/plugin.png)
 
 MAGENTO-GLUU-SSO extension gives access for login to your Magento site, with the help of GLUU server.
 
-There are already 2 versions of MAGENTO-GLUU-SSO (2.4.2.0 and 2.4.3.0) extensions, each in its turn is working with oxd and GLUU servers.
-For example if you are using MAGENTO-gluu-sso-2.4.2.0 extension, you need to connect with oxd-server-2.4.2.
+## Install oxD Server
+Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-Now I want to explain in details how to use extension step by step. 
+[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
 
-Extension will not be working if your host does not have https://. 
+[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
 
-## Step 1. Install Gluu-server 
+[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
-(version 2.4.2 or 2.4.3)
 
-If you want to use external gluu server, You can not do this step.   
-
-[Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
-
-## Step 2. Download oxd-server 
-
-(version 2.4.2 or 2.4.3)
-
-[Download oxd-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
-
-or
-
-[Download oxd-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
-
-## Step 3. Unzip and run oxd-server
- 
-1. Unzip your oxd-server. 
-2. Open the command line and navigate to the extracted folder in the conf directory.
-3. Open oxd-conf.json file.  
-4. If your server is using 8099 port, please change "port" number to free port, which is not used.
-5. Set parameter "op_host":"Your gluu-server-url (internal or external)"
-6. Open the command line and navigate to the extracted folder in the bin directory.
-7. For Linux environment, run sh oxd-start.sh&. 
-8. For Windows environment, run oxd-start.bat.
-9. After the server starts, go to Step 4.
-
-## Step 4. Download Magento-gluu-sso extension
- 
-(version 2.4.2 or 2.4.3)
-
-[Download Magento-gluu-sso-2.4.2.0 extension](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/Magento_gluu_SSO_2.4.2.0/Magento_gluu_SSO-2.4.2.0.tgz).
-
-or
-
-[Download Magento-gluu-sso-2.4.3.0 extension](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/Magento_gluu_SSO_2.4.3.0/Magento_gluu_SSO-2.4.3.0.tgz).
-
-For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server-2.4.2 and Magento-gluu-sso-2.4.2.0-extension
-
-## Step 5. Disable cache
+## Install Magento-gluu-sso Extension
+###  Disable cache
  
 1. Open menu tab System/Cache Management
 ![Management](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/mag0.png) 
@@ -61,8 +23,14 @@ For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server
 2. Check select all, set action on disable and click on submit button. 
 ![submit](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/mag1.png) 
 
-## Step 6. Install extension
- 
+## Install extension
+
+[Magento for Gluu Server 2.4.2](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.2.0/Magento_gluu_SSO-2.4.2.0.tgz)
+
+[Magento for Gluu Server 2.4.3](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.3.0/Magento_gluu_SSO-2.4.3.0.tgz)
+
+[Magento for Gluu Server 2.4.4](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.4/Magento_gluu_SSO-2.4.4.tgz)
+
 1. Open menu tab System/Magento Connect/Magento Connect Manager
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/mag2.png) 
 
@@ -71,12 +39,11 @@ For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server
 
 3. See Auto-scroll console contents, if extension successfully installed return to admin panel.
 
-###Extension will be automatically activated.
-
 3. Open menu tab Gluu SSO/Gluu and Social Login
 ![GluuSSO](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/mag4.png) 
 
-## Step 7. General
+## Configuration
+###  General
 
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/m1.png)  
 
@@ -91,10 +58,6 @@ If You are successfully registered in gluu server, you will see bottom page.
 For making sure go to your gluu server / OpenID Connect / Clients and search for your oxD ID
 
 If you want to reset configurations click on Reset configurations button.
-
-## Step 8. OpenID Connect Configuration
-
-OpenID Connect Configuration page for Magento-gluu-sso 2.4.2.0 and Magento-gluu-sso 2.4.3.0 are different.
 
 ### Scopes.
 You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
@@ -114,13 +77,11 @@ In Magento-gluu-sso 2.4.3.0 you can not only enable, disable and delete scope, b
 You can look all custom scripts in your gluu server / Configuration / Manage Custom Scripts / and enable login type, which type you want.
 Custom Script represent itself the type of login, at this moment gluu server supports (U2F, Duo, Google +, Basic) types.
 
-### Pay attention to that.
-
 1. Which custom script you enable in your Magento site in order it must be switched on in gluu server too.
 2. Which custom script you will be enable in OpenID Connect Configuration page, after saving that will be showed in Magento Configuration page too.
 3. When you create new custom script, both fields are required.
 
-## Step 9. Magento Configuration
+## Magento Configuration
 
 ### Customize Login Icons
  

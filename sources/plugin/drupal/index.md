@@ -1,5 +1,5 @@
-DRUPAL GLUU SSO module 
-=========================
+# DRUPAL GLUU SSO module 
+
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/plugin.jpg)
 
 DRUPAL-GLUU-SSO module gives access for login to your Drupal site, with the help of GLUU server.
@@ -11,57 +11,30 @@ Now I want to explain in details how to use module step by step.
 
 Module will not be working if your host does not have https://. 
 
-## Step 1. Install Gluu-server 
+## Install oxD Server
+Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-(version 2.4.2 or 2.4.3)
+[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
 
-If you want to use external gluu server, You can not do this step.   
+[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
 
-[Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
+[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
-## Step 2. Download oxd-server 
-
-(version 2.4.2 or 2.4.3 or 2.4.4)
-
-[Download oxd-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
-
-or
-
-[Download oxd-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
-
-## Step 3. Unzip and run oxd-server
+## Install Drupal Module
  
-1. Unzip your oxd-server. 
-2. Open the command line and navigate to the extracted folder in the conf directory.
-3. Open oxd-conf.json file.  
-4. If your server is using 8099 port, please change "port" number to free port, which is not used.
-5. Set parameter "op_host":"Your gluu-server-url (internal or external)"
-6. Open the command line and navigate to the extracted folder in the bin directory.
-7. For Linux environment, run sh oxd-start.sh&. 
-8. For Windows environment, run oxd-start.bat.
-9. After the server starts, go to Step 4.
+[Drupal Module 2.4.2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.2.0/Drupal_gluu_sso_2.4.2.0.tar.gz).
 
-## Step 4. Download Drupal-gluu-sso module
- 
-(version 2.4.2 or 2.4.3)
+[Drupal Module 2.4.3](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.3.0/Drupal_gluu_sso_2.4.3.0.tar.gz).
 
-[Download Drupal-gluu-sso-2.4.2.0 module](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.2.0/Drupal_gluu_sso_2.4.2.0.tar.gz).
+[Drupal Module 2.4.4](https://github.com/GluuFederation/gluu-sso-drupal-module/raw/master/Drupal_gluu_sso_2.4.4.0/Drupal_gluu_sso_2.4.4.0.tar.gz)
 
-or
-
-[Download Drupal-gluu-sso-2.4.3.0 module](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.3.0/Drupal_gluu_sso_2.4.3.0.tar.gz).
-
-For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server-2.4.2 and Drupal-gluu-sso-2.4.2.0-module
-
-## Step 5. Install module
- 
-1. Open menu tab Modules and click on ```Install new module``` button
+1. Open menu tab Modules and click on `Install new module` button
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d1.png) 
 
-2. Choose downloaded module and click on ```INSTALL``` button. 
+2. Choose downloaded module and click on `INSTALL` button. 
 ![upload](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d2.png) 
 
-## Step 6. Activate module
+### Activate module
  
 1. Go to Modules page
 2. Find module Gluu SSO {version}, choose on enabled checkbox and save configuration.
@@ -69,7 +42,7 @@ For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server
 3. Go to Configuration page and open module configuration page.
 ![upload](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d4.png) 
 
-## Step 7. General
+## Configuration
 
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d5.png)  
 
@@ -85,11 +58,11 @@ For making sure go to your gluu server / OpenID Connect / Clients and search for
 
 If you want to reset configurations click on Reset configurations button.
 
-## Step 8. OpenID Connect Configuration
+### OpenID Connect Configuration
 
 OpenID Connect Configuration page for Drupal-gluu-sso 2.4.2.0 and Drupal-gluu-sso 2.4.3.0 are different.
 
-### Scopes.
+#### Scopes.
 You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
 Scopes are need for getting loged in users information from gluu server.
 Pay attention to that, which scopes you are using that are switched on in your gluu server.
@@ -100,28 +73,26 @@ In Drupal-gluu-sso 2.4.2.0  you can only enable, disable and delete scope.
 In Drupal-gluu-sso 2.4.3.0 you can not only enable, disable and delete scope, but also add new scope, but when you add new scope by {any name}, necessary to add that scope in your gluu server too. 
 ![Scopes2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d8.png) 
 
-### Custom scripts.
+#### Custom scripts.
 
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d9.png)  
 
 You can look all custom scripts in your gluu server / Configuration / Manage Custom Scripts / and enable login type, which type you want.
 Custom Script represent itself the type of login, at this moment gluu server supports (U2F, Duo, Google +, Basic) types.
 
-### Pay attention to that.
-
 1. Which custom script you enable in your Drupal site in order it must be switched on in gluu server too.
 2. Which custom script you will be enable in OpenID Connect Configuration page, after saving that will be showed in Drupal Configuration page too.
 3. When you create new custom script, both fields are required.
 
-## Step 9. Drupal Configuration
+### Drupal Configuration
 
-### Customize Login Icons
+#### Customize Login Icons
  
 Pay attention to that, if custom scripts are not enabled, nothing will be showed.
 Customize shape, space between icons and size of the login icons.
 
 ![DrupalConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d10.png)  
 
-## Step 10. Show icons in frontend
+#### Frontend Configuration
 
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d11.png) 
