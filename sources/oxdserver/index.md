@@ -1,31 +1,34 @@
 # oxd server overview
 
 oxd makes it super simple to authenticate a person with OpenID Connect, to 
-use OAuth2 to protect a website or API, or to obtain a token to access
-an OAuth2 protected resource.
+protect web resources with OAuth2, or to write a client that calls an OAuth2
+protected API. 
 
-oxD Server is designed to work as standalone application (without Web Application Container, 
-e.g. tomcat). oxD is a mediator--it provides methods that make it easier for 
+The oxd Server is designed to work as standalone application (without Web Application Container, 
+like tomcat). It's a mediator--providing API's that make it easier for 
 developers to use OAuth2 protocols. By default, it is restricted to `localhost`--so
-the oxd server should be installed on each server that has web applications. 
+the oxd server should be installed on each server that has web applications. But stay
+tuned, Gluu is introducing a gateway that will enable a centralized deployment
+of an oxd server. 
  
-oxd API's are normally called via native libraries--currently for Php, Java, Python,
+oxd API's can be called with any platform that can make REST calls, but 
+Gluu provides several native libraries, currently for Php, Java, Python,
 node, Ruby and C#.
 
 oxd is commercial software. There is a free version that is limited to two transactions
 per second, which may be enough for many low volume sites. For more information on 
 purchasing a commercial version of oxd, see the [website](http://oxd.gluu.org)
 
-## Web site protection with oxD
+## Web site protection with oxd
 
 Libraries provide convenient methods to the web site developer which 
-to call the oxd Server. The concrete library depends on the programming language 
+for calling the oxd API's. The concrete library depends on the programming language 
 used by a web site. We will use Java as an example on this page.
 
 ![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 
-First of all, the web site must register itself with oxD Server via registration 
-command (using java/python/php library). With registration it gets oxd_id from oxD Server. 
+First of all, the web site must register itself with oxd Server via registration 
+command (using java/python/php library). With registration it gets oxd_id from oxd Server. 
 oxd_id must be passed to all commands.
 
 Web site configuration:
@@ -33,7 +36,7 @@ Web site configuration:
    oxd_address : localhost:8090
    oxd_id : 6F9619FF-8B86-D011-B42D-00CF4FC964FF
 ```
-oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID that does not exist yet on oxD Server.
+oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID that does not exist yet on oxd Server.
 
 
 ## Overview of entire process
@@ -51,15 +54,27 @@ oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any
 
 ## Library/Plugin (Python/PHP/Java)
 
-Library must support following commands:
+All libraries support the following commands for OpenID Connect. Not all libraries currently
+support the OAuth2 access management API's, but they will by the next release--check your 
+specific library to confirm.
 
 ### Register site
 
-During registration operation oxd dynamically register client for web site and keeps it in configuration.
+During the registration operation oxd dynamically registers a client keeps it in 
+its configuration.
 
-All parameters in register_site operation are optional except `authorization_redirect_uri`! All fallback values are taken from oxd-default-site-config.json
+All parameters in register_site operation are optional except `authorization_redirect_uri`.
+This is the URL that the OpenID Connect Provider (OP) will send the person to after successful
+authentication. 
 
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
+All fallback values are taken from `oxd-default-site-config.json` If the `op_host` is missing 
+from the register_site command, it must be present here. However, all other values
+will be obtained via OpenID Connect discovery and dynamic client registration. 
+The purpose of the properties is to enable you to override these values. 
+
+This method returns `ox-id`. The reason for this is that several applications may share an instance 
+of oxd, and this identifier is used by oxd to distinguish difference in configuration between 
+them.
 
 Request:
 
@@ -67,14 +82,14 @@ Request:
 {
     "command":"register_site",
     "params": {
-        "op_host":"https://ce-dev.gluu.org"                            <- REQUIRED public address of the OP (CE Server)
-        "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED public address of the site
-        "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL public address of the site
-        "application_type":"web",                                      <- OPTIONAL, default web (can be also "native")
-        "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
-        "response_types": ["code", "id_token", "token"]                <- REQUIRED defines authorization flow, please check OpenID Connect spec for more details. Possible values; code, token, id_token
-        "grant_types": ["authorization_code"]                          <- OPTIONAL Possible values: authorization_code, implicit, client_credentials, oxauth_exchange_token, password
-        "scope":["openid"],                                            <- OPTIONAL scopes of the client (openid, profile, uma_authorization, uma_protection)
+        "redirect_uris": ["https://client.example.org/cb"],            <- REQUIRED
+        "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults) 
+        "authorization_redirect_uri": "https://client.example.org/cb", <- OPTIONAL 
+        "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
+        "application_type":"web",                                      <- OPTIONAL 
+        "response_types": ["code", "id_token", "token"]                <- OPTIONAL 
+        "grant_types": ["authorization_code"]                          <- OPTIONAL 
+        "scope":["openid"],                                            <- OPTIONAL 
         "acr_values":["basic"],                                        <- OPTIONAL
         "client_jwks_uri":"",                                          <- OPTIONAL
         "client_token_endpoint_auth_method":"",                        <- OPTIONAL
@@ -84,7 +99,6 @@ Request:
         "contacts":["yuriy@gluu.org"],                                 <- OPTIONAL
         "ui_locales":[],                                               <- OPTIONAL
         "claims_locales":[],                                           <- OPTIONAL
-
         "client_id":"<client id of existing client>",                  <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
         "client_secret":"<client secret of existing client>",          <- OPTIONAL must be used together with client_secret.
     }
@@ -112,25 +126,25 @@ Request:
 {
     "command":"update_site_registration",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",           <- REQUIRED
-        "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL public address of the site
-        "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL public address of the site
-        "client_logout_uris":["https://client.example.org/logout"],<-OPTIONAL
-        "application_type":"web",                                  <- OPTIONAL, default web (can be "native")
-        "response_type":["code"],                                  <- OPTIONAL
-        "grant_types":[],                                          <- OPTIONAL
-        "redirect_uris": ["https://client.example.org/cb"],        <- OPTIONAL
-        "scope": ["profile"],                                      <- OPTIONAL
-        "acr_values":[""],                                         <- OPTIONAL
-        "client_secret_expires_at":1335205592410                   <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
-        "client_jwks_uri":"",                                      <- OPTIONAL
-        "client_token_endpoint_auth_method":"",                    <- OPTIONAL
-        "client_request_uris":[],                                  <- OPTIONAL
-        "client_logout_uris":[],                                   <- OPTIONAL
-        "client_sector_identifier_uri":"",                         <- OPTIONAL
-        "contacts":["yuriy@gluu.org"]                              <- OPTIONAL
-        "ui_locales":[],                                           <- OPTIONAL
-        "claims_locales":[],                                       <- OPTIONAL
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",              <- REQUIRED
+        "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL 
+        "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL 
+        "client_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
+        "application_type":"web",                                     <- OPTIONAL 
+        "response_type":["code"],                                     <- OPTIONAL
+        "grant_types":[],                                             <- OPTIONAL
+        "redirect_uris": ["https://client.example.org/cb"],           <- OPTIONAL
+        "scope": ["profile"],                                         <- OPTIONAL
+        "acr_values":[""],                                            <- OPTIONAL
+        "client_secret_expires_at":1335205592410                      <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
+        "client_jwks_uri":"",                                         <- OPTIONAL
+        "client_token_endpoint_auth_method":"",                       <- OPTIONAL
+        "client_request_uris":[],                                     <- OPTIONAL
+        "client_logout_uris":[],                                      <- OPTIONAL
+        "client_sector_identifier_uri":"",                            <- OPTIONAL
+        "contacts":["yuriy@gluu.org"]                                 <- OPTIONAL
+        "ui_locales":[],                                              <- OPTIONAL
+        "claims_locales":[],                                          <- OPTIONAL
     }
 }
 ```
@@ -148,7 +162,7 @@ Response:
 
 Note: authorization_code grant type
 
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
+
 
 Request:
 
@@ -296,7 +310,7 @@ Response:
 
 ### UMA Resource Server
 
-oxD Client Library used by Resource Server application MUST:
+oxd Client Library used by Resource Server application MUST:
 
 - Register protection document (with uma_rs_protect command)
 - Intercept HTTP call (before actual REST resource call) and check whether it's allowed to proceed with call or reject it according to uma_rs_check_access command response:
