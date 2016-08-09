@@ -36,7 +36,8 @@ Web site configuration:
    oxd_address : localhost:8090
    oxd_id : 6F9619FF-8B86-D011-B42D-00CF4FC964FF
 ```
-oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID that does not exist yet on oxd Server.
+oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID 
+that does not exist yet on oxd Server.
 
 
 ## Overview of entire process
@@ -45,9 +46,9 @@ oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any
 
 ```
 1. Register site
-2. Get authorization URL (which should be used to redirect end-user to Gluu Server for authentication and authorization)
-3. Gluu Server redirects back with code
-4. Call get_tokens_by_code to obtain Access & ID Tokens
+2. Get authorization URL (use this to redirect person to the OP)
+3. OP returns code in response
+4. Call get_tokens_by_code to obtain access & id_token
 5. Use access token to obtain user claims
 6. Logout
 ```
@@ -195,7 +196,8 @@ Response:
 
 ### Get Tokens (ID & Access) by Code
 
-Note: Library (php/python/java/node) must provide utility methods for web site to parse response from OP and send parsed code and state parameters to oxd:
+Note: Library (php/python/java/node) must provide utility methods for web site to parse response 
+from OP and send parsed code and state parameters to oxd:
 
 For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
