@@ -92,6 +92,8 @@ then it always fallback to recommended Authorization Code Flow (`response_type=c
 of oxd, and this identifier is used by oxd to distinguish difference in configuration between 
 them.
 
+`op_host` must point to a valid [Gluu Server CE installation](http://gluu.org/docs). (Sample: "op_host":"https://ce-dev.gluu.org")
+
 ```json
 conf/oxd-default-site-config.json
 {
