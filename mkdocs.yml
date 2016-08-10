@@ -15,8 +15,6 @@ pages:
 - [oxdserver/install/index.md, oxd Server, Installation]
 - [oxdserver/conf/index.md, oxd Server, Configuration]
 - [oxdserver/logs/index.md, oxd Server, Logs]
-- [oxdserver/other/index.md,oxd Server, Other Information]
-
 
 # Libraries
 
@@ -37,8 +35,8 @@ pages:
 - [plugin/roundcube/index.md, Plugin, RoundCube]
 
 # Framework
-- [framework/spring/index.md, Framework, Spring]
-- [framework/play/index.md, Framework, Play]
+- [framework/spring/index.md, Framework, Java Spring]
+- [framework/play/index.md, Framework, Java Play Framework]
 - [framework/ruby/index.md, Framework, Ruby on Rails]
 - [framework/python/index.md, Framework, Python Flask]
 - [framework/node/index.md, Framework, Node/Express]
