@@ -164,7 +164,6 @@ Request:
         "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL 
         "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL 
         "client_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
-        "application_type":"web",                                     <- OPTIONAL 
         "response_type":["code"],                                     <- OPTIONAL
         "grant_types":[],                                             <- OPTIONAL
         "redirect_uris": ["https://client.example.org/cb"],           <- OPTIONAL
@@ -205,7 +204,7 @@ Request:
     "command":"get_authorization_url",
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "acr_values":["basic", "duo"],                         <- optional, may be skipped (default: basic)
+        "acr_values":["duo"],                         <- optional, may be skipped (default: basic)
         "prompt":"login"                                       <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
     }
 }
@@ -221,6 +220,7 @@ Response:
     &client_id=s6BhdRkqt3
     &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
     &scope=openid%20profile
+    &acr_values=duo
     &state=af0ifjsldkj
     &nonce=n-0S6_WzA2Mj"
     }
