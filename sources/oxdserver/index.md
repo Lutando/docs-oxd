@@ -42,15 +42,29 @@ that does not exist yet on oxd Server.
 
 ## Overview of entire process
 
-### OpenID Connect - Authorization Code Grant overview
+### OpenID Connect - Authorization Code Flow overview
 
 ```
-1. Register site
+1. Register site (response_type=code, grant_type=authorization_code)
 2. Get authorization URL (use this to redirect person to the OP)
 3. OP returns code in response
 4. Call get_tokens_by_code to obtain access & id_token
 5. Use access token to obtain user claims
 6. Logout
+```
+
+### OpenID Connect - Implicit Flow overview
+
+The Implicit Flow is mainly used by Clients implemented in a browser using a scripting language.
+Access Token and ID Token are returned directly to the Client, which may expose them to the End-User and applications that have access to the End-User's User Agent.
+The Authorization Server does not perform Client Authentication. Therefore it is strictly recommended to use Authorization Code Flow.
+
+```
+1. Register site (response_type=id_token token, grant_type=implicit)
+2. Get authorization URL (use this to redirect person to the OP)
+3. OP returns id_token and access_token in response as fragment (must be parsed by JavaScript inside User Agent.)
+4. Use access token to obtain user claims
+5. Logout
 ```
 
 ## Library/Plugin (Python/PHP/Java)
@@ -66,16 +80,32 @@ its configuration.
 
 All parameters in register_site operation are optional except `authorization_redirect_uri`.
 This is the URL that the OpenID Connect Provider (OP) will send the person to after successful
-authentication. 
+authentication (`authorization_redirect_uri` is automatically added to `redirect_uris`).
 
-All fallback values are taken from `oxd-default-site-config.json` If the `op_host` is missing 
-from the register_site command, it must be present here. However, all other values
-will be obtained via OpenID Connect discovery and dynamic client registration. 
-The purpose of the properties is to enable you to override these values. 
+All fallback values are taken from `conf/oxd-default-site-config.json`. For example if the `op_host` is missing
+from the `register_site` command parameters, it must be present in `conf/oxd-default-site-config.json`.
 
-This method returns `ox-id`. The reason for this is that several applications may share an instance 
+`register_site` command returns `oxd_id`. The reason for this is that several applications may share an instance
 of oxd, and this identifier is used by oxd to distinguish difference in configuration between 
 them.
+
+```json
+conf/oxd-default-site-config.json
+{
+    "op_host":"",
+    "authorization_redirect_uri":"",
+    "post_logout_redirect_uri":"",
+    "redirect_uris":"",
+    "response_types":["code"],
+    "grant_type":["authorization_code"],
+    "acr_values":["basic"],
+    "scope":["openid", "profile"],
+    "ui_locales":["en"],
+    "claims_locales":["en"],
+    "client_jwks_uri":"",
+    "contacts":[]
+}
+```
 
 Request:
 
@@ -83,9 +113,9 @@ Request:
 {
     "command":"register_site",
     "params": {
-        "redirect_uris": ["https://client.example.org/cb"],            <- REQUIRED
-        "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults) 
-        "authorization_redirect_uri": "https://client.example.org/cb", <- OPTIONAL 
+        "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
+        "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
+        "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
         "application_type":"web",                                      <- OPTIONAL 
         "response_types": ["code", "id_token", "token"]                <- OPTIONAL 
