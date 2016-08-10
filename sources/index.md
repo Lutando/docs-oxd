@@ -2,12 +2,12 @@
 
 # Introduction
 
-oxd is a mediator: it provides API's that can be called by a web application that are easier
-than directly calling the API's of an OpenID Connect provider. oxd is not a proxy--in some 
-cases oxd returns URL's for the OP to which the web application must redirect the person. 
-To simplify the interface to developers, oxd externalizes the OpenID Connect client code. 
-This is particularly useful because it enables updates to the OAuth2 client code, while keeping
-the application interface the same.
+oxd is a mediator: it provides easy API's that can be called by a web application to use OAuth2
+profiles for authentication and authorization. oxd is not a proxy--sometimes it acts on 
+behalf of an applicatoin, but others it just forms URLs and returns them to the application. 
+One advantage of using oxd over a native client library is that it consolidates the OAuth2
+code in one service. So if there are updates to the OAuth2 client code, you can update 
+oxd without impacting the applications. 
 
 ![image](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 

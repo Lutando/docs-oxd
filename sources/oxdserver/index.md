@@ -4,113 +4,68 @@ oxd makes it super simple to authenticate a person with OpenID Connect, to
 protect web resources with OAuth2, or to write a client that calls an OAuth2
 protected API. 
 
-The oxd Server is designed to work as standalone application (without Web Application Container, 
-like tomcat). It's a mediator--providing API's that make it easier for 
-developers to use OAuth2 protocols. By default, it is restricted to `localhost`--so
-the oxd server should be installed on each server that has web applications. But stay
-tuned, Gluu is introducing a gateway that will enable a centralized deployment
-of an oxd server. 
- 
-oxd API's can be called with any platform that can make REST calls, but 
-Gluu provides several native libraries, currently for Php, Java, Python,
-node, Ruby and C#.
+The oxd Server is designed to work as a standalone application (without a web application container, 
+like tomcat). It's API's make it easier for developers to use OAuth2 protocols. By default, 
+it is restricted to `localhost`--so the oxd server should be installed on each server that has web 
+applications. But stay tuned, Gluu is introducing an nginx-based gateway that will enable the centralized 
+deployment of an oxd server. 
+
+oxd API's can be called with by any application that can make REST calls. 
+Gluu provides several native libraries--for Php, Java, Python, Node, Ruby and C#.
 
 oxd is commercial software. There is a free version that is limited to two transactions
 per second, which may be enough for many low volume sites. For more information on 
 purchasing a commercial version of oxd, see the [website](http://oxd.gluu.org)
 
-## Web site protection with oxd
-
-Libraries provide convenient methods to the web site developer which 
-for calling the oxd API's. The concrete library depends on the programming language 
-used by a web site. We will use Java as an example on this page.
-
 ![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 
-First of all, the web site must register itself with oxd Server via registration 
-command (using java/python/php library). With registration it gets oxd_id from oxd Server. 
-oxd_id must be passed to all commands.
+## OpenID Connect Authentication Overview
 
-Web site configuration:
-```
-   oxd_address : localhost:8090
-   oxd_id : 6F9619FF-8B86-D011-B42D-00CF4FC964FF
-```
-oxd_id (6F9619FF-8B86-D011-B42D-00CF4FC964FF) - GUID for web site. It can be any GUID 
-that does not exist yet on oxd Server.
+oxd uses the Authorization code flow for authentication. Future version of oxd
+may support the Hybrid flow. Implicit flow is not supported because it is 
+intended for Javascript client-side applications where the client does not
+authenticate.
 
-
-## Overview of entire process
-
-### OpenID Connect - Authorization Code Flow overview
+oxd provides six API's for OpenID Connect authentication. In general, you can think of 
+user authentication using the the Authorization Code Flow as a three step process: 
 
 ```
-1. Register site (response_type=code, grant_type=authorization_code)
-2. Get authorization URL (use this to redirect person to the OP)
-3. OP returns code in response
-4. Call get_tokens_by_code to obtain access & id_token
-5. Use access token to obtain user claims
+1. Redirect person to authorization URL and obtain a code
+2. Use code to obtain tokens (access, id_token, refresh)
+3. Use access token to obtain user claims
+```
+
+The other three other API's are:
+ 
+```
+4. Register site (called the once--the first time your application uses oxd)
+5. Update site registration (not used often, but sometimes needed)
 6. Logout
 ```
 
-### OpenID Connect - Implicit Flow overview
-
-The Implicit Flow is mainly used by Clients implemented in a browser using a scripting language.
-Access Token and ID Token are returned directly to the Client, which may expose them to the End-User and applications that have access to the End-User's User Agent.
-The Authorization Server does not perform Client Authentication. Therefore it is strictly recommended to use Authorization Code Flow.
-
-```
-1. Register site (response_type=id_token token, grant_type=implicit)
-2. Get authorization URL (use this to redirect person to the OP)
-3. OP returns id_token and access_token in response as fragment (must be parsed by JavaScript inside User Agent.)
-4. Use access token to obtain user claims
-5. Logout
-```
-
-## Library/Plugin (Python/PHP/Java)
-
-All libraries support the following commands for OpenID Connect. Not all libraries currently
-support the OAuth2 access management API's, but they will by the next release--check your 
-specific library to confirm.
-
 ### Register site
 
-During the registration operation oxd dynamically registers a client keeps it in 
-its configuration.
+First of all, the web site must register itself with oxd server. If registration 
+is successful, ox will return an identifier for the application, which must be 
+presented in subsequent API calls. 
 
-All parameters in register_site operation are optional except `authorization_redirect_uri`.
-This is the URL that the OpenID Connect Provider (OP) will send the person to after successful
-authentication (`authorization_redirect_uri` is automatically added to `redirect_uris`).
+During the registration operation, oxd will dynamically register an OpenID Connect
+client and save its configuration.
 
-All fallback values are taken from `conf/oxd-default-site-config.json`. For example if the `op_host` is missing
-from the `register_site` command parameters, it must be present in `conf/oxd-default-site-config.json`.
+All parameters to register_site are optional except the `authorization_redirect_uri`.
+This is the URL that the OpenID Connect Provider (OP) will redirect the person to after 
+successful authentication.
 
-If value for `response_type` or `grant_type` is not provided (missed in both `register_site` command parameter and in `conf/oxd-default-site-config.json`)
-then it always fallback to recommended Authorization Code Flow (`response_type=code` and `grant_type=authorization_code`)
+All configuration values are taken from `conf/oxd-default-site-config.json`. For example if the 
+`op_host` is missing from the `register_site` command parameters, it must be present in 
+`conf/oxd-default-site-config.json`.
 
-`register_site` command returns `oxd_id`. The reason for this is that several applications may share an instance
-of oxd, and this identifier is used by oxd to distinguish difference in configuration between 
-them.
+`register_site` command returns `oxd_id`. The reason for this is that several applications may 
+share an instance of oxd, and this identifier is used by oxd to distinguish difference in 
+configuration between them.
 
-`op_host` must point to a valid [Gluu Server CE installation](http://gluu.org/docs). (Sample: "op_host":"https://ce-dev.gluu.org")
-
-```json
-conf/oxd-default-site-config.json
-{
-    "op_host":"",
-    "authorization_redirect_uri":"",
-    "post_logout_redirect_uri":"",
-    "redirect_uris":"",
-    "response_types":["code"],
-    "grant_type":["authorization_code"],
-    "acr_values":["basic"],
-    "scope":["openid", "profile"],
-    "ui_locales":["en"],
-    "claims_locales":["en"],
-    "client_jwks_uri":"",
-    "contacts":[]
-}
-```
+`op_host` must point to a valid [Gluu Server CE installation](http://gluu.org/docs). (Sample: 
+"op_host":"https://idp.example.org")
 
 Request:
 
@@ -154,7 +109,7 @@ Response:
 
 ### Update site registration
 
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
+API used to update a current registration.
 
 Request:
 
@@ -195,10 +150,9 @@ Response:
 
 ### Get authorization url
 
-Note:
-  - Authorization Code Flow : grant_type=authorization_code&response_type=code
-  - Implicit Flow : grant_type=implicit&response_type=token%20id_token
-
+API used to get the URL at the OpenID Provider to which your application must redirect the
+person. The Response from the OP will include the code and state values, which should 
+be used to subsequently obtain tokens.
 
 Request:
 
@@ -230,15 +184,18 @@ Response:
 }
 ```
 
-### Get Tokens (ID & Access) by Code
-
-Note: Library (php/python/java/node) must provide utility methods for web site to parse response 
-from OP and send parsed code and state parameters to oxd:
+After redirecting to the above URL, the OpenID Provider will return a response that 
+looks like this to the URL your application registered as 
+the redirect URI (parse out the code and state):
 
 ```
 HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
-```
+``
+
+### Get Tokens (ID & Access) by Code
+
+Use the code and state obtained in the previous step to call this API to retrieve tokens.
 
 Request:
 
@@ -279,6 +236,9 @@ Response:
 
 ### Get User Info
 
+Use the access token to from the step above to retrieve a JSON object with the 
+user claims.
+
 Request:
 
 ```json
@@ -312,6 +272,11 @@ Response:
 
 ### Log out URI
 
+Uses front channel logout--a page is returned with iFrames, each of which contains
+the logout URL of the applications that have a session in that browser. These 
+iframes should be loaded automatically--enabling each application to get a notification
+of logout, and to hopefully clean up any cookies in the person's browser.
+
 Request:
 
 ```json
@@ -338,9 +303,7 @@ Response:
 }
 ```
 
-## UMA
-
-### UMA Resource Server
+## UMA Resource Server API's
 
 oxd Client Library used by Resource Server application MUST:
 
@@ -498,7 +461,9 @@ Resource is not protected
 }
 ```
 
-## UMA Requesting Party
+## UMA Client API's
+
+If your appliation is calling UMA protected resources, use these API's to obtain an RPT token.
 
 ### UMA RP - Get RPT
 
@@ -584,9 +549,10 @@ Invalid rpt error:
 }
 ```
 
-### UMA RP - Get GAT
+## Gluu OAuth2 Access Management API's
 
-GAT stands for Gluu Access Token. It is invented by Gluu and is described here: https://ox.gluu.org/doku.php?id=uma:oauth2_access_management.
+GAT stands for Gluu Access Token. It is invented by Gluu and is described here: 
+https://ox.gluu.org/doku.php?id=uma:oauth2_access_management.
 
 Request:
 
