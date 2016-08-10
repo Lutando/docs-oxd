@@ -10,14 +10,10 @@ to access user information from a OpenID Connect Provider (OP) by using the oxd 
 * [Tests on GitHub](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client).
 * [API Documentation(CSharpDocs)](https://oxd.gluu.org/api-docs/csharp/2.4.4/).
 
-## Install oxD Server
-Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+## Install oxd Server
+Please use the links below to download the `oxd Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
-
-[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
-
-[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
+[oxd Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 * oxd-csharp is oxd Server client implemented in C# language which acts according to [Protocol](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/).
 

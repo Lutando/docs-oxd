@@ -1,21 +1,21 @@
-oxD-node
+oxd-node
 ========
 
-oxD-node is **oxD server** client, which implemented in node.js. Using it you can integrate oxD server in your Node.js application.
+oxd-node is **oxd server** client, which implemented in node.js. Using it you can integrate oxd server in your Node.js application.
 
 Installation
 ------------
 
-Note : **Gluu server** and **oxD-server** needs to be installed in the hosting server to use oxD-node library with your application.
+Note : **Gluu server** and **oxd-server** needs to be installed in the hosting server to use oxd-node library with your application.
 
 * To download and install Gluu server [click me](http://www.gluu.org/docs/).
 
-* To download and install oxD server [click me](https://www.gluu.org/docs-oxd).
+* To download and install oxd server [click me](https://www.gluu.org/docs-oxd).
 
-* For oxD server configuration [click me](https://www.gluu.org/docs-oxd).
+* For oxd server configuration [click me](https://www.gluu.org/docs-oxd).
 
 
-oxD-node can be install using following command:
+oxd-node can be install using following command:
 
 ```sh
 $ npm install oxd-node

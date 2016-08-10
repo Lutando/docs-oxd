@@ -1,15 +1,15 @@
 # oxd-python
-oxD Python is a client library for the Gluu oxD Server. For information about oxD, visit [http://oxd.gluu.org](http://oxd.gluu.org)
+oxd Python is a client library for the Gluu oxd Server. For information about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
 ## Deployment
 
 ### Prerequisites
 
 * Python 2.7
-* Gluu oxD Server - [Installation docs](https://www.gluu.org/docs-oxd/oxdserver/install/)
+* Gluu oxd Server - [Installation docs](https://www.gluu.org/docs-oxd/oxdserver/install/)
 
 ### Installation
-* Download the zip of the oxD Python Library from [here](https://github.com/GluuFederation/oxd-python/releases) and unzip to your location of choice
+* Download the [oxd Python Library 2.4.4](https://github.com/GluuFederation/oxd-python/releases/tag/v2.4.4) and unzip to your location of choice
 
 ```
 cd oxdpython-version
@@ -43,7 +43,7 @@ cp sample.cfg /var/www/demosite/demosite.cfg
 
 #### Website Registration
 
-The `Client` class of the library provides all the required methods required for the website to communicate with the oxD RP through sockets.
+The `Client` class of the library provides all the required methods required for the website to communicate with the oxd RP through sockets.
 
 ```python
 from oxdpython import Client

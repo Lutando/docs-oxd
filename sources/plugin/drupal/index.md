@@ -3,29 +3,13 @@
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/plugin.jpg)
 
 DRUPAL-GLUU-SSO module gives access for login to your Drupal site, with the help of GLUU server.
+The module will not work over `http`, it needs the `https` protocol to function. 
 
-There are already 2 versions of DRUPAL-GLUU-SSO (2.4.2.0 and 2.4.3.0) modules, each in its turn is working with oxd and GLUU servers.
-For example if you are using DRUPAL-gluu-sso-2.4.2.0 module, you need to connect with oxd-server-2.4.2.
-
-Now I want to explain in details how to use module step by step. 
-
-Module will not be working if your host does not have https://. 
-
-## Install oxD Server
-Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
-
-[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
-
-[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
-
-[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
+## Install oxd Server
+Please use the link below to download the `oxd Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+[oxd Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 ## Install Drupal Module
- 
-[Drupal Module 2.4.2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.2.0/Drupal_gluu_sso_2.4.2.0.tar.gz).
-
-[Drupal Module 2.4.3](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/Drupal_gluu_sso_2.4.3.0/Drupal_gluu_sso_2.4.3.0.tar.gz).
-
 [Drupal Module 2.4.4](https://github.com/GluuFederation/gluu-sso-drupal-module/raw/master/Drupal_gluu_sso_2.4.4.0/Drupal_gluu_sso_2.4.4.0.tar.gz)
 
 1. Open menu tab Modules and click on `Install new module` button
@@ -59,18 +43,11 @@ For making sure go to your gluu server / OpenID Connect / Clients and search for
 If you want to reset configurations click on Reset configurations button.
 
 ### OpenID Connect Configuration
-
-OpenID Connect Configuration page for Drupal-gluu-sso 2.4.2.0 and Drupal-gluu-sso 2.4.3.0 are different.
-
 #### Scopes.
 You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
 Scopes are need for getting loged in users information from gluu server.
 Pay attention to that, which scopes you are using that are switched on in your gluu server.
-
-In Drupal-gluu-sso 2.4.2.0  you can only enable, disable and delete scope.
-![Scopes1](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d7.png) 
-
-In Drupal-gluu-sso 2.4.3.0 you can not only enable, disable and delete scope, but also add new scope, but when you add new scope by {any name}, necessary to add that scope in your gluu server too. 
+ 
 ![Scopes2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d8.png) 
 
 #### Custom scripts.

@@ -1,6 +1,6 @@
 [TOC]
 # oxd-csharp
-oxd-csharp is a client library for the Gluu oxD Server. It is a thin wrapper around the communication protocol of oxD server which can be used to access the OpenID connect Authorization end points of the Gluu Server via the oxD RP. This library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the OxD as the Relying Party (RP).
+oxd-csharp is a client library for the Gluu oxd Server. It is a thin wrapper around the communication protocol of oxd server which can be used to access the OpenID connect Authorization end points of the Gluu Server via the oxd RP. This library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the OxD as the Relying Party (RP).
 
 * [Code in Github](https://github.com/GluuFederation/oxd-csharp)
 
@@ -11,7 +11,7 @@ oxd-csharp is a client library for the Gluu oxD Server. It is a thin wrapper aro
 ## Deployment
 ### Prerequisites
 
-* Gluu oxD Server - [Installation Docs](https://www.gluu.org/docs-oxd/oxdserver/install/)
+* Gluu oxd Server - [Installation Docs](https://www.gluu.org/docs-oxd/oxdserver/install/)
 
 ### Installation
 

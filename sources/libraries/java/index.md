@@ -1,13 +1,13 @@
+# oxd-Java
+oxd-java is oxd Server client implemented in Java language which acts according to the oxd Server [Protocol](../.././oxdserver/index.md).
 
-oxd-java is oxD Server client implemented in Java language which acts according to [Protocol](../.././oxdserver/index.md).
+* [Github sources](https://github.com/GluuFederation/oxd-java)
 
-[Github sources](https://github.com/GluuFederation/oxd-java)
+* [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
 
-[Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
+* [Jenkins builds](https://ox.gluu.org/jenkins/job/oxd-java/)
 
-[Jenkins builds](https://ox.gluu.org/jenkins/job/oxd-java/)
-
-[API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
+* [API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
 
 ## OpenID Connect - Authorization Code Grant overview
 

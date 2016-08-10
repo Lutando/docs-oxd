@@ -4,15 +4,10 @@
 
 MAGENTO-GLUU-SSO extension gives access for login to your Magento site, with the help of GLUU server.
 
-## Install oxD Server
-Please use the links below to download the `oxD Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+## Install oxd Server
+Please use the links below to download the `oxd Server` zip file. For complete installation instructions, please see the [Install Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-[oxD Server 2.4.2](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip)
-
-[oxD Server 2.4.3](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
-
-[oxD Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
-
+[oxd Server 2.4.4](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 ## Install Magento-gluu-sso Extension
 ###  Disable cache
@@ -24,10 +19,6 @@ Please use the links below to download the `oxD Server` zip file. For complete i
 ![submit](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/mag1.png) 
 
 ## Install extension
-
-[Magento for Gluu Server 2.4.2](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.2.0/Magento_gluu_SSO-2.4.2.0.tgz)
-
-[Magento for Gluu Server 2.4.3](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.3.0/Magento_gluu_SSO-2.4.3.0.tgz)
 
 [Magento for Gluu Server 2.4.4](https://github.com/GluuFederation/gluu-magento-sso-login-extension/raw/master/Magento_gluu_SSO_2.4.4/Magento_gluu_SSO-2.4.4.tgz)
 
@@ -55,7 +46,7 @@ If You are successfully registered in gluu server, you will see bottom page.
 
 ![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/m2.png)
 
-For making sure go to your gluu server / OpenID Connect / Clients and search for your oxD ID
+For making sure go to your gluu server / OpenID Connect / Clients and search for your oxd ID
 
 If you want to reset configurations click on Reset configurations button.
 

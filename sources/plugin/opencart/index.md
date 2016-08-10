@@ -1,69 +1,23 @@
-OPENCART OpenID Connect Single Sign-On (SSO) Extension by Gluu 
-=========================
+# OPENCART OpenID Connect Single Sign-On (SSO) Extension by Gluu 
 ## Link to OpenCart marketplace  
 
 [Go to OpenCart marketplace](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=27180&filter_search=Gluu).
 
 OpenID Connect Single Sign-On (SSO) Extension by Gluu gives access for login to your OpenCart site, with the help of GLUU server.
+This module will only work on the `https` protocol.
 
-There are already 3 versions of OpenID Connect Single Sign-On (SSO) Extension by Gluu (2.4.2, 2.4.3 and 2.4.4) modules, each in its turn is working with oxD and GLUU servers.
-For example if you are using OpenID Connect Single Sign-On (SSO) Extension by Gluu-2.4.4 module, you need to connect with oxD-server-2.4.4.
+## Requirements
+The Opencart module requires Gluu Server and the oxd Server.
 
-Now I want to explain in details how to use module step by step. 
+* [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
-Module will not be working if your host does not have https://. 
+* [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-## Step 1. Install Gluu-server 
-
-(version 2.4.2, 2.4.3 or 2.4.4)
-
-If you want to use external gluu server, You can not do this step.   
-
-[Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
-
-## Step 2. Download oxD-server 
-
-(version 2.4.2, 2.4.3 or 2.4.4)
-
-[Download oxD-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
-
-or
-
-[Download oxD-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
-
-or
-
-[Download oxD-server-2.4.4.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4.Final/oxd-server-2.4.4.Final-distribution.zip).
-
-## Step 3. Unzip and run oXD-server
+## OPENCART  OpenID Connect Single Sign-On (SSO) Extension by Gluu
  
-1. Unzip your oxD-server. 
-2. Open the command line and navigate to the extracted folder in the conf directory.
-3. Open oxd-conf.json file.  
-4. If your server is using 8099 port, please change "port" number to free port, which is not used.
-5. Set parameter "op_host":"Your gluu-server-url (internal or external)" (in version 2.4.4 it removed)
-6. Open the command line and navigate to the extracted folder in the bin directory.
-7. For Linux environment, run sh oxd-start.sh&. 
-8. For Windows environment, run oxd-start.bat.
-9. After the server starts, go to Step 4.
+[Download OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4](https://github.com/GluuFederation/gluu-sso-OpenCart-module/raw/master/Gluu_SSO_2.4.4/Gluu_SSO_2.4.4.zip)
 
-## Step 4. Download OpenID Connect Single Sign-On (SSO) Extension by Gluu
- 
-(version 2.4.2 or 2.4.3)
-
-[Download OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/Gluu_SSO_2.4.2/Gluu_SSO_2.4.2.zip).
-
-or
-
-[Download OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.3](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/Gluu_SSO_2.4.3/Gluu_SSO_2.4.3.zip).
-
-or
-
-[Download OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/Gluu_SSO_2.4.4/Gluu_SSO_2.4.4.zip).
-
-For example if you are using gluu-server-2.4.4 it is necessary to use oxD-server-2.4.4 and OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4
-
-## Step 5. Install module
+### Install module
  
 1. Open menu tab Extensions / Extension Installer and click on ```Upload``` button
 
@@ -73,9 +27,9 @@ For example if you are using gluu-server-2.4.4 it is necessary to use oxD-server
 3. Open menu tab Extensions / Modules and find OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.v click on ```Install``` button, than click on ```Edit``` button.
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/2.png) 
 
-## Step 6. General
+## Configuration
+### General
 
-In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.2 and 2.4.3  you do not need add Gluu server URL.
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/6.png)  
 
 In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4  you need to add Gluu server URL.
@@ -88,17 +42,17 @@ In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4  you need to add 
 
 If You are successfully registered in gluu server, you will see bottom page.
 
-![oxD_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/7.png)
+![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/7.png)
 
-For making sure go to your gluu server / OpenID Connect / Clients and search for your oxD ID
+For making sure go to your gluu server / OpenID Connect / Clients and search for your oxd ID
 
 If you want to reset configurations click on Reset configurations button.
 
-## Step 7. OpenID Connect Configuration
+### OpenID Connect Configuration
 
 OpenID Connect Configuration page for OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.2 and OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.3-2.4.4 are different.
 
-### Scopes.
+#### Scopes.
 You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
 Scopes are need for getting loged in users information from gluu server.
 Pay attention to that, which scopes you are using that are switched on in your gluu server.
@@ -116,21 +70,19 @@ In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.3-2.4.4 you can not
 You can look all custom scripts in your gluu server / Configuration / Manage Custom Scripts / and enable login type, which type you want.
 Custom Script represent itself the type of login, at this moment gluu server supports (U2F, Duo, Google +, Basic) types.
 
-### Pay attention to that.
-
-1. Which custom script you enable in your OpenCart site in order it must be switched on in gluu server too.
-2. Which custom script you will be enable in OpenID Connect Configuration page, after saving that will be showed in OpenCart Configuration page too.
+1. Any custom script enabled in the OpenCart site must be switched on in gluu server.
+2. Any custom script enabled in OpenID Connect Configuration page, after saving that will be showed in OpenCart Configuration page.
 3. When you create new custom script, both fields are required.
 
-## Step 8. OpenCart Configuration
+### OpenCart Configuration
 
-### Customize Login Icons
+#### Customize Login Icons
  
 Pay attention to that, if custom scripts are not enabled, nothing will be showed.
 Customize shape, space between icons and size of the login icons.
 
 ![OpenCartConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/11.png)  
 
-## Step 9. Show icons in frontend
+### Show icons in frontend
 
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/12.png) 

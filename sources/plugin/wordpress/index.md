@@ -1,58 +1,21 @@
-Wordpress GLUU SSO plugin 
-=========================
+# Wordpress GLUU SSO plugin 
+
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-oxd-login-plugin/master/plugin.jpg)
 
 WP-GLUU-SSO plugin gives access for login to your wordpress site, with the help of GLUU server.
 
-There are already 2 versions of WP-GLUU-SSO (2.4.2 and 2.4.3) plugins, each in its turn is working with oxd and GLUU servers.
-For example if you are using wp-gluu-sso-2.4.2 plugin, you need to connect with oxd-server-2.4.2.
+## Requirements
+The Opencart module requires Gluu Server and the oxd Server.
 
-Now I want to explain in details how to use plugin step by step. 
+* [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
-Plugin will not be working if your host does not have https://. 
+* [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-## Step 1. Install Gluu-server 
 
-(version 2.4.2 or 2.4.3)
-
-If you want to use external gluu server, You can not do this step.   
-
-[Gluu-server installation gide](https://www.gluu.org/docs/deployment/).
-
-## Step 2. Download oxd-server 
-
-(version 2.4.2 or 2.4.3)
-
-[Download oxd-server-2.4.2.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.2.Final/oxd-server-2.4.2.Final-distribution.zip).
-
-or
-
-[Download oxd-server-2.4.3.Final](https://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
-
-## Step 3. Unzip and run oxd-server
+## WordPress-sso-plugin
+WIP
  
-1. Unzip your oxd-server. 
-2. Open the command line and navigate to the extracted folder in the conf directory.
-3. Open oxd-conf.json file.  
-4. If your server is using 8099 port, please change "port" number to free port, which is not used.
-5. Set parameter "op_host":"Your gluu-server-url (internal or external)"
-6. Open the command line and navigate to the extracted folder in the bin directory.
-7. For Linux environment, run sh oxd-start.sh&. 
-8. For Windows environment, run oxd-start.bat.
-9. After the server starts, go to Step 4.
-
-## Step 4. Download wp-sso-plugin
- 
-(version 2.4.2 or 2.4.3)
-
-[Download WP-sso-2.4.2 plugin](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-sso-login-plugin/master/wp-sso-2.4.2/wp-sso-2.4.2.zip).
-
-or
-
 [Download WP-sso-2.4.3 plugin](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-sso-login-plugin/master/wp-sso-2.4.3/wp-sso-2.4.3.zip).
-
-For example if you are using gluu-server-2.4.2 it is necessary to use oxd-server-2.4.2 and wp-sso-plugin-2.4.2.
-
 ## Step 5. Open Wordpress site plugin page
  
 Go to https://{site-base-url}/wp-admin/plugin-install.php?tab=upload

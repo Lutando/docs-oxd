@@ -1,5 +1,5 @@
 #Oxd Ruby
-This is the Ruby Client Library for Gluu oxD Server Relaying Party (RP). It is a thin wrapper around the communication protocol of oxD Server which can be used to access the OpenID Connect and UMA Authorization end-points of Gluu Server. his library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the OxD as the RP.
+This is the Ruby Client Library for Gluu oxd Server Relaying Party (RP). It is a thin wrapper around the communication protocol of oxd Server which can be used to access the OpenID Connect and UMA Authorization end-points of Gluu Server. his library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the OxD as the RP.
 
 [Github sources](https://github.com/GluuFederation/oxd-ruby)
 
@@ -9,7 +9,7 @@ This is the Ruby Client Library for Gluu oxD Server Relaying Party (RP). It is a
 
 ## Installation
 ### Prerequisite
-The Ruby Client library depends on Gluu oxD Server. Please see [this document](https://www.gluu.org/docs-oxd/2.4.4/oxdserver/install/) to install oxD Server.
+The Ruby Client library depends on Gluu oxd Server. Please see [this document](https://oxd.gluu.org/docs/oxdserver/install/) to install oxd Server.
 
 ### Install Instructions
 The Ruby Client is installed using RubyGems. Please include following line in the Gemfile of the application using Oxd Ruby Library.
@@ -122,4 +122,4 @@ end
 ```
 
 ## Log Files
-The log files for the oxD ruby plugin is stored in the `oxd-ruby.log` file under the `rails_app_root/log` folder. It contains all the logs about oxd-server connections, commands/data sent to server, recieved response and all the errors and exceptions raised.
+The log files for the oxd ruby plugin is stored in the `oxd-ruby.log` file under the `rails_app_root/log` folder. It contains all the logs about oxd-server connections, commands/data sent to server, recieved response and all the errors and exceptions raised.

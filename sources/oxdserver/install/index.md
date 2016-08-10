@@ -1,47 +1,37 @@
 [TOC]
 
-# oxD Server Installation/Configuration
-This page documents the building, installation of the oxD server.
+# oxd Server Installation/Configuration
+This page documents the building, installation of the `oxd Server`.
 
-## Build oxD Server
-oxD server can be built using Maven.
+## Build oxd Server
+oxd server can be built using Maven.
 
-oxD code is available in  [Github](https://github.com/GluuFederation/oxd). Maven is used to build the code from github. Download the oxD code from github in any method that is suitable. The code can be downloaded directly from [this link](https://github.com/GluuFederation/oxd/archive/master.zip). The following command can be run inside the oxd folder and it will build oxD Server. Please read the [Maven Guide](http://maven.apache.org/download.cgi) to download and install Maven if necessary.
+oxd code is available in  [Github](https://github.com/GluuFederation/oxd). Maven is used to build the code from github. Download the oxd code from github in any method that is suitable. The code can be downloaded directly from [this link](https://github.com/GluuFederation/oxd/archive/master.zip). The following command can be run inside the oxd folder and it will build oxd Server. Please read the [Maven Guide](http://maven.apache.org/download.cgi) to download and install Maven if necessary.
 
-`# mvn clean package`
+`mvn clean package`
 
-## Install oxD Server
+## Install oxd Server
 ### Windows
-It is not necessary to install oxD in Windows, it can be downloaded and run. The oxD server is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server).
+It is not necessary to install oxd in Windows, it can be downloaded and run. The `oxd Server` is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server).
 
-1. Download oxd Server according to your CE installation (for CE 2.4.4)[oxd-server-2.4.4-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip) and  (for CE 2.4.3)[oxd_server-2.4.3-Final.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip).
+1. oxd Server for Gluu Server CE 2.4.4[oxd-server-2.4.4-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 2. Unzip the file in `oxd-server` folder. The folder name is for reference only; any other name will work as well.
 
 3. Run `oxd-server/bin/oxd-start.bat`
 
 ### Unix
-It is not necessary to install oxD in Unix, it can be downloaded and run. The oxD server is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server/).
+It is not necessary to install oxd in Unix, it can be downloaded and run. The `oxd Server` is available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server/).
 
-1. Download oxd Server according to your CE installation (for CE 2.4.4)[oxd-server-2.4.4-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip) and (for CE 2.4.3)[oxd_server-2.4.3-Final-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.3.Final/oxd-server-2.4.3.Final-distribution.zip)
+1.  oxd Server Gluu Server CE 2.4.4[oxd-server-2.4.4-distribution.zip](http://ox.gluu.org/maven/org/xdi/oxd-server/2.4.4/oxd-server-2.4.4-distribution.zip)
 
 2. Unzip the file in `oxd-server` folder. The folder name is for reference only; any other name will work as well.
 
 3. Run `oxd-server/bin/oxd-start.sh`
 
 ### Linux
-The Gluu Repository can be used to install oxD Server. The following headings are followed by installation commands that can be copied and used to isntall oxD Server in the desired OS.
+The Gluu Repository can be used to install oxd Server. The following headings are followed by installation commands that can be copied and used to isntall oxd Server in the desired OS.
 
-#### Installing oxD Verstions
-The following commands will install version `2.4.3`:
-
-```
-yum install gluu-oxd-server-2.4.3
-
-apt-get install gluu-oxd-server-2.4.3
-```
-
-The steps below will install `2.4.4`.
 #### CentOS 6
 
 ```
