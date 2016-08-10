@@ -85,6 +85,9 @@ authentication (`authorization_redirect_uri` is automatically added to `redirect
 All fallback values are taken from `conf/oxd-default-site-config.json`. For example if the `op_host` is missing
 from the `register_site` command parameters, it must be present in `conf/oxd-default-site-config.json`.
 
+If value for `response_type` or `grant_type` is not provided (missed in both `register_site` command parameter and in `conf/oxd-default-site-config.json`)
+then it always fallback to recommended Authorization Code Flow (`response_type=code` and `grant_type=authorization_code`)
+
 `register_site` command returns `oxd_id`. The reason for this is that several applications may share an instance
 of oxd, and this identifier is used by oxd to distinguish difference in configuration between 
 them.
