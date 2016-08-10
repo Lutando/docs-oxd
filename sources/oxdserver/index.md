@@ -193,8 +193,9 @@ Response:
 
 ### Get authorization url
 
-Note: authorization_code grant type
-
+Note:
+  - Authorization Code Flow : grant_type=authorization_code&response_type=code
+  - Implicit Flow : grant_type=implicit&response_type=token%20id_token
 
 
 Request:
@@ -205,7 +206,7 @@ Request:
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
         "acr_values":["duo"],                         <- optional, may be skipped (default: basic)
-        "prompt":"login"                                       <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+        "prompt":"login"                              <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
     }
 }
 ```
@@ -216,7 +217,7 @@ Response:
 {
     "status":"ok",
     "data":{
-        "authorization_url":"  https://server.example.com/authorize?response_type=id_token%20token
+        "authorization_url":"  https://server.example.com/authorize?response_type=code
     &client_id=s6BhdRkqt3
     &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
     &scope=openid%20profile
@@ -231,8 +232,6 @@ Response:
 
 Note: Library (php/python/java/node) must provide utility methods for web site to parse response 
 from OP and send parsed code and state parameters to oxd:
-
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
 ```
 HTTP/1.1 302 Found
@@ -278,8 +277,6 @@ Response:
 
 ### Get User Info
 
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
-
 Request:
 
 ```json
@@ -312,8 +309,6 @@ Response:
 ```
 
 ### Log out URI
-
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
 Request:
 
@@ -365,8 +360,6 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 ```
 
 ### UMA RS Protect resources
-
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
 Request:
 
@@ -422,8 +415,6 @@ Response:
 ```
 
 ### UMA RS Check Access
-
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
 Request:
 
@@ -536,8 +527,6 @@ Response:
 
 ### UMA RP - Authorize RPT
 
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
-
 Request:
 
 ```json
@@ -596,8 +585,6 @@ Invalid rpt error:
 ### UMA RP - Get GAT
 
 GAT stands for Gluu Access Token. It is invented by Gluu and is described here: https://ox.gluu.org/doku.php?id=uma:oauth2_access_management.
-
-For latest and most up to date parameters of command please check latest successful [jenkins build](https://ox.gluu.org/jenkins/job/oxd)
 
 Request:
 
