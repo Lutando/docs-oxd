@@ -56,7 +56,7 @@ All parameters to register_site are optional except the `authorization_redirect_
 This is the URL that the OpenID Connect Provider (OP) will redirect the person to after 
 successful authentication.
 
-All configuration values are taken from `conf/oxd-default-site-config.json`. For example if the 
+All configuration values are taken from [`conf/oxd-default-site-config.json`](https://oxd.gluu.org/docs/oxdserver/conf/). For example if the
 `op_host` is missing from the `register_site` command parameters, it must be present in 
 `conf/oxd-default-site-config.json`.
 
