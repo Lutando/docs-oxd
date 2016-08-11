@@ -58,7 +58,7 @@ successful authentication.
 
 All configuration values are taken from [`conf/oxd-default-site-config.json`](https://oxd.gluu.org/docs/oxdserver/conf/). For example if the
 `op_host` is missing from the `register_site` command parameters, it must be present in 
-`conf/oxd-default-site-config.json`.
+ [conf/oxd-default-site-config.json](https://oxd.gluu.org/docs/oxdserver/conf/).
 
 `register_site` command returns `oxd_id`. The reason for this is that several applications may 
 share an instance of oxd, and this identifier is used by oxd to distinguish difference in 
