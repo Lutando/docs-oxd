@@ -1,45 +1,56 @@
 # oxd server overview
 
-oxd makes it super simple to authenticate a person with OpenID Connect, to 
-protect web resources with OAuth2, or to write a client that calls an OAuth2
-protected API. 
+oxd makes it super simple to authenticate a person with OpenID Connect, 
+to protect web resources with OAuth2, or to write a client that calls an 
+OAuth2 protected API. 
 
-The oxd Server is designed to work as a standalone service demon. It's actually a web
-server, running in an embedded jetty server, so you don't need a web application container
-(like tomcat).  Just start it and stop it like you would any other unix service.
+The oxd Server is designed to work as a standalone service demon. It's 
+actually a web server, running in an embedded jetty server, so you don't 
+need a web application container (like tomcat).  Just start it and stop 
+it like you would any other unix service.
 
-oxd's API's make it easier for developers to use OAuth2 protocols.  By default,
-it's restricted to `localhost`, which means these API's cannot be reached from another
-server on the network--only be services running on your local server. You deploy oxd oxd
-on each server that has web applications. Gluu is introducing an nginx-based gateway that
-will enable the centralized deployment of an oxd server--stay tuned.
+oxd's API's make it easier for developers to use OAuth2 protocols.  By 
+default, it's restricted to `localhost,` which means these API's cannot 
+be reached from another server on the network--only by services running 
+on your local server. You deploy oxd on each server that has web 
+applications. Gluu is introducing an nginx-based gateway that will 
+enable the centralized deployment of an oxd server--stay tuned.
 
-oxd API's can be called with by any application that can make REST calls. 
-Gluu provides several native libraries--for Php, Java, Python, Node, Ruby and C#.
+oxd API's can be called with by any application that can make REST 
+calls.  Gluu also provides several native libraries that wrap the
+oxd APIs, currently available for Php, Java, Python, Node, Ruby and C#.
 
-oxd is commercial software. There is a free version that is limited to two transactions
-per second--which is enough for a low volume web site. For more information on
-purchasing a commercial version of oxd, see the [website](http://oxd.gluu.org)
+oxd is commercial software. There is a free version that is limited 
+to two transactions per second--which is enough for a low volume web 
+site. For more information on purchasing a commercial version of oxd, 
+see the [website](http://oxd.gluu.org)
 
 ![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 
 ## OpenID Connect Authentication Overview
 
-OpenID Connect is one of the most popular protocols for authentication. If you
-want to launch an OpenID Connect Provider for your organization, you should
-consider deploying the Gluu Server, which is available for many Linux distributions,
-and is easy to install and configure. For more information, see our
-[website](http://gluu.org). The Gluu Server will enable your organization to
-consolidate authentication in one place, to enable Single Sign-on to many
-applications.
+OpenID Connect is one of the most popular API's for an application 
+to identify a person. Technically it is not an authentication protocol--
+it enables a person to authorize the release of information, and in the
+process, being authenticated (if no previous session exists). If you
+are familiar with Google authentication, you've used OpenID Connect. 
 
-oxd uses the Authorization code flow for authentication. Future version of oxd
-may support the Hybrid flow. Implicit flow is not supported because it is 
-intended for Javascript client-side applications where the client does not
-authenticate.
+If you want to launch an OpenID Connect Provider for your organization, 
+you should consider deploying the Gluu Server, which is available for 
+many Linux distributions, and is easy to install 
+and configure. For more information, see our [website](http://gluu.org). 
+The Gluu Server will enable your organization to consolidate 
+authentication in one place, to enable Single Sign-on to many 
+applications. And its a standard OpenID Connect Provider.
 
-oxd provides six API's for OpenID Connect authentication. In general, you can think of 
-user authentication using the the Authorization Code Flow as a three step process: 
+oxd uses the Authorization code flow for authentication. Future versions 
+of oxd may support the Hybrid flow. Implicit flow is not supported 
+because it is intended for Javascript client-side applications where 
+the client does not authenticate.
+
+oxd provides six API's for OpenID Connect authentication. In general, 
+you can think of user authentication using the the Authorization Code 
+Flow as a three step process: 
 
 ```
 1. Redirect person to authorization URL and obtain a code
@@ -57,29 +68,32 @@ The other three other API's are:
 
 ### Register site
 
-First of all, the web site must register itself with oxd server. If registration 
-is successful, ox will return an identifier for the application, which must be 
-presented in subsequent API calls. 
+First of all, the web site must register itself with oxd server. If 
+registration  is successful, ox will return an identifier for the 
+application, which must be presented in subsequent API calls. 
 
-During the registration operation, oxd will dynamically register an OpenID Connect
-client and save its configuration.
+During the registration operation, oxd will dynamically register an 
+OpenID Connect client and save its configuration.
 
-All parameters to register_site are optional except the `authorization_redirect_uri`.
-This is the URL on your website that the OpenID Connect Provider (OP) will redirect the
-person to after successful authentication.
+All parameters to register_site are optional except the 
+`authorization_redirect_uri`. This is the URL on your website that the 
+OpenID Connect Provider (OP) will redirect the person to after 
+successful authentication.
 
 Default configuration values are taken from
 [conf/oxd-default-site-config.json](https://oxd.gluu.org/docs/oxdserver/conf/).
-For example if the `op_host` is missing from the `register_site` command parameters, it must be present in
-this file.
+For example if the `op_host` is missing from the `register_site` 
+command parameters, it must be present in this file.
 
-`register_site` command returns `oxd_id`. The reason for this is that several applications may 
-share an instance of oxd, and this identifier is used by oxd to distinguish difference in 
-configuration between them.
+`register_site` command returns `oxd_id`. The reason for this is that 
+several applications may share an instance of oxd, and this identifier 
+is used by oxd to distinguish difference in configuration between them.
 
-`op_host` must point to a valid OpenID Connect Provider that supports [client registration]
-(http://openid.net/specs/openid-connect-registration-1_0.html), for example,
-a [Gluu Server CE installation](http://gluu.org/docs). Sample:  `"op_host":"https://idp.example.org"`
+`op_host` must point to a valid OpenID Connect Provider that supports 
+[client registration]
+(http://openid.net/specs/openid-connect-registration-1_0.html), for 
+example, a [Gluu Server CE installation](http://gluu.org/docs). Sample: 
+`"op_host":"https://idp.example.org"`
 
 Request:
 
@@ -91,9 +105,9 @@ Request:
         "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
         "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
-        "application_type": "web",                                      <- OPTIONAL
-        "response_types": ["code"]                                     <- OPTIONAL
-        "grant_types": ["authorization_code"]                          <- OPTIONAL 
+        "application_type": "web",                                     <- OPTIONAL
+        "response_types": ["code"],                                    <- OPTIONAL
+        "grant_types": ["authorization_code"],                         <- OPTIONAL 
         "scope": ["openid"],                                           <- OPTIONAL
         "acr_values": ["basic"],                                       <- OPTIONAL
         "client_jwks_uri": "",                                         <- OPTIONAL
@@ -140,13 +154,13 @@ Request:
         "redirect_uris": ["https://client.example.org/cb"],           <- OPTIONAL
         "scope": ["opeind", "profile"],                               <- OPTIONAL
         "acr_values": ["duo"],                                        <- OPTIONAL
-        "client_secret_expires_at":1335205592410                      <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
-        "client_jwks_uri":"",                                         <- OPTIONAL
-        "client_token_endpoint_auth_method":"",                       <- OPTIONAL
+        "client_secret_expires_at":1335205592410,                     <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
+        "client_jwks_uri": "",                                        <- OPTIONAL
+        "client_token_endpoint_auth_method": "",                      <- OPTIONAL
         "client_request_uris":[],                                     <- OPTIONAL
         "client_logout_uris":[],                                      <- OPTIONAL
         "client_sector_identifier_uri":"",                            <- OPTIONAL
-        "contacts":["foo_bar@spam.org"]                               <- OPTIONAL
+        "contacts":["foo_bar@spam.org"],                              <- OPTIONAL
         "ui_locales":[],                                              <- OPTIONAL
         "claims_locales":[],                                          <- OPTIONAL
     }
@@ -164,10 +178,11 @@ Response:
 
 ### Get authorization url
 
-Returns the URL at the OpenID Provider (OP) to which your application must redirect the
-person to be authenticated (or to authorize the release of personal data, if the
-person is already already has an active session). The Response from the OP will
-include the code and state values, which should be used to subsequently obtain tokens.
+Returns the URL at the OpenID Provider (OP) to which your application 
+must redirect the person to be authenticated (or to authorize the 
+release of personal data, if the person is already already has an active 
+session). The Response from the OP will include the code and state 
+values, which should be used to subsequently obtain tokens.
 
 Request:
 
@@ -175,9 +190,9 @@ Request:
 {
     "command":"get_authorization_url",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- required, obtained after registration
-        "acr_values":["duo"],                             <- optional, may be skipped (default: basic)
-        "prompt":"login"                                  <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- required, obtained after registration
+        "acr_values": ["duo"],                            <- optional, may be skipped (default is basic)
+        "prompt": "login"                                 <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
     }
 }
 ```
@@ -199,9 +214,9 @@ Response:
 }
 ```
 
-After redirecting to the above URL, the OpenID Provider will return a response that 
-looks like this to the URL your application registered as the redirect URI
-(parse out the code and state):
+After redirecting to the above URL, the OpenID Provider will return a 
+response that looks like this to the URL your application registered as 
+the redirect URI (parse out the code and state):
 
 ```
 HTTP/1.1 302 Found
@@ -251,8 +266,8 @@ Response:
 
 ### Get User Info
 
-Use the access token from the step above to retrieve a JSON object with the
-user claims.
+Use the access token from the step above to retrieve a JSON object 
+with the user claims.
 
 Request:
 
@@ -287,11 +302,12 @@ Response:
 
 ### Log out URI
 
-Uses front channel logout--a page is returned with iFrames, each of which contains
-the logout URL of the applications that have a session in that browser. These 
-iFrames should be loaded automatically--enabling each application to get a notification
-of logout, and to hopefully clean up any cookies in the person's browser. If the person
-blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie)
+Uses front channel logout--a page is returned with iFrames, each of 
+which contains the logout URL of the applications that have a session 
+in that browser. These iFrames should be loaded automatically--enabling 
+each application to get a notification of logout, and to hopefully clean 
+up any cookies in the person's browser. If the person blocks 
+[third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie)
 in their browser, logout will not work.
 
 Request:
@@ -301,10 +317,10 @@ Request:
     "command":"get_logout_uri",
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "id_token_hint":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso" <-- OPTIONAL (oxd server will use last used ID Token)
-        "post_logout_redirect_uri":"<post logout redirect uri here>"   <-- OPTIONAL
-        "state":"<site state>",                                        <-- OPTIONAL
-        "session_state":"<session state>"                              <-- OPTIONAL
+        "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",<-- OPTIONAL (oxd server will use last used ID Token)
+        "post_logout_redirect_uri": "<post logout redirect uri here>"         <-- OPTIONAL
+        "state": "<site state>",                                              <-- OPTIONAL
+        "session_state": "<session state>"                                    <-- OPTIONAL
     }
 }
 ```
