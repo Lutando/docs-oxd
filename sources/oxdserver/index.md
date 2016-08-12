@@ -4,22 +4,34 @@ oxd makes it super simple to authenticate a person with OpenID Connect, to
 protect web resources with OAuth2, or to write a client that calls an OAuth2
 protected API. 
 
-The oxd Server is designed to work as a standalone application (without a web application container, 
-like tomcat). It's API's make it easier for developers to use OAuth2 protocols. By default, 
-it is restricted to `localhost`--so the oxd server should be installed on each server that has web 
-applications. But stay tuned, Gluu is introducing an nginx-based gateway that will enable the centralized 
-deployment of an oxd server. 
+The oxd Server is designed to work as a standalone service demon. It's actually a web
+server, running in an embedded jetty server, so you don't need a web application container
+(like tomcat).  Just start it and stop it like you would any other unix service.
+
+oxd's API's make it easier for developers to use OAuth2 protocols.  By default,
+it's restricted to `localhost`, which means these API's cannot be reached from another
+server on the network--only be services running on your local server. You deploy oxd oxd
+on each server that has web applications. Gluu is introducing an nginx-based gateway that
+will enable the centralized deployment of an oxd server--stay tuned.
 
 oxd API's can be called with by any application that can make REST calls. 
 Gluu provides several native libraries--for Php, Java, Python, Node, Ruby and C#.
 
 oxd is commercial software. There is a free version that is limited to two transactions
-per second, which may be enough for many low volume sites. For more information on 
+per second--which is enough for a low volume web site. For more information on
 purchasing a commercial version of oxd, see the [website](http://oxd.gluu.org)
 
 ![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
 
 ## OpenID Connect Authentication Overview
+
+OpenID Connect is one of the most popular protocols for authentication. If you
+want to launch an OpenID Connect Provider for your organization, you should
+consider deploying the Gluu Server, which is available for many Linux distributions,
+and is easy to install and configure. For more information, see our
+[website](http://gluu.org). The Gluu Server will enable your organization to
+consolidate authentication in one place, to enable Single Sign-on to many
+applications.
 
 oxd uses the Authorization code flow for authentication. Future version of oxd
 may support the Hybrid flow. Implicit flow is not supported because it is 
@@ -38,8 +50,8 @@ user authentication using the the Authorization Code Flow as a three step proces
 The other three other API's are:
  
 ```
-4. Register site (called the once--the first time your application uses oxd)
-5. Update site registration (not used often, but sometimes needed)
+4. Register site (called once--the first time your application uses oxd)
+5. Update site registration (not used often)
 6. Logout
 ```
 
@@ -53,19 +65,21 @@ During the registration operation, oxd will dynamically register an OpenID Conne
 client and save its configuration.
 
 All parameters to register_site are optional except the `authorization_redirect_uri`.
-This is the URL that the OpenID Connect Provider (OP) will redirect the person to after 
-successful authentication.
+This is the URL on your website that the OpenID Connect Provider (OP) will redirect the
+person to after successful authentication.
 
-All configuration values are taken from [`conf/oxd-default-site-config.json`](https://oxd.gluu.org/docs/oxdserver/conf/). For example if the
-`op_host` is missing from the `register_site` command parameters, it must be present in 
- [conf/oxd-default-site-config.json](https://oxd.gluu.org/docs/oxdserver/conf/).
+Default configuration values are taken from
+[conf/oxd-default-site-config.json](https://oxd.gluu.org/docs/oxdserver/conf/).
+For example if the `op_host` is missing from the `register_site` command parameters, it must be present in
+this file.
 
 `register_site` command returns `oxd_id`. The reason for this is that several applications may 
 share an instance of oxd, and this identifier is used by oxd to distinguish difference in 
 configuration between them.
 
-`op_host` must point to a valid [Gluu Server CE installation](http://gluu.org/docs). (Sample: 
-"op_host":"https://idp.example.org")
+`op_host` must point to a valid OpenID Connect Provider that supports [client registration]
+(http://openid.net/specs/openid-connect-registration-1_0.html), for example,
+a [Gluu Server CE installation](http://gluu.org/docs). Sample:  `"op_host":"https://idp.example.org"`
 
 Request:
 
@@ -77,21 +91,21 @@ Request:
         "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
         "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
-        "application_type":"web",                                      <- OPTIONAL 
-        "response_types": ["code", "id_token", "token"]                <- OPTIONAL 
+        "application_type": "web",                                      <- OPTIONAL
+        "response_types": ["code"]                                     <- OPTIONAL
         "grant_types": ["authorization_code"]                          <- OPTIONAL 
-        "scope":["openid"],                                            <- OPTIONAL 
-        "acr_values":["basic"],                                        <- OPTIONAL
-        "client_jwks_uri":"",                                          <- OPTIONAL
-        "client_token_endpoint_auth_method":"",                        <- OPTIONAL
-        "client_request_uris":[],                                      <- OPTIONAL
-        "client_logout_uris":[],                                       <- OPTIONAL
-        "client_sector_identifier_uri":[],                             <- OPTIONAL
-        "contacts":["yuriy@gluu.org"],                                 <- OPTIONAL
-        "ui_locales":[],                                               <- OPTIONAL
-        "claims_locales":[],                                           <- OPTIONAL
-        "client_id":"<client id of existing client>",                  <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-        "client_secret":"<client secret of existing client>",          <- OPTIONAL must be used together with client_secret.
+        "scope": ["openid"],                                           <- OPTIONAL
+        "acr_values": ["basic"],                                       <- OPTIONAL
+        "client_jwks_uri": "",                                         <- OPTIONAL
+        "client_token_endpoint_auth_method": "",                       <- OPTIONAL
+        "client_request_uris": [],                                     <- OPTIONAL
+        "client_logout_uris": [],                                      <- OPTIONAL
+        "client_sector_identifier_uri": [],                            <- OPTIONAL
+        "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
+        "ui_locales": [],                                              <- OPTIONAL
+        "claims_locales": [],                                          <- OPTIONAL
+        "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+        "client_secret": "<client secret of existing client>"          <- OPTIONAL must be used together with client_secret.
     }
 }
 ```
@@ -124,15 +138,15 @@ Request:
         "response_type":["code"],                                     <- OPTIONAL
         "grant_types":[],                                             <- OPTIONAL
         "redirect_uris": ["https://client.example.org/cb"],           <- OPTIONAL
-        "scope": ["profile"],                                         <- OPTIONAL
-        "acr_values":[""],                                            <- OPTIONAL
+        "scope": ["opeind", "profile"],                               <- OPTIONAL
+        "acr_values": ["duo"],                                        <- OPTIONAL
         "client_secret_expires_at":1335205592410                      <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
         "client_jwks_uri":"",                                         <- OPTIONAL
         "client_token_endpoint_auth_method":"",                       <- OPTIONAL
         "client_request_uris":[],                                     <- OPTIONAL
         "client_logout_uris":[],                                      <- OPTIONAL
         "client_sector_identifier_uri":"",                            <- OPTIONAL
-        "contacts":["yuriy@gluu.org"]                                 <- OPTIONAL
+        "contacts":["foo_bar@spam.org"]                               <- OPTIONAL
         "ui_locales":[],                                              <- OPTIONAL
         "claims_locales":[],                                          <- OPTIONAL
     }
@@ -150,9 +164,10 @@ Response:
 
 ### Get authorization url
 
-API used to get the URL at the OpenID Provider to which your application must redirect the
-person. The Response from the OP will include the code and state values, which should 
-be used to subsequently obtain tokens.
+Returns the URL at the OpenID Provider (OP) to which your application must redirect the
+person to be authenticated (or to authorize the release of personal data, if the
+person is already already has an active session). The Response from the OP will
+include the code and state values, which should be used to subsequently obtain tokens.
 
 Request:
 
@@ -160,9 +175,9 @@ Request:
 {
     "command":"get_authorization_url",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "acr_values":["duo"],                         <- optional, may be skipped (default: basic)
-        "prompt":"login"                              <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- required, obtained after registration
+        "acr_values":["duo"],                             <- optional, may be skipped (default: basic)
+        "prompt":"login"                                  <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
     }
 }
 ```
@@ -185,8 +200,8 @@ Response:
 ```
 
 After redirecting to the above URL, the OpenID Provider will return a response that 
-looks like this to the URL your application registered as 
-the redirect URI (parse out the code and state):
+looks like this to the URL your application registered as the redirect URI
+(parse out the code and state):
 
 ```
 HTTP/1.1 302 Found
@@ -236,7 +251,7 @@ Response:
 
 ### Get User Info
 
-Use the access token to from the step above to retrieve a JSON object with the 
+Use the access token from the step above to retrieve a JSON object with the
 user claims.
 
 Request:
@@ -274,8 +289,10 @@ Response:
 
 Uses front channel logout--a page is returned with iFrames, each of which contains
 the logout URL of the applications that have a session in that browser. These 
-iframes should be loaded automatically--enabling each application to get a notification
-of logout, and to hopefully clean up any cookies in the person's browser.
+iFrames should be loaded automatically--enabling each application to get a notification
+of logout, and to hopefully clean up any cookies in the person's browser. If the person
+blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie)
+in their browser, logout will not work.
 
 Request:
 
@@ -305,9 +322,10 @@ Response:
 
 ## UMA Resource Server API's
 
-oxd Client Library used by Resource Server application MUST:
+A client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1),
+MUST:
 
-- Register protection document (with uma_rs_protect command)
+- Register a protection document (with uma_rs_protect command)
 - Intercept HTTP call (before actual REST resource call) and check whether it's allowed to proceed with call or reject it according to uma_rs_check_access command response:
     - Allow access - if response from uma_rs_check_access is "allowed" or "not_protected" error is returned.
     - uma_rs_check_access returned "denied" with ticket then return back HTTP response
@@ -585,3 +603,4 @@ Response:
 
 - [UMA 1.0.1 Specification](https://docs.kantarainitiative.org/uma/rec-uma-core.html#permission-failure-to-client)
 - [Sample RS of Java Resteasy HTTP interceptor of uma-rs](https://github.com/GluuFederation/uma-rs/blob/master/uma-rs-resteasy/src/main/java/org/xdi/oxd/rs/protect/resteasy/RptPreProcessInterceptor.java)
+
