@@ -57,6 +57,7 @@ You can install oxd-play by adding following line in build.sbt :
                 });
 
 ***host - oxd-server host eg.localhost or 127.0.0.1 port - oxd-server listing port (default port is 8099)***
+***host - You need to pass ophost with registerSiteParams otherwise server may reject your request***
 
 ---
 
