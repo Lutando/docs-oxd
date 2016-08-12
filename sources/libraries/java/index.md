@@ -6,8 +6,8 @@ about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 ## Installation
 
 * [Github sources](https://github.com/GluuFederation/oxd-java)
-* Jar files are available on the [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/)
-* Packages?
+* Jar files are available on the [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
+* Maven
 
 ## Configuration
 
