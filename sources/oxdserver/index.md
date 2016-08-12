@@ -318,7 +318,7 @@ Request:
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
         "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",<-- OPTIONAL (oxd server will use last used ID Token)
-        "post_logout_redirect_uri": "<post logout redirect uri here>"         <-- OPTIONAL
+        "post_logout_redirect_uri": "<post logout redirect uri here>",        <-- OPTIONAL
         "state": "<site state>",                                              <-- OPTIONAL
         "session_state": "<session state>"                                    <-- OPTIONAL
     }
@@ -489,7 +489,7 @@ Resource is not protected
 {
     "status":"error",
     "data":{
-        "error":"invalid_request"
+        "error":"invalid_request",
         "error_description":"Resource is not protected. Please protect your resource first with uma_rs_protect command."
     }
 }
@@ -554,7 +554,7 @@ Not authorized error:
 {
     "status":"error",
     "data":{
-        "code":"not_authorized"
+        "code":"not_authorized",
         "description":"RPT is not authorized."
     }
 }
@@ -566,7 +566,7 @@ Invalid ticket error:
 {
     "status":"error",
     "data":{
-        "code":"invalid_ticket"
+        "code":"invalid_ticket",
         "description":"Ticket is not valid (outdated or not present on Authorization Server)."
     }
 }
@@ -577,7 +577,7 @@ Invalid rpt error:
 {
     "status":"error",
     "data":{
-        "code":"invalid_rpt"
+        "code":"invalid_rpt",
         "description":"RPT is not valid (outdated or not present on Authorization Server)."
     }
 }

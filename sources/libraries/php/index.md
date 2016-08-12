@@ -1,32 +1,25 @@
 # oxd-php
 
-This library is a PHP client for the oxd Relying Party (RP) server. It is a 
-thin wrapper around the [oxd communication protocol](https://oxd.gluu.org/docs/oxdserver/),
-which can be used to authenticate a person using an OpenID Connect Provider, to 
-register and protect resources using Gluu's UMA or Oauth2 Authorization endpoints,
-or to obtain a token to access OAuth2 protected resources.
-
-For more information about oxd visit [https://oxd.gluu.org](https://oxd.gluu.org)
+oxd-php is a client library for the Gluu oxd Server. For information 
+about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
 ## Installation
 
 ### Source
 
-oxd-php source is available on github:
+oxd-php source is available on Github:
 
 - [Github sources](https://github.com/GluuFederation/oxd-php)
-- [Tests on github (client.example.com)](https://github.com/GluuFederation/oxd-php/tree/master/client.example.com)
-
 
 ### Composer: oxd-php-api
 
 - [Compose API source](https://github.com/GluuFederation/oxdphpapi)
 - [Library version 2.4.4](https://github.com/GluuFederation/oxdphpapi/releases/tag/v2.4.4)
-- [Composer API tests](https://github.com/GluuFederation/oxdphpapi/tree/master/protocolTests)
 
-This is the preferred method. See the [composer](https://getcomposer.org) website for 
-[installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not 
-already have it installed. 
+This is the preferred method. See the [composer](https://getcomposer.org) 
+website for 
+[installation instructions](https://getcomposer.org/doc/00-intro.md) if 
+you do not already have it installed. 
 
 To install oxd-php-api via Composer, execute the following command 
 in your project root:
@@ -36,35 +29,35 @@ $ composer install `composer require "gluufederation/oxdphpapi": "2.4.4"`
 
 ```
 
-**Note**: This library will not be working if your host does not have **https://**
+**Note**: OpenID Connect requires *https.* This library will not 
+work if your website uses *http* only.
 
 ## Configuration 
 
-The oxd-php configuration file is located in 'oxdlibrary/oxd-rp-settings.json'.
-The values here are used during registration. For a full list of supported
+The oxd-php configuration file is located in 
+'oxd-rp-settings.json'. The values here are used during 
+registration. For a full list of supported
 oxd configuration parameters, see the 
 [oxd documentation](https://oxd.gluu.org/docs/oxdserver/#register-site)
-Below is a sample of a minimal configuration data set needed for registration:
+Below is a typical configuration data set for registration:
 
 ``` {.code }
 {
-    "op_host": "https://op.example.com",
-    "oxd_host_ip": "127.0.0.1",
     "oxd_host_port":8099,
-    "redirect_uris" : [ "https://www.myapplication.com/welcome" ],
+    "redirect_uris" : ["https://www.myapplication.com/welcome" ],
     "logout_redirect_uri" : "https://www.myapplication.com/logout",
-    "scope" : [ "openid", "profile"],
-    "acr_values" : [ "basic", "duo","u2f","gplus", "oxpush2" ]
+    "scope" : ["openid", "profile"],
+    "acr_values" : ["u2f"]
 }
                         
 ```
 
--   op_host - URL of your OpenID Connect Provide
--   oxd_host_ip - IP of your oxd_host, use 127.0.0.1 for localhost
 -   oxd_host_port - oxd port or socket
 
 
 ## API Description
+
+- [Tests on github](https://github.com/GluuFederation/oxd-php/tree/master/client.example.com)
 
 Connecting to oxd server is doing via class Client\_Socket\_OXD\_RP
 [Client\_Socket\_OXD\_RP.php]

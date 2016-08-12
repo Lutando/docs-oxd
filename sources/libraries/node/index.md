@@ -1,19 +1,11 @@
 oxd-node
 ========
 
-oxd-node is **oxd server** client, which implemented in node.js. Using it you can integrate oxd server in your Node.js application.
+oxd=node is a client library for the Gluu oxd Server. For information 
+about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
 Installation
 ------------
-
-Note : **Gluu server** and **oxd-server** needs to be installed in the hosting server to use oxd-node library with your application.
-
-* To download and install Gluu server [click me](http://www.gluu.org/docs/).
-
-* To download and install oxd server [click me](https://www.gluu.org/docs-oxd).
-
-* For oxd server configuration [click me](https://www.gluu.org/docs-oxd).
-
 
 oxd-node can be install using following command:
 
@@ -23,13 +15,15 @@ $ npm install oxd-node
 
 #### Configure the site
 
-Once the library is installed, create a copy of the sample configuration file for your website in a server *writable* location and edit the configuration. For example
-
-```
-in model/request_param.js, find exports.port=null and enter port no inplace of "null" which ever is free on your server.
-```
-
-**Note:**  The website is registered with the OP and its ID is stored in this config file, also are the other peristant information about the website. So the config file needs to be *writable* for the server. The [request_param.js](https://github.com/GluuFederation/oxd-node/blob/master/oxd-node/model/request_param.js) file contains complete documentation about itself.
+The [request_param.js](https://github.com/GluuFederation/oxd-node/blob/master/oxd-node/model/request_param.js) 
+file contains the intitial configuration. This library uses OpenID 
+Connect client registration API of the OP. The client id and other 
+returned information is stored in this config file. So the config file 
+needs to be in a location that is *writable* by the web server. In 
+general, the only two things that are required are the port number that
+oxd is running on locally, and the redirect_uri of your application.
+Other values take default values from the oxd configuration file
+`oxd-default-site-config.json.`
 
 How to use
 -----------

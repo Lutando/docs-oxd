@@ -1,10 +1,14 @@
 # Logs
 
-Logs are written into the working directoy in `oxd Server` by default. Custom log locations can be specified
-in `log4j.xml`, The file is loaded using the `log4j.configuration` system property. The following 
-is an example for running the `oxd Server` with `log4j` with the file located in `C:\tmp\test\log4j.xml`.
+Logs are written into the working directory in `oxd Server` by default. 
+Custom log locations can be specified in `log4j.xml.` The file is 
+loaded using the `log4j.configuration` system property. The following 
+is an example for running the `oxd Server` with `log4j` with the file 
+located in `C:\tmp\test\log4j.xml`.
 
-`# java -cp resteasy-jaxrs-2.3.4.Final.jar;oxd-server-1.0-SNAPSHOT-jar-with-dependencies.jar org.xdi.oxd.server.ServerLauncher -Doxd.server.config=C:\tmp\oxd.json -Dlog4j.configuration=C:\tmp\test\log4j.xml`
+```
+# java -cp resteasy-jaxrs-2.3.4.Final.jar;oxd-server-1.0-SNAPSHOT-jar-with-dependencies.jar org.xdi.oxd.server.ServerLauncher -Doxd.server.config=C:\tmp\oxd.json -Dlog4j.configuration=C:\tmp\test\log4j.xml
+```
 
 The following is an example of `log4j.xml` file:
 

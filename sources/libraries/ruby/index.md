@@ -1,18 +1,17 @@
-#Oxd Ruby
-This is the Ruby Client Library for Gluu oxd Server Relaying Party (RP). It is a thin wrapper around the communication protocol of oxd Server which can be used to access the OpenID Connect and UMA Authorization end-points of Gluu Server. his library provides the function calls required by a website to access user information from a OpenID Connect Provider (OP) by using the OxD as the RP.
+#oxd Ruby
 
-[Github sources](https://github.com/GluuFederation/oxd-ruby)
-
-[Rubygems](https://rubygems.org/gems/oxd-ruby)
-
-[API Docs](http://www.rubydoc.info/gems/oxd-ruby)
+oxd-ruby is a client library for the Gluu oxd Server. For information 
+about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
 ## Installation
-### Prerequisite
-The Ruby Client library depends on Gluu oxd Server. Please see [this document](https://oxd.gluu.org/docs/oxdserver/install/) to install oxd Server.
+
+- [Github sources](https://github.com/GluuFederation/oxd-ruby)
+
+- [Rubygems](https://rubygems.org/gems/oxd-ruby)
 
 ### Install Instructions
-The Ruby Client is installed using RubyGems. Please include following line in the Gemfile of the application using Oxd Ruby Library.
+The Ruby Client is installed using RubyGems. Please include following 
+line in the Gemfile of the application using Oxd Ruby Library.
 
 ```
 gem 'oxd-ruby', '~> 0.1.4'
@@ -39,6 +38,9 @@ This command will install the `oxd_config.rb` initializer file in the `config/in
 4. config.authorization_redirect_uri
 
 ## Using Oxd Ruby
+
+- [API Docs](http://www.rubydoc.info/gems/oxd-ruby)
+
 The plugin requires editing the `application_controller.rb` file to include the following snippet.
 
 ```

@@ -3,7 +3,8 @@
 oxD configuration consists of two files :
 
 * `conf/oxd-conf.json` - general configuration
-* `conf/oxd-default-site-config.json` - fallback configuration for "Register site" command, see details on [Protocol page](https://oxd.gluu.org/docs/oxdserver/)
+* `conf/oxd-default-site-config.json` - fallback configuration for "Register site" command, see details on 
+[Protocol page](https://oxd.gluu.org/docs/oxdserver/)
 
 ## oxd-conf.json
 
@@ -40,8 +41,8 @@ oxd-conf.json
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
 * trust_store_path - path to trust store
 * license_server_endpoint - license server endpoint
-* license_id - License ID. You can order valid license at https://oxd.gluu.org.
-* license_check_period_in_hours - license check period
+* license_id - License ID. You can [order valid license](https://oxd.gluu.org). Without a license you are limited to 2 transactions per second.
+* license_check_period_in_hours - Oxd will automatically check the license server for a new license (in case you renewed)
 * public_key - public key of License ID (must be provided during License id purchase)
 * public_password - public password of License ID (must be provided during License id purchase)
 * license_password - license password of License ID (must be provided during License id purchase)
