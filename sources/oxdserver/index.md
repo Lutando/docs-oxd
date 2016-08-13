@@ -52,7 +52,7 @@ of oxd may support the Hybrid Flow. Implicit Flow is not supported
 because it is intended for Javascript client-side applications where 
 the client does not authenticate.
 
-oxd provides six API's for OpenID Connect authentication. In general, 
+oxd provides six API's for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three step process: 
 
  - Redirect person to the authorization URL and obtain a code
@@ -104,7 +104,6 @@ Request:
     "command":"register_site",
     "params": {
         "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-        "redirect_uris": ["https://client.example.org/cb"],            <- OPTIONAL
         "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
         "application_type": "web",                                     <- OPTIONAL
@@ -153,7 +152,6 @@ Request:
         "client_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
         "response_type":["code"],                                     <- OPTIONAL
         "grant_types":[],                                             <- OPTIONAL
-        "redirect_uris": ["https://client.example.org/cb"],           <- OPTIONAL
         "scope": ["opeind", "profile"],                               <- OPTIONAL
         "acr_values": ["duo"],                                        <- OPTIONAL
         "client_secret_expires_at":1335205592410,                     <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
