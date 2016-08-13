@@ -5,16 +5,17 @@ to protect web resources with OAuth2, or to write a client that calls an
 OAuth2 protected API. 
 
 The oxd Server is designed to work as a standalone service demon. It's 
-actually a web server, running in an embedded jetty server, so you don't 
-need a web application container (like tomcat).  Just start it and stop 
+actually a web server, running in an embedded 
+[Jetty](http://www.eclipse.org/jetty/) server.  Just start it and stop 
 it like you would any other unix service.
 
 oxd's API's make it easier for developers to use OAuth2 protocols.  By 
 default, it's restricted to `localhost,` which means these API's cannot 
 be reached from another server on the network--only by services running 
-on your local server. You deploy oxd on each server that has web 
+locally server. You deploy oxd on each server that has web 
 applications. Gluu is introducing an nginx-based gateway that will 
-enable the centralized deployment of an oxd server--stay tuned.
+enable the centralized deployment of an oxd server (and will
+require clients to use https to connect to it)--stay tuned.
 
 oxd API's can be called with by any application that can make REST 
 calls.  Gluu also provides several native libraries that wrap the
@@ -31,69 +32,70 @@ see the [website](http://oxd.gluu.org)
 
 OpenID Connect is one of the most popular API's for an application 
 to identify a person. Technically it is not an authentication protocol--
-it enables a person to authorize the release of information, and in the
-process, being authenticated (if no previous session exists). If you
-are familiar with Google authentication, you've used OpenID Connect. 
+it enables a person to authorize the release of information to 
+an application from a remote "identity provider". In the
+process, of authorizting this release, the person is authenticated (if 
+no previous session exists). If you are familiar with Google 
+authentication, you've used OpenID Connect. 
 
 If you want to launch an OpenID Connect Provider for your organization, 
 you should consider deploying the Gluu Server, which is available for 
 many Linux distributions, and is easy to install 
 and configure. For more information, see our [website](http://gluu.org). 
 The Gluu Server will enable your organization to consolidate 
-authentication in one place, to enable Single Sign-on to many 
-applications. And its a standard OpenID Connect Provider.
+authentication in one place, and to enable Single Sign-on (SSO) to many 
+applications. It's a standard OpenID Connect Provider, but it also 
+supports SAML.
 
-oxd uses the Authorization code flow for authentication. Future versions 
-of oxd may support the Hybrid flow. Implicit flow is not supported 
+oxd uses the Authorization Code Flow for authentication. Future versions 
+of oxd may support the Hybrid Flow. Implicit Flow is not supported 
 because it is intended for Javascript client-side applications where 
 the client does not authenticate.
 
 oxd provides six API's for OpenID Connect authentication. In general, 
-you can think of user authentication using the the Authorization Code 
-Flow as a three step process: 
+you can think of the Authorization Code Flow as a three step process: 
 
-```
-1. Redirect person to authorization URL and obtain a code
-2. Use code to obtain tokens (access, id_token, refresh)
-3. Use access token to obtain user claims
-```
+ - Redirect person to the authorization URL and obtain a code
+ - Use code to obtain tokens (access, id_token, refresh)
+ - Use access token to obtain user claims
 
-The other three other API's are:
+The other three oxd API's are:
  
-```
-4. Register site (called once--the first time your application uses oxd)
-5. Update site registration (not used often)
-6. Logout
-```
+ - Register site (called once--the first time your application uses oxd)
+ - Update site registration (not used often)
+ - Logout
 
 ### Register site
 
 First of all, the web site must register itself with oxd server. If 
-registration  is successful, ox will return an identifier for the 
-application, which must be presented in subsequent API calls. 
+registration is successful, ox will return an identifier for the 
+application, which must be presented in subsequent API calls. This
+is the `oxd-id`, not to be confused with the OpenID Connect client id.
 
 During the registration operation, oxd will dynamically register an 
 OpenID Connect client and save its configuration.
 
-All parameters to register_site are optional except the 
+All parameters to `register_site` are optional except the 
 `authorization_redirect_uri`. This is the URL on your website that the 
 OpenID Connect Provider (OP) will redirect the person to after 
-successful authentication.
+successful authorization.
 
+`register_site` has many parameters, but you can ignore most of them!
 Default configuration values are taken from
 [conf/oxd-default-site-config.json](https://oxd.gluu.org/docs/oxdserver/conf/).
-For example if the `op_host` is missing from the `register_site` 
-command parameters, it must be present in this file.
+Even most of these options may be blank, with one exception: if the 
+`op_host` is missing from the `register_site` command parameters, 
+it must be present in this file--we need to know which OpenID Provider
+will be used! 
 
-`register_site` command returns `oxd_id`. The reason for this is that 
-several applications may share an instance of oxd, and this identifier 
-is used by oxd to distinguish difference in configuration between them.
+The `register_site` command returns `oxd_id`. Several applications may 
+share an instance of oxd, and this identifier is used by oxd to 
+distinguish differences in configuration between them.
 
 `op_host` must point to a valid OpenID Connect Provider that supports 
-[client registration]
-(http://openid.net/specs/openid-connect-registration-1_0.html), for 
-example, a [Gluu Server CE installation](http://gluu.org/docs). Sample: 
-`"op_host":"https://idp.example.org"`
+[client registration](http://openid.net/specs/openid-connect-registration-1_0.html), 
+for example, a [Gluu Server CE installation](http://gluu.org/docs). 
+Sample: `"op_host":"https://idp.example.org"`
 
 Request:
 
@@ -179,9 +181,9 @@ Response:
 ### Get authorization url
 
 Returns the URL at the OpenID Provider (OP) to which your application 
-must redirect the person to be authenticated (or to authorize the 
-release of personal data, if the person is already already has an active 
-session). The Response from the OP will include the code and state 
+must redirect the person to authorize the release of personal data (and
+perhaps be authenticated in the process if no previous session exists).
+The Response from the OP will include the code and state 
 values, which should be used to subsequently obtain tokens.
 
 Request:
@@ -221,7 +223,7 @@ the redirect URI (parse out the code and state):
 ```
 HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
-``
+```
 
 ### Get Tokens (ID & Access) by Code
 
