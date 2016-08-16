@@ -1,7 +1,7 @@
 oxd-node
 ========
 
-oxd=node is a client library for the Gluu oxd Server. For information 
+oxd-node is a client library for the Gluu oxd Server. For information 
 about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
 Installation
@@ -16,19 +16,17 @@ $ npm install oxd-node
 #### Configure the site
 
 The [request_param.js](https://github.com/GluuFederation/oxd-node/blob/master/oxd-node/model/request_param.js) 
-file contains the intitial configuration. This library uses OpenID 
-Connect client registration API of the OP. The client id and other 
-returned information is stored in this config file. So the config file 
+file contains the initial configuration and other data returned
+from OpenID Connect client registration. The config file 
 needs to be in a location that is *writable* by the web server. In 
-general, the only two things that are required are the port number that
-oxd is running on locally, and the redirect_uri of your application.
-Other values take default values from the oxd configuration file
-`oxd-default-site-config.json.`
+general, the only two things that are required are the oxd port number 
+and the redirect_uri of your application. Other values are taken
+from `oxd-default-site-config.json.`
 
 How to use
 -----------
 
-All methods of api acts according to [Protocol](../.././oxdserver/index.md).
+All API methods implement the [oxd Protocol](../.././oxdserver/index.md).
 
 #### 1) register_site
 
@@ -40,7 +38,7 @@ oxd.register_site(oxd.Request,function(response){
 });
 ```
 
-#### 2) update_site_registration
+#### 2) update_site_registrations
 
 ```js
 var oxd = require("oxd-node");
