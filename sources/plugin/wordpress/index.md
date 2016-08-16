@@ -2,7 +2,7 @@
 
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-oxd-login-plugin/master/plugin.jpg)
 
-WP-GLUU-SSO plugin gives access for login to your wordpress site, with the help of GLUU server.
+The WordPress SSO plugin enables you to authenticate users against any standard OpenID Connect Provider. 
 
 ## Requirements
 The Opencart module requires Gluu Server and the oxd Server.
