@@ -1,3 +1,5 @@
+[TOC]
+
 # Gluu Wordpress SSO plugin 
 
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-oxd-login-plugin/master/plugin.jpg)
