@@ -48,7 +48,7 @@ To make sure, login to your Gluu Server and navigate to the OpenID Connect > Cli
 ### Step 5: OpenID Connect Provider (OP) Configuration
 
 #### Scopes
-Scopes are groups of user attributes that are sent from the Gluu Server to the application during login and enrollment. You can view all available scopes in your Gluu Server by navigating to the OpenID Connect > Scopes intefrace. 
+Scopes are groups of user attributes that are sent from your OP (in this case, the Gluu Server) to the application during login and enrollment. You can view all available scopes in your Gluu Server by navigating to the OpenID Connect > Scopes intefrace. 
 
 In the Gluu WP plugin interface you can enable, disable and delete scopes. You can also add new scopes. If/When you add new scopes via the plugin, be sure to also add those scopes in your gluu server. 
 ![Scopes2](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-sso-login-plugin/master/wp-sso-2.4.2/docu/4.png) 
@@ -59,8 +59,8 @@ In order to specify the desired authentication mechanism, navigate to the Config
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-sso-login-plugin/master/wp-sso-2.4.2/docu/5.png) 
 
 Note:
-1. The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server. 2. After saving the authentication mechanism in your Gluu Server, it will be showed in Wordpress Configuration page too.
-3. When you create new custom script, both fields are required.
+1. The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server.     2. After saving the authentication mechanism in your Gluu Server, it will be showed in Wordpress Configuration page too.   
+3. When you create new custom script, both fields are required.   
 
 ### Step 6: Wordpress Configuration
 
