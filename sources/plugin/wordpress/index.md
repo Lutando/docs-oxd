@@ -60,9 +60,9 @@ To specify the desired authentication mechanism navigate to the Configuration > 
 
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-wordpress-sso-login-plugin/master/wp-sso-2.4.2/docu/5.png) 
 
-Note:   
-- The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server.
-- After saving the authentication mechanism in your Gluu Server, it will be displayed in the WP plugin configuration page too.     
+Note:    
+- The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server.     
+- After saving the authentication mechanism in your Gluu Server, it will be displayed in the WP plugin configuration page too.      
 - If / when you create a new custom script, both fields are required.       
 
 ### Step 6: Wordpress Configuration
