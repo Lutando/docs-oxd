@@ -1,30 +1,34 @@
 # oxd-spring
-This is a sample project that demonstrates how to authenticate using Gluu as an authentication provider in spring project.
+This is a sample project that demonstrates how to authenticate using Gluu as an authentication provider in spring project. The project uses [oxd-java] (https://github.com/GluuFederation/oxd-java) as a client for oxD Server.
 
 ## Requirements
-The oxd-spring requires the Gluu Server and the oxd Server. Please use the following links to install the required components.
+The oxd-spring requires the oxD Server. Please use the following link to install it
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-* [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/)
-
 
 ## Install oxd-spring
-Clone the oxd-spring Gtthub repo and run the maven command to install and run oxd-spring
+Clone oxd-spring from Github repo and run maven command to install it:
 ```
 git clone https://github.com/GluuFederation/oxd-spring.git
 cd oxd-spring 
-mvn clean package
+mvn clean package -Dmaven.test.skip=true
 ```
 
-If dependencies are not installed, you can skip the tests
+Now you can run the executable jar:
 ```
-mvn clean package -Dmaven.test.skip=true
 java -jar target/oxd-spring-0.0.1-SNAPSHOT.jar
 ```
 
-Point browser to `https://127.0.0.1:8443/`.
+Point browser to `https://127.0.0.1:8443/`. And log in into ce-dev2.gluu.org using test credentials: test_user/test_user_password 
 
 ***Note:*** oxd-server must run on *localhost* and be bound to port: *8099*, otherwise you'll need to configure `oxd-spring/src/main/resources/application.properties` file.
 
+## Customize oxd-spring
+To use your own server as openid provider you need to modify `oxd.server.op-host` property from `oxd-spring/src/main/resources/application.properties`, e.g:
 
+```
+oxd.server.op-host=https://gluu.localhost.info
+```
+
+Make sure the server already installed on your machine, or you can follow [this](https://www.gluu.org/docs/#install-gluu-server) guide to install it.
