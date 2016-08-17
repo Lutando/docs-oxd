@@ -72,15 +72,10 @@ To specify the desired authentication mechanism navigate to the Configuration > 
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/44.m5.png)  
 
 Note:    
-- The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server.     
-- After saving the authentication mechanism in your Gluu Server, it will be displayed in the WP plugin configuration page too.      
+- The authentication mechanism specified in your Magento extension page must match the authentication mechanism specified in your Gluu Server.     
+- After saving the authentication mechanism in your Gluu Server, it will be displayed in the Magento extension configuration page too.      
 - If / when you create a new custom script, both fields are required.    
 
-#### Pay attention to that.
-
-1. Which custom script you enable in your Magento site in order it must be switched on in gluu server too.
-2. Which custom script you will be enable in OpenID Connect Configuration page, after saving that will be showed in Magento Configuration page too.
-3. When you create new custom script, both fields are required.
 
 ### Step 6. Magento Configuration
 
