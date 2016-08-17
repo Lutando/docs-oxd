@@ -58,8 +58,8 @@ To specify the desired authentication mechanism navigate to the Configuration > 
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-sso-RoundCube-plugin/master/docu/10.png) 
 
 Note:    
-- The authentication mechanism specified in your WP plugin page must match the authentication mechanism specified in your Gluu Server.     
-- After saving the authentication mechanism in your Gluu Server, it will be displayed in the WP plugin configuration page too.      
+- The authentication mechanism specified in your RoundCube plugin page must match the authentication mechanism specified in your Gluu Server.     
+- After saving the authentication mechanism in your Gluu Server, it will be displayed in the RoundCube plugin configuration page too.      
 - If / when you create a new custom script, both fields are required. 
 
 ### Step 4:RoundCube Configuration
