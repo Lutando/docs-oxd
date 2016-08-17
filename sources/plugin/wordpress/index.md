@@ -19,7 +19,7 @@ In order to use the WordPress plugin, you will need to have deployed a standard 
 ### Step 1: Download
 [Github source](https://github.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/archive/v2.4.4.zip).
 
-[Link to WordPress marketplace](https://www.magentocommerce.com/magento-connect/openid-connect-sso.html)
+[Link to WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/)
 
 ### Step 2: Upload
 Open your WordPress site plugin page, e.g. `https://{site-base-url}/wp-admin/plugin-install.php?tab=upload`, upload the plugin and click on the install now button.
