@@ -87,6 +87,8 @@ If custom scripts are not enabled, nothing will be showed. Customize shape, spac
 
 ### Step 7. Show icons in frontend
 
+Once you've configured all the options, you should see your supported authentication mechanisms on your default Magento customer login page like the screenshot below
+
 Go to https://{site-base-url}/index.php/customer/account/login/
 
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/44.m7.png) 

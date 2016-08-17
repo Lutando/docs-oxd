@@ -72,4 +72,6 @@ If custom scripts are not enabled, nothing will be showed. Customize shape, spac
 
 ### Step 5:Show icons in frontend
 
+Once you've configured all the options, you should see your supported authentication mechanisms on your default RoundCube login page like the screenshot below.
+
 ![frontend](https://raw.githubusercontent.com/GluuFederation/rcube_openid_connect_single_sign_on_plugin_by_gluu/master/docu/12.png) 

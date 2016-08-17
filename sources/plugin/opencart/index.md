@@ -76,4 +76,7 @@ If custom scripts are not enabled, nothing will be showed. Customize shape, spac
 
 ### Step 6. Show icons in frontend
 
+Once you've configured all the options, you should see your supported authentication mechanisms on your default OpenCart login page like the screenshot below
+
+
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/12.png) 
