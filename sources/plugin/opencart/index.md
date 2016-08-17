@@ -1,23 +1,28 @@
-# OPENCART OpenID Connect Single Sign-On (SSO) Extension by Gluu 
-## Link to OpenCart marketplace  
+[TOC]
 
-[Go to OpenCart marketplace](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=27180&filter_search=Gluu).
+# OpenCart  OpenID Connect Single Sign-On (SSO) Extension by Gluu 
 
-OpenID Connect Single Sign-On (SSO) Extension by Gluu gives access for login to your OpenCart site, with the help of GLUU server.
-This module will only work on the `https` protocol.
+![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/plugin.jpg)
+
+Gluu's OpenCart OpenID Connect Single Sign On (SSO) Extension will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
 ## Requirements
-The Opencart module requires Gluu Server and the oxd Server.
+In order to use the OpenCart Extension, you will need to have deployed a standard OP like the Gluu Server and the oxd Server.
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-## OPENCART  OpenID Connect Single Sign-On (SSO) Extension by Gluu
- 
-[Download OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4](https://github.com/GluuFederation/gluu-sso-OpenCart-module/raw/master/Gluu_SSO_2.4.4/Gluu_SSO_2.4.4.zip)
 
-### Install module
+## Installation
+
+### Step 1. Download
+
+[Link to OpenCart marketplace](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=27180&filter_search=Gluu)
+ 
+[Github source](https://github.com/GluuFederation/gluu-sso-OpenCart-module/raw/master/Gluu_SSO_2.4.4/Gluu_SSO_2.4.4.zip).
+
+### Step 2. Install module
  
 1. Open menu tab Extensions / Extension Installer and click on ```Upload``` button
 
@@ -27,13 +32,9 @@ The Opencart module requires Gluu Server and the oxd Server.
 3. Open menu tab Extensions / Modules and find OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.v click on ```Install``` button, than click on ```Edit``` button.
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/2.png) 
 
-## Configuration
-### General
+### Step 3. General
 
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/6.png)  
-
-In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4  you need to add Gluu server URL.
-![Scopes1](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/15.png) 
 
 1. Admin Email: please add your or admin email address for registrating site in Gluu server.
 2. Gluu Server URL: please add your Gluu server URL.
@@ -42,47 +43,37 @@ In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.4  you need to add 
 
 If You are successfully registered in gluu server, you will see bottom page.
 
-![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/7.png)
+![Oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/7.png)
 
-For making sure go to your gluu server / OpenID Connect / Clients and search for your oxd ID
+To make sure everything is configured properly, login to your Gluu Server and navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
-If you want to reset configurations click on Reset configurations button.
 
-### OpenID Connect Configuration
-
-OpenID Connect Configuration page for OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.2 and OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.3-2.4.4 are different.
+### Step 4. OpenID Connect Provider (OP) Configuration
 
 #### Scopes.
-You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
-Scopes are need for getting loged in users information from gluu server.
-Pay attention to that, which scopes you are using that are switched on in your gluu server.
+Scopes are groups of user attributes that are sent from your OP (in this case, the Gluu Server) to the application during login and enrollment. You can view all available scopes in your Gluu Server by navigating to the OpenID Connect > Scopes intefrace. 
 
-In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.2  you can only enable, disable and delete scope.
-![Scopes1](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/8.png) 
-
-In OpenID Connect Single Sign-On (SSO) Extension by Gluu 2.4.3-2.4.4 you can not only enable, disable and delete scope, but also add new scope, but when you add new scope by {any name}, necessary to add that scope in your gluu server too. 
+In the Extension interface you can enable, disable and delete scopes. You can also add new scopes. If/when you add new scopes via the extension, be sure to also add the same scopes in your gluu server. 
 ![Scopes2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/9.png) 
 
-### Custom scripts.
-
+#### Authentication.
+To specify the desired authentication mechanism navigate to the Configuration > Manage Custom Scripts menu in your Gluu Server. From there you can enable one of the out-of-the-box authentication mechanisms, such as password, U2F device (like yubikey), or mobile authentication. You can learn more about the Gluu Server authentication capabilities in the [docs](https://gluu.org/docs/multi-factor/intro/).
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/10.png)  
 
-You can look all custom scripts in your gluu server / Configuration / Manage Custom Scripts / and enable login type, which type you want.
-Custom Script represent itself the type of login, at this moment gluu server supports (U2F, Duo, Google +, Basic) types.
+Note:    
+- The authentication mechanism specified in your OpenCart extension page must match the authentication mechanism specified in your Gluu Server.     
+- After saving the authentication mechanism in your Gluu Server, it will be displayed in the OpenCart extension configuration page too.      
+- If / when you create a new custom script, both fields are required.    
 
-1. Any custom script enabled in the OpenCart site must be switched on in gluu server.
-2. Any custom script enabled in OpenID Connect Configuration page, after saving that will be showed in OpenCart Configuration page.
-3. When you create new custom script, both fields are required.
 
-### OpenCart Configuration
+### Step 5. OpenCart Configuration
 
 #### Customize Login Icons
  
-Pay attention to that, if custom scripts are not enabled, nothing will be showed.
-Customize shape, space between icons and size of the login icons.
+If custom scripts are not enabled, nothing will be showed. Customize shape, space between icons and size of the login icons.
 
 ![OpenCartConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/11.png)  
 
-### Show icons in frontend
+### Step 6. Show icons in frontend
 
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-sso-OpenCart-module/master/docu/12.png) 
