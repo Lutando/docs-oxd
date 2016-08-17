@@ -81,12 +81,11 @@ Note:
 
 #### Customize Login Icons
  
-Pay attention to that, if custom scripts are not enabled, nothing will be showed.
-Customize shape, space between icons and size of the login icons.
+If custom scripts are not enabled, nothing will be showed. Customize shape, space between icons and size of the login icons.
 
-![WordpressConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/44.m6.png)  
+![MagentoConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/44.m6.png)  
 
-## Step 7. Show icons in frontend
+### Step 7. Show icons in frontend
 
 Go to https://{site-base-url}/index.php/customer/account/login/
 
