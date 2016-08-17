@@ -31,7 +31,7 @@ Activate the plugin by performing the following steps:
 1. Go to `https://{site-base-url}/wp-admin/plugins.php`
 2. Find OpenID Connect Single Sign On (SSO) Plugin By Gluu and click the activate button.
 
-### Step 4: oxd Configuration
+### Step 4: General
  
 In your WP admin menu panel you should now see the OpenID Connect Single Sign On (SSO) Plugin By Gluu menu tab. Click on it.
 
