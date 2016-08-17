@@ -107,4 +107,6 @@ You can also use this plugin in a WP widget. Navigate to your widget page `https
 ht
 ### Step 8: Show icons in frontend
 
+Once you've configured all the options, you should see your supported authentication mechanisms on your default WP login page like the screenshot below.
+
 ![frontend](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-6.png)
