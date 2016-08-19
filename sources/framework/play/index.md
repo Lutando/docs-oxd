@@ -1,6 +1,6 @@
 # oxd-play
 
-The following documentation shows how to configure the Play framework to use oxd for authentication. 
+The following documentation shows how to configure Java Play apps to use oxd for authentication. 
 
 # Installation
 
