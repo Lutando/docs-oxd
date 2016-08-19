@@ -1,7 +1,6 @@
 # oxd-csharp
 
-oxd c# is a client library for the Gluu oxd Server. For information 
-about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
+oxd c# is a client library for the oxd Server.
 
 ## Deployment
 
