@@ -18,6 +18,7 @@ pages:
 
 # Libraries
 
+- [libraries/api-client-libraries.md, Libraries, oxd API Client Libraries]
 - [libraries/python/index.md, Libraries, Python]
 - [libraries/java/index.md, Libraries, Java]
 - [libraries/php/index.md, Libraries, PHP]
