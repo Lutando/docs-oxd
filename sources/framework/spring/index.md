@@ -1,5 +1,5 @@
 # oxd-spring
-This is a sample project that demonstrates how to authenticate using Gluu as an authentication provider in spring project. The project uses [oxd-java] (https://github.com/GluuFederation/oxd-java) as a client for oxD Server.
+The following documentation shows how to configure the Spring framework to use oxd for authentication. 
 
 ## Requirements
 The oxd-spring requires the oxD Server. Please use the following link to install it
