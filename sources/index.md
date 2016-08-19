@@ -16,8 +16,5 @@ without changing the interface to the application.
 
 # License
 
-oxd is 
-[commercial software]((https://github.com/GluuFederation/oxd/blob/master/LICENSE)).
-A license is needed for each oxd server. To purchase licenses, visit the  
-[oxd webpage](https://oxd.gluu.org/#oxd-pro).
+oxd is [commercial software](https://github.com/GluuFederation/oxd/blob/master/LICENSE) licensed by Gluu. Each deployment of the oxd server requires a license. To purchase licenses, visit the [oxd webpage](https://oxd.gluu.org/#oxd-pro). All licenses come with a 7 day free trial. 
 
