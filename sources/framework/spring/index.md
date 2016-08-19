@@ -1,5 +1,5 @@
 # oxd-spring
-The following documentation shows how to configure the Spring framework to use oxd for authentication. 
+The following documentation shows how to configure Java Spring apps to use oxd for authentication. 
 
 ## Requirements
 The oxd-spring requires the oxD Server. Please use the following link to install it
