@@ -1,6 +1,6 @@
 # oxd Ruby On Rails Demo site
 
-The following documentation shows how to configure the Ruby on Rails framework to use oxd for authentication. 
+The following documentation shows how to configure Ruby on Rails apps to use oxd for authentication. 
 
 ## Deployment
 
