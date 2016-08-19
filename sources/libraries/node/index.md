@@ -1,8 +1,7 @@
 oxd-node
 ========
 
-oxd-node is a client library for the Gluu oxd Server. For information 
-about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
+oxd-node is a client library for the Gluu oxd Server. 
 
 Installation
 ------------
