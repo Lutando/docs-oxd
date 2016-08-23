@@ -610,7 +610,7 @@ Response:
 {
      "status":"ok",
      "data":{
-         "gat":"fg6vF9dft4qmT"
+         "rpt":"fg6vF9dft4qmT"
      }
 }
 ```
