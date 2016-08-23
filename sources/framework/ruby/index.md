@@ -1,7 +1,6 @@
 # oxd Ruby On Rails Demo site
 
-This is a demo site for oxd-ruby written using Ruby and Rails to demonstrate how to use oxd-ruby to 
-perform authorization with an OpenID Provider and fetch information.
+The following documentation shows how to configure Ruby on Rails apps to use oxd for authentication. 
 
 ## Deployment
 

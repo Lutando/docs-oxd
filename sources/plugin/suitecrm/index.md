@@ -1,19 +1,26 @@
-# SuiteCRM GLUU SSO module 
+[TOC]
+
+# SuiteCRM  OpenID Connect Single Sign-On (SSO) Module by Gluu
 
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/plugin.jpg)
 
-SuiteCRM-GLUU-SSO module gives access for login to your SuiteCRM site, with the help of GLUU server.
+Gluu's SuiteCRM OpenID Connect Single Sign On (SSO) Module will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
 ## Requirements
-The Opencart module requires Gluu Server and the oxd Server.
+In order to use the SuiteCRM Module, you will need to have deployed a standard OP like the Gluu Server and the oxd Server.
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
 
-## SuiteCRM Gluu SSO Module
-Please use the link below to download the SuiteCRM Gluu SSO Module.
-[SuiteCRM-gluu-sso module](https://github.com/GluuFederation/gluu-sso-SuiteCRM-module/raw/master/SuiteCRM_gluu_sso_2.4.4/SuiteCRM_gluu_sso_2.4.4.zip).
+
+## Installation
+
+### Step 1. Download
+
+[Github source](https://github.com/GluuFederation/gluu-sso-SuiteCRM-module/raw/master/SuiteCRM_gluu_sso_2.4.4/SuiteCRM_gluu_sso_2.4.4.zip)
+
+### Step 2. Install module
 
 1. Open menu tab Admin and click on ```Module loader``` button
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/1.png) 
@@ -25,50 +32,51 @@ Please use the link below to download the SuiteCRM Gluu SSO Module.
 3. Click on ```Install``` button. 
 ![upload](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d4.png) 
 
-4. Open menu tab Gluu SSO 2.4.4 
+4. Open menu tab OpenID Connect Single Sign-On (SSO) Module by Gluu 
 ![upload](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d5.png) 
 
-## Configuration
-###  General
+### Step 3. General
 
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d6.png)  
 
 1. Admin Email: please add your or admin email address for registrating site in Gluu server.
-2. Port number: choose that port which is using oxd-server (see in oxd-server/conf/oxd-conf.json file).
-3. Click ```Next``` to continue.
+2. Gluu Server URL: please add your Gluu server URL.
+3. Oxd port in your server: choose that port which is using oxd-server (see in oxd-server/conf/oxd-conf.json file).
+4. Click next to continue.
 
 If You are successfully registered in gluu server, you will see bottom page.
 
-![oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d7.png)
+![Oxd_id](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d7.png)
 
-For making sure go to your gluu server / OpenID Connect / Clients and search for your oxd ID
+To make sure everything is configured properly, login to your Gluu Server and navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
-If you want to reset configurations click on Reset configurations button.
+### Step 4. OpenID Connect Provider (OP) Configuration
 
-### OpenID Connect Configuration
 #### Scopes.
-You can look all scopes in your gluu server / OpenID Connect / Scopes and understand the meaning of  every scope.
-Scopes are need for getting loged in users information from gluu server.
-Pay attention to that, which scopes you are using that are switched on in your gluu server.
+Scopes are groups of user attributes that are sent from your OP (in this case, the Gluu Server) to the application during login and enrollment. You can view all available scopes in your Gluu Server by navigating to the OpenID Connect > Scopes intefrace. 
 
+In the Module interface you can enable, disable and delete scopes. You can also add new scopes. If/when you add new scopes via the module, be sure to also add the same scopes in your gluu server. 
 ![Scopes2](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d9.png) 
 
-#### Custom scripts.
-
+#### Authentication.
+To specify the desired authentication mechanism navigate to the Configuration > Manage Custom Scripts menu in your Gluu Server. From there you can enable one of the out-of-the-box authentication mechanisms, such as password, U2F device (like yubikey), or mobile authentication. You can learn more about the Gluu Server authentication capabilities in the [docs](https://gluu.org/docs/multi-factor/intro/).
 ![Customscripts](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d10.png)  
 
-You can look all custom scripts in your gluu server / Configuration / Manage Custom Scripts / and enable login type, which type you want.
-Custom Script represent itself the type of login, at this moment gluu server supports (U2F, Duo, Google +, Basic) types.
-The custom scripts must be enabled on both the RoundCube site and the Gluu Server for proper functioning.
+Note:    
+- The authentication mechanism specified in your SuiteCRM module page must match the authentication mechanism specified in your Gluu Server.     
+- After saving the authentication mechanism in your Gluu Server, it will be displayed in the SuiteCRM Module configuration page too.      
+- If / when you create a new custom script, both fields are required. 
 
-## SuiteCRM Configuration
-### Customize Login Icons
+### Step 5. SuiteCRM Configuration
+
+#### Customize Login Icons
  
-Pay attention to that, if custom scripts are not enabled, nothing will be showed.
-Customize shape, space between icons and size of the login icons.
+If custom scripts are not enabled, nothing will be showed. Customize shape, space between icons and size of the login icons.
 
 ![SuiteCRMConfiguration](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d11.png)  
 
-### Show icons in frontend
+### Step 6. Show icons in frontend
+
+Once you've configured all the options, you should see your supported authentication mechanisms on your default SuiteCRM login page like the screenshot below
 
 ![frontend](https://raw.githubusercontent.com/GluuFederation/gluu-sso-SuiteCRM-module/master/docu/d12.png) 

@@ -1,6 +1,6 @@
 # oxd-node-client 
 
-oxd-node-client is simple implementation of [oxd-node library](https://oxd.gluu.org/docs/libraries/node/). Please see the [oxd-node library](https://oxd.gluu.org/docs/libraries/node/) page for more information.
+The following documentation shows how to configure Node.js apps to use oxd for authentication. 
 
 ## Requirements
 The `oxd-node-client` depends on Gluu Server and the oxd Server. Please click on the links below for installation instructions.

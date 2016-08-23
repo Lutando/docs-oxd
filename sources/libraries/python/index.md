@@ -1,6 +1,5 @@
 # oxd-python
-oxd Python is a client library for the Gluu oxd Server. For information 
-about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
+oxd Python is a client library for the Gluu oxd Server. 
 
 ## Deployment
 

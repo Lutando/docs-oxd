@@ -16,10 +16,5 @@ without changing the interface to the application.
 
 # License
 
-oxd is 
-[commercial software]((https://github.com/GluuFederation/oxd/blob/master/LICENSE)).
-Gluu offers a free version, which is limited
-to two API calls per second. Learn more about the difference between 
-each version or purchase a license on the 
-[oxd webpage](https://oxd.gluu.org/#oxd-pro).
+oxd is [commercial software](https://github.com/GluuFederation/oxd/blob/master/LICENSE) licensed by Gluu. Each deployment of the oxd server requires a license. To purchase licenses, visit the [oxd webpage](https://oxd.gluu.org/#oxd-pro). All licenses come with a 7 day free trial. 
 

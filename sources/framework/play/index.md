@@ -1,7 +1,6 @@
 # oxd-play
 
->oxd-play is Oxd Server client implemented in JAVA, using it you can integrate oxD server in your Play frame work applications easily.
-
+The following documentation shows how to configure Java Play apps to use oxd for authentication. 
 
 # Installation
 
