@@ -107,7 +107,7 @@ updateSite(host, port, UpdateSiteParams, new UpdateSiteCallback() {
 ```
 
 
-> **get_authorization_url**
+>3 **get_authorization_url**
 
 ---
 
@@ -119,7 +119,7 @@ get_authorization_url command will be useful to get Url to redirect user for log
 
 GetAuthorizationUrlParams commandParams = new GetAuthorizationUrlParams();
 commandParams.setOxdId("Registered Sites Oxd-id");//required
-commandParams.setAcrValues(Lists.newArrayList("basic", "duo")); //optional
+commandParams.setAcrValues("List of arc values"); //optional
 
 // Call "getAuthorizationUrl" method using created GetAuthorizationUrlParams
 
@@ -199,7 +199,7 @@ getToken(host, port, GetTokensByCodeParams, new GetTokensByCodeCallback() {
             });
 ```
 
->7 **get_logout_uri**
+>6 **get_logout_uri**
 
 ---
   
