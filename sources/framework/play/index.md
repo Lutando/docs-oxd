@@ -143,6 +143,7 @@ get_authorization_url command will be useful to get Url to redirect user for log
 ---
 
 On successful login server will redirect to "AuthorizationRedirectUri" given at time register site command.From AuthorizationRedirectUri You need to parse scope and code which Will be useful to "get_tokens_by_code".
+ 
  1- create GetTokensByCodeParams
 
 
@@ -200,7 +201,8 @@ On successful login server will redirect to "AuthorizationRedirectUri" given at 
 >7 **get_logout_uri**
 
 ---
-   1- create GetLogoutUrlParams
+
+1- create GetLogoutUrlParams
   
        final GetLogoutUrlParams commandParams = new GetLogoutUrlParams();
                 commandParams..setOxdId("Registered site's oxd-id"); //     required
