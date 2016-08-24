@@ -52,7 +52,6 @@ when you call method as you will also pass a callback which can return result of
 
 ---
 
- create registerSiteParams
 ```java
 
 // create registerSiteParams
@@ -83,7 +82,6 @@ registerSite(host,port, registerSiteParams, new RegisterSiteCallback() {
    
 ---
 
-At some point if you need to change configuration of register site you can perform.update site command.
 ```java
 
 //create UpdateSiteParams
@@ -111,7 +109,6 @@ updateSite(host, port, UpdateSiteParams, new UpdateSiteCallback() {
 
 ---
 
-get_authorization_url command will be useful to get Url to redirect user for login.So all you need to do is just call get_authorization_url command successfully and redirect to returned url in callback's success method.
 
 
 ```java
