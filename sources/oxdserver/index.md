@@ -233,10 +233,8 @@ Request:
 {
     "command":"get_tokens_by_code",
     "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "code":"I6IjIifX0",                <- Required, code from OP redirect url (see example above)
-        "state":"af0ifjsldkj",             <- Optional can be skipped
-        "scopes":["openid", "profile"]     <- Optional, requested scopes
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- Required
+        "code":"I6IjIifX0"                               <- Required, code from OP redirect url (see example above)
     }
 }
 ```
