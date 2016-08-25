@@ -13,7 +13,7 @@ The Ruby Client is installed using RubyGems. Please include following
 line in the Gemfile of the application using Oxd Ruby Library.
 
 ```
-gem 'oxd-ruby', '~> 0.1.4'
+gem 'oxd-ruby', '~> 0.1.6'
 ```
 
 Please run the bundle command after to install the `oxd-ruby` plugin.
@@ -63,8 +63,8 @@ def register_site
 end
 
 def login
-	if (params[:code].present? && params[:state].present?)
-		@access_token = @oxd_command.get_tokens_by_code( params[:code], params[:scope].split("+"), params[:state]) 
+	if (params[:code].present?)
+		@access_token = @oxd_command.get_tokens_by_code( params[:code] ) 
 	end
         session.delete('oxd_access_token') if(session[:oxd_access_token].present?)
     	session[:oxd_access_token] = @access_token
@@ -106,7 +106,7 @@ end
 
 ```ruby
 def get_rpt
-    rpt = @uma_command.uma_rp_get_rpt(false) # Get RPT
+    rpt = @uma_command.uma_rp_get_rpt('false') # Get RPT
 end
 
 def authorize_rpt
