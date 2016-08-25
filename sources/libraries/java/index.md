@@ -1,22 +1,21 @@
-# oxd-Java
+# oxd-java
 
-oxd-java is a client library for the Gluu oxd server.
+oxd-java is a client library for the Gluu oxd server. For information about oxd, visit http://oxd.gluu.org
 
 ## Installation
 
 * [Github sources](https://github.com/GluuFederation/oxd-java)
-* Jar files are available on the [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
-* Maven
+* Jar files are available on the [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
+* [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
+* [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
+* [API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
 
 ## Configuration
 
 There are no configuration files for oxd-java. Redirect URI and
 other information is set in the code.
 
-## OpenID Connect Usage
-
-* [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
-* [API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
+## Sample code
 
 ### Register 
 ```java
@@ -151,5 +150,64 @@ String idToken = resp.getIdToken();
     }
 ```
 
+### UMA RS Resource protection
 
+```java
+            final RsProtectParams commandParams = new RsProtectParams();
+            commandParams.setOxdId(site.getOxdId());
+            commandParams.setResources(UmaFullTest.resourceList(rsProtect).getResources());
 
+            final Command command = new Command(CommandType.RS_PROTECT)
+                    .setParamsObject(commandParams);
+
+            final RsProtectResponse resp = client.send(command).dataAsResponse(RsProtectResponse.class);
+            assertNotNull(resp);
+```
+
+### UMA RS Check access
+
+```java
+            final RsCheckAccessParams params = new RsCheckAccessParams();
+            params.setOxdId(site.getOxdId());
+            params.setHttpMethod("GET");
+            params.setPath("/rest/photo");
+            params.setRpt("d6s-54asr-vfgm6-388dsl");
+
+            final Command command = new Command(CommandType.RS_CHECK_ACCESS)
+                    .setParamsObject(commandParams);
+
+            final RsCheckAccessResponse resp = client.send(command).dataAsResponse(RsCheckAccessResponse.class);
+```
+
+### UMA Get RPT
+
+```java
+            final RpGetRptParams params = new RpGetRptParams();
+            params.setOxdId(site.getOxdId());
+
+            final Command command = new Command(CommandType.RP_GET_RPT);
+            command.setParamsObject(params);
+            final CommandResponse response = client.send(command);
+            Assert.assertNotNull(response);
+            System.out.println(response);
+
+            final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
+            Assert.assertNotNull(rptResponse);
+```
+
+### UMA Get GAT
+
+```java
+            final RpGetGatParams params = new RpGetGatParams();
+            params.setOxdId(site.getOxdId());
+            params.setScopes(Lists.newArrayList("http://photoz.example.com/dev/actions/all"));
+
+            final Command command = new Command(CommandType.RP_GET_GAT);
+            command.setParamsObject(params);
+            final CommandResponse response = client.send(command);
+            Assert.assertNotNull(response);
+            System.out.println(response);
+
+            final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
+            Assert.assertNotNull(rptResponse);
+```
