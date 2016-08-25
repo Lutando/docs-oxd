@@ -74,51 +74,46 @@ String idToken = resp.getIdToken();
 ### Get User Info
 
 ```java
-        CommandClient client = null;
-        try {
-            client = new CommandClient(host, port);
+CommandClient client = null;
+try {
+    client = new CommandClient(host, port);
 
-            final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl);
-            final GetTokensByCodeResponse tokens = requestTokens(client, site, userId, userSecret);
+    final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl);
+    final GetTokensByCodeResponse tokens = requestTokens(client, site, userId, userSecret);
 
-            GetUserInfoParams params = new GetUserInfoParams();
-            params.setOxdId(site.getOxdId());
-            params.setAccessToken(tokens.getAccessToken());
+    GetUserInfoParams params = new GetUserInfoParams();
+    params.setOxdId(site.getOxdId());
+    params.setAccessToken(tokens.getAccessToken());
 
-            final GetUserInfoResponse resp = client.send(new Command(CommandType.GET_USER_INFO).setParamsObject(params)).dataAsResponse(GetUserInfoResponse.class);
-            assertNotNull(resp);
-            notEmpty(resp.getClaims().get("sub"));
-        } finally {
-            CommandClient.closeQuietly(client);
-        }
-
+    final GetUserInfoResponse resp = client.send(new Command(CommandType.GET_USER_INFO).setParamsObject(params)).dataAsResponse(GetUserInfoResponse.class);
+} finally {
+    CommandClient.closeQuietly(client);
+}
 
 ```
 
 ### Logout
 
 ```java
-        CommandClient client = null;
-        try {
-            client = new CommandClient(host, port);
+ CommandClient client = null;
+ try {
+     client = new CommandClient(host, port);
 
-            final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl, postLogoutRedirectUrl, "");
+     final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl, postLogoutRedirectUrl, "");
 
-            final GetLogoutUrlParams commandParams = new GetLogoutUrlParams();
-            commandParams.setOxdId(site.getOxdId());
-            commandParams.setIdTokenHint("dummy_token");
-            commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
-            commandParams.setState(UUID.randomUUID().toString());
-            commandParams.setSessionState(UUID.randomUUID().toString()); // here must be real session instead of dummy UUID
+     final GetLogoutUrlParams commandParams = new GetLogoutUrlParams();
+     commandParams.setOxdId(site.getOxdId());
+     commandParams.setIdTokenHint("dummy_token");
+     commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
+     commandParams.setState(UUID.randomUUID().toString());
+     commandParams.setSessionState(UUID.randomUUID().toString()); // here must be real session instead of dummy UUID
 
-            final Command command = new Command(CommandType.GET_LOGOUT_URI).setParamsObject(commandParams);
+     final Command command = new Command(CommandType.GET_LOGOUT_URI).setParamsObject(commandParams);
 
-            final LogoutResponse resp = client.send(command).dataAsResponse(LogoutResponse.class);
-            assertNotNull(resp);
-            assertTrue(resp.getUri().contains(URLEncoder.encode(postLogoutRedirectUrl, "UTF-8")));
-        } finally {
-            CommandClient.closeQuietly(client);
-        }
+     final LogoutResponse resp = client.send(command).dataAsResponse(LogoutResponse.class);
+ } finally {
+     CommandClient.closeQuietly(client);
+ }
 
 ```
 
@@ -126,88 +121,78 @@ String idToken = resp.getIdToken();
 ### Update Site
 
 ```java
-        CommandClient client = null;
-        try {
-            client = new CommandClient(host, port);
+CommandClient client = null;
+try {
+     client = new CommandClient(host, port);
 
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
+     Calendar calendar = Calendar.getInstance();
+     calendar.add(Calendar.DAY_OF_YEAR, 1);
 
-            // more specific site registration
-            final UpdateSiteParams commandParams = new UpdateSiteParams();
-            commandParams.setOxdId(oxdId);
-            commandParams.setClientSecretExpiresAt(calendar.getTime());
-            commandParams.setScope(Lists.newArrayList("profile"));
+     // more specific site registration
+     final UpdateSiteParams commandParams = new UpdateSiteParams();
+     commandParams.setOxdId(oxdId);
+     commandParams.setClientSecretExpiresAt(calendar.getTime());
+     commandParams.setScope(Lists.newArrayList("profile"));
 
-            final Command command = new Command(CommandType.UPDATE_SITE);
-            command.setParamsObject(commandParams);
+     final Command command = new Command(CommandType.UPDATE_SITE);
+     command.setParamsObject(commandParams);
 
-            UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse.class);
-            assertNotNull(resp);
-        } finally {
-            CommandClient.closeQuietly(client);
-        }
-    }
+     UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse.class);
+     assertNotNull(resp);
+} finally {
+     CommandClient.closeQuietly(client);
+}
 ```
 
 ### UMA RS Resource protection
 
 ```java
-            final RsProtectParams commandParams = new RsProtectParams();
-            commandParams.setOxdId(site.getOxdId());
-            commandParams.setResources(UmaFullTest.resourceList(rsProtect).getResources());
+final RsProtectParams commandParams = new RsProtectParams();
+commandParams.setOxdId(site.getOxdId());
+commandParams.setResources(UmaFullTest.resourceList(rsProtect).getResources());
 
-            final Command command = new Command(CommandType.RS_PROTECT)
-                    .setParamsObject(commandParams);
+final Command command = new Command(CommandType.RS_PROTECT).setParamsObject(commandParams);
 
-            final RsProtectResponse resp = client.send(command).dataAsResponse(RsProtectResponse.class);
-            assertNotNull(resp);
+final RsProtectResponse resp = client.send(command).dataAsResponse(RsProtectResponse.class);
 ```
 
 ### UMA RS Check access
 
 ```java
-            final RsCheckAccessParams params = new RsCheckAccessParams();
-            params.setOxdId(site.getOxdId());
-            params.setHttpMethod("GET");
-            params.setPath("/rest/photo");
-            params.setRpt("d6s-54asr-vfgm6-388dsl");
+final RsCheckAccessParams params = new RsCheckAccessParams();
+params.setOxdId(site.getOxdId());
+params.setHttpMethod("GET");
+params.setPath("/rest/photo");
+params.setRpt("d6s-54asr-vfgm6-388dsl");
 
-            final Command command = new Command(CommandType.RS_CHECK_ACCESS)
-                    .setParamsObject(commandParams);
+final Command command = new Command(CommandType.RS_CHECK_ACCESS).setParamsObject(commandParams);
 
-            final RsCheckAccessResponse resp = client.send(command).dataAsResponse(RsCheckAccessResponse.class);
+final RsCheckAccessResponse resp = client.send(command).dataAsResponse(RsCheckAccessResponse.class);
 ```
 
 ### UMA Get RPT
 
 ```java
-            final RpGetRptParams params = new RpGetRptParams();
-            params.setOxdId(site.getOxdId());
+final RpGetRptParams params = new RpGetRptParams();
+params.setOxdId(site.getOxdId());
 
-            final Command command = new Command(CommandType.RP_GET_RPT);
-            command.setParamsObject(params);
-            final CommandResponse response = client.send(command);
-            Assert.assertNotNull(response);
-            System.out.println(response);
+final Command command = new Command(CommandType.RP_GET_RPT);
+command.setParamsObject(params);
+final CommandResponse response = client.send(command);
 
-            final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
-            Assert.assertNotNull(rptResponse);
+final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
 ```
 
 ### UMA Get GAT
 
 ```java
-            final RpGetGatParams params = new RpGetGatParams();
-            params.setOxdId(site.getOxdId());
-            params.setScopes(Lists.newArrayList("http://photoz.example.com/dev/actions/all"));
+final RpGetGatParams params = new RpGetGatParams();
+params.setOxdId(site.getOxdId());
+params.setScopes(Lists.newArrayList("http://photoz.example.com/dev/actions/all"));
 
-            final Command command = new Command(CommandType.RP_GET_GAT);
-            command.setParamsObject(params);
-            final CommandResponse response = client.send(command);
-            Assert.assertNotNull(response);
-            System.out.println(response);
+final Command command = new Command(CommandType.RP_GET_GAT);
+command.setParamsObject(params);
+final CommandResponse response = client.send(command);
 
-            final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
-            Assert.assertNotNull(rptResponse);
+final RpGetRptResponse rptResponse = response.dataAsResponse(RpGetRptResponse.class);
 ```
