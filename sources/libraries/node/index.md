@@ -2,7 +2,7 @@
 
 oxD node is a client library for the Gluu oxD Server. For information about oxD, visit <http://oxd.gluu.org>
 
-# Installation:
+## Installation:
 
 Install oxd-node using following command:
 ```sh
@@ -24,7 +24,7 @@ Install oxd server:
 
 ```
 
-# Configuration:
+## Configuration:
 
 Once the library is installed, create a copy of the sample configuration file for your website in a server _writable_ location and edit the configuration. For example
 
@@ -37,7 +37,7 @@ find exports.port=null and enter port no inplace of "null" which ever is free on
 
 **Note:** The website is registered with the OP and its ID is stored in this config file, also are the other peristant information about the website. So the config file needs to be _writable_ for the server. The [oxd-node](https://github.com/GluuFederation/oxd-node) contains complete documentation about itself.
 
-# Sample Code:
+## Sample Code:
 
 ### 1) register_site
 
