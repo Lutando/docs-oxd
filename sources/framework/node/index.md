@@ -1,27 +1,38 @@
-# oxd-node-client 
+# oxd-node-demo
 
-The following documentation shows how to configure Node.js apps to use oxd for authentication. 
+oxd-node-demo is demo application which communication protocol of oxD server. This can be used to access the OpenID connect & UMA Authorization end points of the Gluu Server via the oxD. This library provides the function calls required by a website to access user information from a OpenID Connect Provider by the OxD.
 
-## Requirements
-The `oxd-node-client` depends on Gluu Server and the oxd Server. Please click on the links below for installation instructions.
+### Attention:
+```
+Application will not be working if your host does not have https://.
+```
 
-* [Gluu Server Installation Guide](https://gluu.org/docs/deployment/#operating-system-requirement)
+### Configure Demo application Port:
 
-* [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+Once the library is installed, create a copy of the sample configuration file for your website in a server _writable_ location and edit the configuration. For example
 
-## Installing oxd-node-client
+```
+Go to properties.js,
+find exports.port=null and enter port no inplace of "null" which ever is free on your server.
+```
 
-* Download source code for client application [oxd-node-client from Github](https://github.com/GluuFederation/oxd-node)
+### Prerequisite:
+```
+Gluu server and oxd-server need to running in your machine
+```
 
-* Plese navigate to the `oxd-node-client` folder
+## How to use:
 
-* Run `npm update`, and run it `index.js`
+1. Download source code for demo client application [oxd-node-demo]
+2. Configure your port in `properties.js` file in root directory
+3. From command line, move into demo client application and enter `npm update`, and run it [node index].
+4. Go to web browser and access demo application with this url `https://localhost.com:{port}` (you can use any other port incase if 5053 port is busy in any other process)
+5. Register your website with oxd, fill the site registration form and submit it.
+6. Now your site user can login using oxd-server
 
-* Access the node client via the URL ` https://localhost.com:5053` 
-**Note:**If port 5053 is not available then you can use any other port
+## Demo Video:
 
-* Register your site with oxd-server, and use the following credentials to log into the admin panel
-    username : test@admin.com
-    password : test@123
-* Please fill the site registration form and submit it
-
+```
+Have a look into this demo video, a screen recording of this demo website’s features.
+```
+[Demo video](http://screencast.com/t/7BD1DzYi)
