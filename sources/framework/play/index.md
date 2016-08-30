@@ -55,7 +55,7 @@ Check Sample code below we are creating commandParams object  related to command
 
 when you call method as you will also pass a callback which can return result of operation.callback have two methods success and error.In success you will get a response from server and if any error occurs you will get a error message to simplify error. 
 
-### 1) **register_site**
+### 1) register_site
 
 ---
 
@@ -92,7 +92,7 @@ catch (Exception e)
 
 
 
-### 2) **update_site__registration**
+### 2) update_site__registration
    
 ---
 
@@ -123,7 +123,7 @@ catch (Exception e) {
 ```
 
 
-### 3) **get_authorization_url**
+### 3) get_authorization_url
 
 ---
 
@@ -160,7 +160,7 @@ catch (Exception e) {
 
 
 
-### 4) **get_tokens_by_code**
+### 4) get_tokens_by_code
 
 ---
 ```java
@@ -194,7 +194,7 @@ try
 ```
 
 
-### 5) **get_user_info**
+### 5) get_user_info
 
 ---
 ```java
@@ -227,7 +227,7 @@ catch (Exception e) {
             
 ```
 
-### 6) **get_logout_uri**
+### 6) get_logout_uri
 
 ---
   
