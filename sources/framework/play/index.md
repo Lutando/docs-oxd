@@ -3,7 +3,7 @@
 oxd-play is client library for the Gluu oxd server implemented in JAVA, using it you can integrate oxD server in your Play frame work applications easily.
  For information about oxd, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
-# Installation
+## Installation
 
 Installation of oxd-play is very easy task With help of Maven and sbt.
 To use maven  adding following line in build.sbt and sbt build will do rest for you.
@@ -42,13 +42,13 @@ Import oxdCommands class from oxd-play by adding this oxd.
 * [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-play/)
 
 
-#Configuration
+##Configuration
 
 We need nothing to configuration before start using oxd-play everything can be set on run time but still we can configure our oxd-server's default configurations. 
 
 **Note:-** The website is registered with the OP and its ID is stored in this config file, also are the other peristant information about the website. So the config file needs to be writable for the server.
 
-# Sample Code
+## Sample Code
 
 Usage of Oxd-play is very simple. First of all we need to create parameter object related to command we are going to perform and pass to related method.
 Check Sample code below we are creating commandParams object  related to commands and calling related method with created params.
