@@ -4,16 +4,14 @@ oxD node is a client library for the Gluu oxD Server. For information about oxD,
 
 # Installation:
 
+* [Github sources](https://github.com/GluuFederation/oxd-node)
+* [Gluu Server](https://www.gluu.org/docs/deployment/ubuntu/)
+* [oxd server](https://oxd.gluu.org/docs/install/)
+
 Install oxd-node using following command:
 ```sh
 $ npm install oxd-node
 ```
-Install gluu server:
-<https://www.gluu.org/docs/deployment/ubuntu/>
-
-Install oxd server:
-<https://oxd.gluu.org/docs/install/>
-
 
 **Prerequisite**
 
