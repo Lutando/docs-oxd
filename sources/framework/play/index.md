@@ -166,9 +166,7 @@ catch (Exception e) {
 ```java
 try
 {
-
 //create GetTokensByCodeParams
-
 
             GetTokensByCodeParams getTokensByCodeParams = new GetTokensByCodeParams();
             commandParams.setOxdId("Registered Site oxd-id code");//required
@@ -177,7 +175,6 @@ try
             commandParams.setCode("Code from op redirected uri");//required
 
 // Call "getToken" method using created GetTokensByCodeParams
-
 
             getToken(host, port, getTokensByCodeParams, new GetTokensByCodeCallback() {
                          public void success(GetTokensByCodeResponse getTokensByCodeResponse) {
@@ -238,7 +235,7 @@ catch (Exception e) {
 //create GetLogoutUrlParams
 try{
        final GetLogoutUrlParams getLogoutUrlParams = new GetLogoutUrlParams();
-                commandParams..setOxdId("Registered site's oxd-id"); //     required
+                commandParams.setOxdId("Registered site's oxd-id"); //     required
 
 
 // Call "getLogoutUri" method using created GetLogoutUrlParams
