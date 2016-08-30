@@ -223,7 +223,7 @@ oxd.get_logout_uri(oxd.Request,function(response){                   //REQUIRED
 }
 ```
 
-# License
+### License
 
 (MIT License)
 
