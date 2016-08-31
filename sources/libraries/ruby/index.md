@@ -9,6 +9,9 @@ oxd-ruby is a client library for the oxd Server.
 - [Rubygems](https://rubygems.org/gems/oxd-ruby)
 
 ### Install Instructions
+
+Note: This library will not work if your website does not have SSL installed. Make sure your website runs on https:// before using this library.
+
 The Ruby Client is installed using RubyGems. Please include following 
 line in the Gemfile of the application using Oxd Ruby Library.
 
