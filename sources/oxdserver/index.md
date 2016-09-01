@@ -155,6 +155,7 @@ Request:
         "grant_types":[],                                             <- OPTIONAL
         "scope": ["opeind", "profile"],                               <- OPTIONAL
         "acr_values": ["duo"],                                        <- OPTIONAL
+        "client_name": "",                                            <- OPTIONAL
         "client_secret_expires_at":1335205592410,                     <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
         "client_jwks_uri": "",                                        <- OPTIONAL
         "client_token_endpoint_auth_method": "",                      <- OPTIONAL
