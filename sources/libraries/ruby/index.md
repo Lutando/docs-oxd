@@ -1,4 +1,4 @@
-#oxd Ruby
+#oxd-ruby
 
 oxd-ruby is a client library for the oxd Server. 
 
@@ -9,6 +9,9 @@ oxd-ruby is a client library for the oxd Server.
 - [Rubygems](https://rubygems.org/gems/oxd-ruby)
 
 ### Install Instructions
+
+**Note :** This library will not work if your website does not have SSL installed. Make sure your website runs on https:// before using this library.
+
 The Ruby Client is installed using RubyGems. Please include following 
 line in the Gemfile of the application using Oxd Ruby Library.
 
@@ -36,7 +39,7 @@ This command will install the `oxd_config.rb` initializer file in the `config/in
 3. config.op_host 
 4. config.authorization_redirect_uri
 
-## Using Oxd Ruby
+## Sample code
 
 - [API Docs](http://www.rubydoc.info/gems/oxd-ruby)
 
@@ -121,6 +124,3 @@ def get_gat
 	gat = @uma_command.uma_rp_get_gat(scopes) # Pass scopes array to get GAT
 end
 ```
-
-## Log Files
-The log files for the oxd ruby plugin is stored in the `oxd-ruby.log` file under the `rails_app_root/log` folder. It contains all the logs about oxd-server connections, commands/data sent to server, recieved response and all the errors and exceptions raised.
