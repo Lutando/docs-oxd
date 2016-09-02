@@ -24,7 +24,6 @@ oxd-conf.json
     "trust_store_path":"",
     "license_server_endpoint":"",
     "license_id":"",
-    "license_check_period_in_hours": 24,
     "public_key":"",
     "public_password":"",
     "license_password":""
@@ -42,7 +41,6 @@ oxd-conf.json
 * trust_store_path - path to trust store
 * license_server_endpoint - license server endpoint
 * license_id - License ID. You can [order valid license](https://oxd.gluu.org). Without a license you are limited to 2 transactions per second.
-* license_check_period_in_hours - Oxd will automatically check the license server for a new license (in case you renewed)
 * public_key - public key of License ID (must be provided during License id purchase)
 * public_password - public password of License ID (must be provided during License id purchase)
 * license_password - license password of License ID (must be provided during License id purchase)
