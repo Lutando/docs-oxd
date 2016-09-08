@@ -17,12 +17,10 @@ oxd-conf.json
     "localhost_only":true,
     "time_out_in_seconds":0,
     "jetty_port":8098,
-    "start_jetty":false,
     "use_client_authentication_for_pat":true,
     "use_client_authentication_for_aat":true,
     "trust_all_certs":true,
     "trust_store_path":"",
-    "license_server_endpoint":"",
     "license_id":"",
     "public_key":"",
     "public_password":"",
@@ -38,12 +36,11 @@ oxd-conf.json
 * use_client_authentication_for_pat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * use_client_authentication_for_aat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
-* trust_store_path - path to trust store e.g `/etc/ssl/certs/cacerts`
-* license_server_endpoint - `https://license.gluu.org/oxLicence`
-* license_id - License ID. You can [order valid license](https://oxd.gluu.org). Without a license you are limited to 2 transactions per second.
-* public_key - public key of License ID (must be provided during License id purchase)
-* public_password - public password of License ID (must be provided during License id purchase)
-* license_password - license password of License ID (must be provided during License id purchase)
+* trust_store_path - Path to Java .jks trust store to be used for an SSL connection.
+* license_id - Will be supplied when you order a license.
+* public_key - Will be supplied when you order a license. It's very big--make sure you it's one line with no spaces (if your mail client added line breaks).
+* public_password - Will be supplied when you order a license.
+* license_password - Will be supplied when you order a license.
 
 ## oxd-default-site-config.json
 
