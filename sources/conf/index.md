@@ -38,8 +38,8 @@ oxd-conf.json
 * use_client_authentication_for_pat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * use_client_authentication_for_aat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
-* trust_store_path - path to trust store
-* license_server_endpoint - license server endpoint
+* trust_store_path - path to trust store e.g `/etc/ssl/certs/cacerts`
+* license_server_endpoint - `https://license.gluu.org/oxLicence`
 * license_id - License ID. You can [order valid license](https://oxd.gluu.org). Without a license you are limited to 2 transactions per second.
 * public_key - public key of License ID (must be provided during License id purchase)
 * public_password - public password of License ID (must be provided during License id purchase)
