@@ -21,6 +21,7 @@ oxd-conf.json
     "use_client_authentication_for_aat":true,
     "trust_all_certs":true,
     "trust_store_path":"",
+    "trust_store_password":"",
     "license_id":"",
     "public_key":"",
     "public_password":"",
@@ -37,6 +38,7 @@ oxd-conf.json
 * use_client_authentication_for_aat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
 * trust_store_path - Path to Java .jks trust store to be used for an SSL connection.
+* trust_store_password - password of trust store
 * license_id - Will be supplied when you order a license.
 * public_key - Will be supplied when you order a license. It's very big--make sure you it's one line with no spaces (if your mail client added line breaks).
 * public_password - Will be supplied when you order a license.
