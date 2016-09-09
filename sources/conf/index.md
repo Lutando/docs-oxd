@@ -16,7 +16,6 @@ oxd-conf.json
     "port":8099,
     "localhost_only":true,
     "time_out_in_seconds":0,
-    "jetty_port":8098,
     "use_client_authentication_for_pat":true,
     "use_client_authentication_for_aat":true,
     "trust_all_certs":true,
@@ -32,8 +31,6 @@ oxd-conf.json
 * port - oxD socket port
 * localhost_only - flag to restrict communication
 * time_out_in_seconds - time out for oxd socket in seconds. oxd closes sockets automatically after this time out (stops listen commands). Zero means listen indefinitely.
-* start_jetty - flag to force start embedded jetty and enable also HTTP communication (it will enable both socket and HTTP communication)
-* jetty_port - jetty port
 * use_client_authentication_for_pat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * use_client_authentication_for_aat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
