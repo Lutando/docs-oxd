@@ -196,6 +196,7 @@ Request:
         "scope": ["openid"],                              <- optional, may be skipped (by default takes scopes that was registered during register_site command)
         "acr_values": ["duo"],                            <- optional, may be skipped (default is basic)
         "prompt": "login"                                 <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+        "hd": "mycollege.edu"                             <- optional, hosted domain google OP parameter https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
     }
 }
 ```
