@@ -244,7 +244,8 @@ Request:
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- Required
         "code":"I6IjIifX0",                              <- Required, code from OP redirect url (see example above)
-        "state":"af0ifjsldkj"                            <- Required
+        "state":"af0ifjsldkj",                           <- Required
+        "nonce":"n-0S6_WzA2Mj"                           <- Required
     }
 }
 ```
