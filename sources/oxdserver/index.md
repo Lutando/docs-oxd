@@ -213,7 +213,8 @@ Response:
     &scope=openid%20profile
     &acr_values=duo
     &state=af0ifjsldkj
-    &nonce=n-0S6_WzA2Mj"
+    &nonce=n-0S6_WzA2Mj
+    &hd=mycollege.edu"
     }
 }
 ```
