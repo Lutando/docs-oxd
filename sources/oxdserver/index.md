@@ -132,7 +132,8 @@ Response:
 {
     "status":"ok",
     "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
+        "op_host":"https://ce-dev.gluu.org"                           <- useful in case op_host is set in oxd-default-site-config.json (and not provided as parameter)
     }
 }
 ```
