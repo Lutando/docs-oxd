@@ -81,7 +81,7 @@ gives the complete instructions of how to setup a OpenID Client. Obtain the
 **Setting up OAuth 2.0** section and set the callback URI to which users will be
 redirected after authentication.
 
-[!Google client registration](https://github.com/GluuFederation/docs-oxd/raw/master/sources/img/google_oidc_client.png)
+![Google client registration](https://github.com/GluuFederation/docs-oxd/raw/master/sources/img/google_oidc_client.png)
 
 Sample Values:
 ```
