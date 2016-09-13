@@ -70,3 +70,27 @@ conf/oxd-default-site-config.json
 * ui_locales - End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 * claims_locales - End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 * contacts - array of e-mail addresses of people responsible for this Client
+
+## Using Google as an OpenID Provider
+
+
+Google doesn't support the dynamic registration of clients. The clients need to
+be created in the Google API Console. Google's [OpenID Connect page](https://developers.google.com/identity/protocols/OpenIDConnect#appsetup)
+gives the complete instructions of how to setup a OpenID Client. Obtain the
+`client_id` and the `client_secret` by following the guide's
+**Setting up OAuth 2.0** section and set the callback URI to which users will be
+redirected after authentication.
+
+[!Google client registration](https://github.com/GluuFederation/docs-oxd/raw/master/sources/img/google_oidc_client.png)
+
+Sample Values:
+```
+op_host = https://accounts.google.com
+redirect_uri = https://test-project.com/login_callback/
+client_id = r7lq4g7n9rb1.apps.googleusercontent.com
+client_secret = 2YOesq2bRCaPI4Ybwc
+```
+
+**Note:** scope should always have `openid` as the first value followed by `profile` or `email` or both. Refer [Google's OIDC docs](https://developers.google.com/identity/protocols/OpenIDConnect#authenticationuriparameters) for the complete explanation of the Google specific paramaters.
+
+
