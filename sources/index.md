@@ -10,5 +10,5 @@ One significant advantage of using oxd over a native client library is that oxd 
 
 # License
 
-oxd is [commercial software](https://github.com/GluuFederation/oxd/blob/master/LICENSE) licensed by Gluu. Each deployment of the oxd server requires a license. To purchase licenses, visit the [oxd webpage](https://oxd.gluu.org/#oxd-pro). All licenses come with a 7 day free trial. 
+oxd is [commercial software](https://github.com/GluuFederation/oxd/blob/master/LICENSE) licensed by Gluu. Each deployment of the oxd server requires a license. To purchase licenses, visit the [oxd webpage](https://oxd.gluu.org/). All licenses come with a 7 day free trial. 
 
