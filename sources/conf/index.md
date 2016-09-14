@@ -24,7 +24,10 @@ oxd-conf.json
     "license_id":"",
     "public_key":"",
     "public_password":"",
-    "license_password":""
+    "license_password":"",
+    "support-google-logout": true,
+    "state_expiration_in_minutes":5,
+    "nonce_expiration_in_minutes":5
 }
 ```
 
@@ -40,6 +43,9 @@ oxd-conf.json
 * public_key - Will be supplied when you order a license. It's very big--make sure you it's one line with no spaces (if your mail client added line breaks).
 * public_password - Will be supplied when you order a license.
 * license_password - Will be supplied when you order a license.
+* support-google-logout - used only if Google is used as OP
+* state_expiration_in_minutes - state expiration time in minutes
+* nonce_expiration_in_minutes - nonce expiration time in minutes
 
 ## oxd-default-site-config.json
 
