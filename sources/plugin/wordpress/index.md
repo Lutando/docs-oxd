@@ -57,9 +57,9 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 ### OpenID Connect Configuration
 
-#### Scopes
-
 ![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/5.png)
+
+#### Scopes
 
 By default, the requested scopes are `profile`, `email`, and `openid`.  
 
