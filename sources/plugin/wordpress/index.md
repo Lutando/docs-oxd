@@ -85,5 +85,5 @@ Note: If the `Select acr` value is `none`, users will be sent to pass the OP's d
 
 ##### Add acr
 
-The plugin will detect ACR values supported if this information is published in the OP's discovery endpoint. However, if your OP doesn't publish the `acr_values_supported` claim, then you will need to add the ACRs manually. 
+The plugin will detect the OPs supported ACR values if this information is published in the OP's discovery endpoint. However, if the OP does not publish supported ACR values, you may need to add them manually. 
 
