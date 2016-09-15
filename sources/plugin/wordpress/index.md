@@ -61,9 +61,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 #### Scopes
 
-By default, the requested scopes are `profile`, `email`, and `openid`.  
-
-Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. 
+Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  
 
 To view your OP's available scopes, in a web browser navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
 
