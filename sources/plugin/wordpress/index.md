@@ -48,23 +48,23 @@ If your OpenID Provider supports `https://OpenID-Provider/.well-known/openid-con
 
 #### If your OpenID Connect Provider supports dynamic registration you will see bottom page.
 
-![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-1.png) 
+![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/1.png) 
 
 #### If your OpenID Connect Provider doesn't support dynamic registration you need to insert your OpenID Provider client_id and client_secret.
 
 #### For creating client_id and client_secret use redirect uri `https://{site-base-url}/index.php?option=oxdOpenId`.
 
-![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-1.png) 
+![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/2.png) 
 
 #### If you have successfully registered your OpenID Connect Provider, which support dynamic registration, you will see bottom page.
 
 If you use Gluu server as OpenID Provider, to make sure everything is configured properly, login to your Gluu Server and navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
-![oxd_id](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-2.png) 
+![oxd_id](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/4.png) 
 
 #### If you have successfully registered your OpenID Connect Provider, which doesn't supports dynamic registration, you will see bottom page.
 
-![oxd_id](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-2.png) 
+![oxd_id](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/3.png) 
 
 ### Step 5: OpenID Connect Configuration
 
@@ -78,7 +78,7 @@ If you use Gluu server as OpenID Provider, you can view all available scopes in 
 
 In the Plugin interface you can enable, disable and delete scopes. 
 
-![Scopes2](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/screenshot-3.png) 
+![Scopes2](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/5.png) 
 
 #### Manage Authentication
 
