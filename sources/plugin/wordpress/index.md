@@ -59,6 +59,8 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 #### Scopes
 
+![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/5.png)
+
 By default, the requested scopes are `profile`, `email`, and `openid`.  
 
 Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. 
