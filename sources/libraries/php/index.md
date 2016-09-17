@@ -75,17 +75,14 @@ $register_site = new Register_site();
 $register_site->setRequestOpHost(Oxd_RP_config::$op_host);
 $register_site->setRequestAcrValues(Oxd_RP_config::$acr_values);
 $register_site->setRequestAuthorizationRedirectUri(Oxd_RP_config::$authorization_redirect_uri);
-$register_site->setRequestLogoutRedirectUri(Oxd_RP_config::$logout_redirect_uri);
+$register_site->setRequestPostLogoutRedirectUri(Oxd_RP_config::$post_logout_redirect_uri);
 $register_site->setRequestContacts(["test@test.test"]);
 $register_site->setRequestGrantTypes(Oxd_RP_config::$grant_types);
 $register_site->setRequestResponseTypes(Oxd_RP_config::$response_types);
-$register_site->setRequestClientLogoutUri(Oxd_RP_config::$logout_redirect_uri);
 $register_site->setRequestScope(Oxd_RP_config::$scope);
 
 $register_site->request();
 $_SESSION['oxd_id'] = $register_site->getResponseOxdId();
-
-print_r($register_site->getResponseObject());
 
                         
 ```
@@ -104,19 +101,15 @@ session_start();
 include_once '../Update_site_registration.php';
 
 $update_site_registration = new Update_site_registration();
-
 $update_site_registration->setRequestAcrValues(Oxd_RP_config::$acr_values);
 $update_site_registration->setRequestOxdId($_SESSION['oxd_id']);
 $update_site_registration->setRequestAuthorizationRedirectUri(Oxd_RP_config::$authorization_redirect_uri);
-$update_site_registration->setRequestLogoutRedirectUri(Oxd_RP_config::$logout_redirect_uri);
+$update_site_registration->setRequestPostLogoutRedirectUri(Oxd_RP_config::$post_logout_redirect_uri);
 $update_site_registration->setRequestContacts(["test@test.test"]);
 $update_site_registration->setRequestGrantTypes(Oxd_RP_config::$grant_types);
 $update_site_registration->setRequestResponseTypes(Oxd_RP_config::$response_types);
-$update_site_registration->setRequestClientLogoutUri(Oxd_RP_config::$logout_redirect_uri);
 $update_site_registration->setRequestScope(Oxd_RP_config::$scope);
-
 $update_site_registration->request();
-
 print_r($update_site_registration->getResponseObject());
 
                         
@@ -137,9 +130,8 @@ require_once '../Get_authorization_url.php';
 $get_authorization_url = new Get_authorization_url();
 $get_authorization_url->setRequestOxdId($_SESSION['oxd_id']);
 $get_authorization_url->setRequestAcrValues(Oxd_RP_config::$acr_values);
-
+$get_authorization_url->setRequestScope(Oxd_RP_config::$scope);
 $get_authorization_url->request();
-
 echo $get_authorization_url->getResponseAuthorizationUrl();
                         
 ```
@@ -157,12 +149,10 @@ session_start();
 require_once '../Get_tokens_by_code.php';
 
 $get_tokens_by_code = new Get_tokens_by_code();
-
 $get_tokens_by_code->setRequestOxdId($_SESSION['oxd_id']);
-
 //getting code from redirecting url, when user allowed.
 $get_tokens_by_code->setRequestCode($_GET['code']);
-
+$get_tokens_by_code->setRequestState($_GET['state']);
 $get_tokens_by_code->request();
 $_SESSION['id_token'] = $get_tokens_by_code->getResponseIdToken();
 $_SESSION['access_token'] = $get_tokens_by_code->getResponseAccessToken();
