@@ -43,7 +43,7 @@ In your WP admin menu panel you should now see the OpenID Connect menu tab. Clic
 2. New User Default Role: specify which role to give to new users upon registration.  
 3. URI of the OpenID Connect Provider: insert the URI of the OpenID Connect Provider.
 4. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file).
-5. Click Next to continue.
+5. Click `Register` to continue.
 
 If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the [OpenID Connect Configuration](#openid-connect-configuration) tab. 
 
