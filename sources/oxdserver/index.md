@@ -4,13 +4,11 @@ oxd makes it super simple to authenticate a person with OpenID Connect,
 to protect web resources with OAuth2, or to write a client that calls an 
 OAuth2 protected API. 
 
-The oxd Server is designed to work as a standalone service demon. It's 
-actually a web server, running in an embedded 
-[Jetty](http://www.eclipse.org/jetty/) server.  Just start it and stop 
-it like you would any other unix service.
+The oxd Server is designed to work as a standalone service demon.
+Just start it and stop it like you would any other unix service.
 
 oxd's API's make it easier for developers to use OAuth2 protocols.  By 
-default, it's restricted to `localhost,` which means these API's cannot 
+default, it's restricted to `localhost`, which means these API's cannot
 be reached from another server on the network--only by services running 
 locally server. You deploy oxd on each server that has web 
 applications. Gluu is introducing an nginx-based gateway that will 
