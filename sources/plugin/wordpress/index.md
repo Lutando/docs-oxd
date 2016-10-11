@@ -39,7 +39,7 @@ In your WP admin menu panel you should now see the OpenID Connect menu tab. Clic
 
 ![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/1.png) 
 
-1. Membership: must be checked. 
+1. Automatically register new users: must be checked. 
 2. New User Default Role: specify which role to give to new users upon registration.  
 3. URI of the OpenID Connect Provider: insert the URI of the OpenID Connect Provider.
 4. Custom URI after logout: custom URI after logout (for example "Thank you" page).
@@ -74,7 +74,9 @@ In the Plugin interface you can enable, disable and delete scopes.
 
 ##### Send user straight to OpenID Provider for authentication
 
-Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen,.
+Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen.
+When it is not checked, it will give proof the following screen.   
+![upload](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/6.png) 
 
 ##### Select acr
 
