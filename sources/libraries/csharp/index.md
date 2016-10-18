@@ -86,3 +86,68 @@ public ActionResult GetAuthorizationUrl(OxdModel oxdModel)
     return Json(new { authUrl = getAuthUrlResponse.Data.AuthorizationUrl });
 }
 ```
+
+#### Get Tokens by Code
+
+The following are the required information for Getting Tokens by Code: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+- *Code* - The Code from OP redirect url
+- *State* - The State from OP redirect url
+
+> **Note:** Before using this Get Tokens by Code API, you must obtain the Code and State values by authenticating the user using AuthorizationRedirectUri.
+
+The following code snippet can be used to Get Tokens by Code.
+
+```csharp
+[HttpPost]
+public ActionResult GetTokensByCode(OxdModel oxdModel)
+{
+	//prepare input params for Getting Tokens from a site
+    var getTokenByCodeInputParams = new GetTokensByCodeParams();
+    getTokenByCodeInputParams.OxdId = oxdModel.OxdId;
+    getTokenByCodeInputParams.Code = oxdModel.AuthCode;
+    getTokenByCodeInputParams.State = oxdModel.AuthState;
+
+    //Get Tokens by Code
+    var getTokenByCodeClient = new GetTokensByCodeClient();
+    var getTokensByCodeResponse = getTokenByCodeClient.GetTokensByCode(oxdModel.OxdHost, oxdModel.OxdPort, getTokenByCodeInputParams);
+
+    //Process response
+    return Json(new { accessToken = getTokensByCodeResponse.Data.AccessToken, refreshToken = getTokensByCodeResponse.Data.RefreshToken });
+}
+```
+
+#### Get User Info
+
+The following are the required information for Getting User Info: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+- *AccessToken* - The _Access Token_ of the authenticated user
+
+The following code snippet can be used to Get User Info.
+
+```csharp
+[HttpPost]
+public ActionResult GetUserInfo(OxdModel oxdModel)
+{
+	//prepare input params for Getting User Info from a site
+    var getUserInfoInputParams = new GetUserInfoParams();
+    getUserInfoInputParams.OxdId = oxdModel.OxdId;
+    getUserInfoInputParams.AccessToken = oxdModel.AccessToken;
+
+    //Get User Info
+    var getUserInfoClient = new GetUserInfoClient();
+    var getUserInfoResponse = getUserInfoClient.GetUserInfo(oxdModel.OxdHost, oxdModel.OxdPort, getUserInfoInputParams);
+
+    //Process response
+    var userName = getUserInfoResponse.Data.UserClaims.Name.First();
+    var userEmail = getUserInfoResponse.Data.UserClaims.Email == null ? string.Empty : getUserInfoResponse.Data.UserClaims.Email.FirstOrDefault();
+
+    return Json(new { userName = userName });
+}
+```
