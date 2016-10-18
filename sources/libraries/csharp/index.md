@@ -151,3 +151,59 @@ public ActionResult GetUserInfo(OxdModel oxdModel)
     return Json(new { userName = userName });
 }
 ```
+
+#### Get Logout URI
+
+The following are the required information for Getting Logout URI: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to Get Logout URI.
+
+```csharp
+[HttpPost]
+public ActionResult GetLogoutUri(OxdModel oxdModel)
+{
+	//prepare input params for Getting Logout URI from a site
+    var getLogoutUriInputParams = new GetLogoutUrlParams();
+    getLogoutUriInputParams.OxdId = oxd.OxdId;
+
+    //Get Logout URI
+    var getLogoutUriClient = new GetLogoutUriClient();
+    var getLogoutUriResponse = getLogoutUriClient.GetLogoutURL(oxd.OxdHost, oxd.OxdPort, getLogoutUriInputParams);
+
+    //Process response
+    return Json(new { logoutUri = getLogoutUriResponse.Data.LogoutUri });
+}
+```
+
+#### Update Site Registration
+
+The following are the required information for updating a registered Site: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to update a site.
+
+```csharp
+[HttpPost]
+public ActionResult UpdateSiteRegistration(OxdModel oxdModel)
+{
+	//prepare input params for Update Site Registration
+    var updateSiteInputParams = new UpdateSiteParams();
+    updateSiteInputParams.OxdId = oxdModel.OxdId;
+    updateSiteInputParams.Contacts = new List<string> { oxdModel.OxdEmail };
+    updateSiteInputParams.PostLogoutRedirectUri = oxdModel.PostLogoutRedirectUrl;
+
+    //Update Site Registration
+    var updateSiteClient = new UpdateSiteRegistrationClient();
+    var updateSiteResponse = updateSiteClient.UpdateSiteRegistration(oxdModel.OxdHost, oxdModel.OxdPort, updateSiteInputParams);
+
+    //Process the response
+    return Json(new { status = updateSiteResponse.Status });
+}
+```
