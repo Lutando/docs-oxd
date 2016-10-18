@@ -28,3 +28,61 @@ authorization_redirect_uri=https://your.site.org/callback
 ```
 
 All the required and optional configuration items are with application developer. The oxd-csharp library does not have any specific configuration items itself.
+
+## Using the oxd-csharp Library in your website
+
+#### Register Site
+
+The following are the required information for registering a Site: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *AuthorizationRedirectUri* - A URL which the OP is authorized to redirect the user after authorization.
+
+The following code snippet can be used to register a site.
+
+```csharp
+[HttpPost]
+public ActionResult RegisterSite(OxdModel oxdModel)
+{
+	//prepare input params for Register Site
+    var registerSiteInputParams = new RegisterSiteParams();
+    registerSiteInputParams.AuthorizationRedirectUri = oxdModel.RedirectUrl;
+    registerSiteInputParams.OpHost = "https://scim-test.gluu.org";
+    registerSiteInputParams.ClientName = "OxdTestingClient";
+
+    //Register Site
+    var registerSiteClient = new RegisterSiteClient();
+    var registerSiteResponse = registerSiteClient.RegisterSite(oxdModel.OxdHost, oxdModel.OxdPort, registerSiteInputParams);
+
+    //Process the response
+    return Json(new { oxdId = registerSiteResponse.Data.OxdId });
+}
+```
+
+#### Get Authorization URL
+
+The following are the required information for Getting Authorization URL: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to Get Authorization URL.
+
+```csharp
+[HttpPost]
+public ActionResult GetAuthorizationUrl(OxdModel oxdModel)
+{
+	//prepare input params for Getting Auth URL from a site
+    var getAuthUrlInputParams = new GetAuthorizationUrlParams();
+    getAuthUrlInputParams.OxdId = oxdModel.OxdId;
+
+    //Get Auth URL
+    var getAuthUrlClient = new GetAuthorizationUrlClient();
+    var getAuthUrlResponse = getAuthUrlClient.GetAuthorizationURL(oxdModel.OxdHost, oxdModel.OxdPort, getAuthUrlInputParams);
+
+    //Process Response
+    return Json(new { authUrl = getAuthUrlResponse.Data.AuthorizationUrl });
+}
+```
