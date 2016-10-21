@@ -39,9 +39,9 @@ In your WP admin menu panel you should now see the OpenID Connect menu tab. Clic
 
 ![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/1.png) 
 
-1. Automatically register new users: must be checked. 
+1. Automatically register any user with an account in the OpenID Provider. 
 2. New User Default Role: specify which role to give to new users upon registration.  
-3. URI of the OpenID Connect Provider: insert the URI of the OpenID Connect Provider.
+3. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
 4. Custom URI after logout: custom URI after logout (for example "Thank you" page).
 5. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file).
 6. Click `Register` to continue.
@@ -60,7 +60,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 ![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/5.png)
 
-#### Scopes
+#### User Scopes
 
 Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  
 
@@ -70,9 +70,9 @@ If you are using a Gluu server as your OpenID Provider, you can view all availab
 
 In the Plugin interface you can enable, disable and delete scopes. 
 
-#### Manage Authentication
+#### Authentication
 
-##### Send user straight to OpenID Provider for authentication
+##### Bypass the local WordPress login page and send users straight to the OP for authentication
 
 Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen.
 When it is not checked, it will give proof the following screen.   
@@ -85,8 +85,4 @@ To signal which type of authentication should be used, an OpenID Connect client 
 Navigate to your OpenID Provider confiuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. In the `Select acr` section of the plugin page, choose the mechanism which you want for authentication. 
 
 Note: If the `Select acr` value is `none`, users will be sent to pass the OP's default authentication mechanism.
-
-##### Add acr
-
-The plugin will detect the OPs supported ACR values if this information is published in the OP's discovery endpoint. However, if the OP does not publish supported ACR values, you may need to add them manually. 
 
