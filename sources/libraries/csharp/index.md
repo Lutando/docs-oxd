@@ -207,3 +207,81 @@ public ActionResult UpdateSiteRegistration(OxdModel oxdModel)
     return Json(new { status = updateSiteResponse.Status });
 }
 ```
+
+#### UMA RS Protect Resources
+
+The following are the required information for Protecting UMA resource in Resoruce Server: 
+
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to Protect UMA resources in Rssource Server.
+
+```csharp
+private UmaRsProtectResponse ProtectResources(OxdModel oxdModel)
+{
+	var protectParams = new UmaRsProtectParams();
+    var protectClient = new UmaRsProtectClient();
+
+    //prepare input params for Protect Resource
+    protectParams.OxdId = oxdModel.OxdId;
+    protectParams.ProtectResources = new List<ProtectResource>
+    {
+    	new ProtectResource
+        {
+        	Path = "/scim",
+            ProtectConditions = new List<ProtectCondition>
+            {
+            	new ProtectCondition
+                {
+                	HttpMethods = new List<string> { "GET" },
+                    Scopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" },
+                    TicketScopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" }
+                }
+            }
+        }
+	};
+   	
+
+    //Protect Resources
+    var protectResponse = protectClient.ProtectResources(oxdModel.OxdHost, oxdModel.OxdPort, protectParams);
+
+    //process response
+    if(protectResponse.Status.ToLower().Equals("ok"))
+    {
+    	return protectResponse;
+    }
+
+    throw new Exception("Procteting Resource is not successful. Check OXD Server log for error details.");
+}
+```
+
+#### UMA RS Check Access
+
+The following are the required information for Checking Access of a UMA resource in Resource Server: 
+
+- *OxdId* 		- The _OXD ID_ of registered site
+- *RPT* 		- Requesting Party Token
+- *Path* 		- Path of resource (e.g. http://rs.com/phones), /phones should be passed
+- *HttpMethod* 	- Http method of RP request (GET, POST, PUT, DELETE)
+
+The following code snippet can be used to Check Access of a UMA resource protected in Resource Server.
+
+```csharp
+private UmaRsCheckAccessResponse CheckAccess(string rpt, string path, string httpMethod, OxdModel oxdModel)
+{
+	var checkAccessParams = new UmaRsCheckAccessParams();
+    var checkAccessClient = new UmaRsCheckAccessClient();
+
+    //prepare input params for Check Access
+    checkAccessParams.OxdId = oxdModel.OxdId;
+    checkAccessParams.RPT = rpt;
+    checkAccessParams.Path = path;
+    checkAccessParams.HttpMethod = httpMethod;
+
+    //Check Access
+    var checkAccessResponse = checkAccessClient.CheckAccess(oxdModel.OxdHost, oxdModel.OxdPort, checkAccessParams);
+
+    //process response
+    return checkAccessResponse;
+}
+```
