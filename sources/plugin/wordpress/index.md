@@ -39,7 +39,7 @@ In your WP admin menu panel you should now see the OpenID Connect menu tab. Clic
 
 ![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/1.png) 
 
-1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your WordPress site. They will be assigned the new user default role specified below.
+1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.
 2. Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
 3. New User Default Role: specify which role to give to new users upon registration.  
 4. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
@@ -59,8 +59,14 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 #### Role based enrollment
 
-Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand navigation menu. Select `Manage People`. Find the person(s) who should have access. Click their user entry. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. Update the user record, and now they are ready for enrollment at your WordPress site. 
-
+1. Navigate to your Gluu Server admin GUI. 
+2. Click the `Users` tab in the left hand navigation menu. 
+3. Select `Manage People`. 
+4. Find the person(s) who should have access. 
+5. Click their user entry. 
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. 7. Update the user record.
+8. Go back to the WP plugin and make sure the `permission` scope is requested (see below). 
+9. Now they are ready for enrollment at your WordPress site. 
 
 ### OpenID Connect Configuration
 
