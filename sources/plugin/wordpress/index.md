@@ -1,17 +1,17 @@
 [TOC]
 
-# WordPress OpenID Connect Single Sign-On (SSO) Plugin By Gluu
+# OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu
 
 ![image](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/plugin.jpg)
 
 Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
 ## Requirements
-In order to use the WordPress plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
+In order to use the WordPress plugin you will need a standard OP (like Google or a Gluu Server) and the oxd server.
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
-* [oxd Server Installation Guide](https://oxd.gluu.org)
+* [oxd Webpage](https://oxd.gluu.org)
 
 
 ## Installation
