@@ -64,7 +64,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 3. Select `Manage People`. 
 4. Find the person(s) who should have access. 
 5. Click their user entry. 
-6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735625/fd97d7b6-9b71-11e6-92d2-380ad49a560a.png).
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png).
 7. Update the user record. 
 8. Go back to the WP plugin and make sure the `permission` scope is requested (see below). 
 9. Now they are ready for enrollment at your WordPress site. 
