@@ -11,7 +11,7 @@ In order to use the WordPress plugin you will need to have a standard OP (like G
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
-* [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+* [oxd Server Installation Guide](https://oxd.gluu.org)
 
 
 ## Installation
