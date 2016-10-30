@@ -1,6 +1,7 @@
 # Configuration
 
-oxD configuration consists of two files :
+The oxd packages install in `/opt/oxd-server/` Configuration consists 
+of two files:
 
 * `conf/oxd-conf.json` - general configuration
 * `conf/oxd-default-site-config.json` - fallback configuration for "Register site" command, see details on 
