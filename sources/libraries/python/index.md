@@ -6,7 +6,7 @@ oxD Python is a client library for the Gluu oxD Server. For information about ox
 ### Prerequisites
 
 * Python 2.7
-* Gluu oxD Server - [Installation docs](https://www.gluu.org/docs-oxd/oxdserver/install/)
+* Gluu oxD Server - [Installation docs](https://oxd.gluu.org/docs/install/)
 
 ### Library
 * *Official Gluu Repo* - Install using the package manager from the official Gluu repository.
@@ -19,7 +19,7 @@ apt-get install gluu-oxd-python
 yum install gluu-oxd-python
 ```
 
-* *Source from Github* -  Download the zip of the oxD Python Library from [here](https://github.com/GluuFederation/oxd-python/releases) and unzip to your location of choice
+* *Source from Github* -  Download the zip of the oxD Python Library from [here](https://github.com/GluuFederation/oxd-python/archive/v2.4.4.zip) and unzip to your location of choice
 
 ```
 cd oxdpython-version
@@ -79,7 +79,8 @@ auth_url = client.get_authorization_url()
 
 ```python
 # code = parse_callback_url_querystring()  # Refer your web framework
-tokens = client.get_tokens_by_code(code)
+# state = parse_callback_url_querystring()  # Refer your web framework
+tokens = client.get_tokens_by_code(code, state)
 ```
 
 #### Get User Claims
