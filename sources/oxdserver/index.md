@@ -347,6 +347,7 @@ Response:
 A client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1),
 MUST:
 
+- Client must have 'uma_protection' scope (it must be provided during register_site command or otherwise granted via GUI)
 - Register a protection document (with uma_rs_protect command)
 - Intercept HTTP call (before actual REST resource call) and check whether it's allowed to proceed with call or reject it according to uma_rs_check_access command response:
     - Allow access - if response from uma_rs_check_access is "allowed" or "not_protected" error is returned.
@@ -503,7 +504,7 @@ Resource is not protected
 
 ## UMA Client API's
 
-If your appliation is calling UMA protected resources, use these API's to obtain an RPT token.
+If your application is calling UMA protected resources, use these API's to obtain an RPT token. Client must have 'uma_authorization' scope (it must be provided during register_site command or otherwise granted via GUI)
 
 ### UMA RP - Get RPT
 
