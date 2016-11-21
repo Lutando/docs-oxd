@@ -68,7 +68,7 @@ If your OpenID Connect Provider doesn't support dynamic registration, you will n
 
 ![General](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/44.m1.1.png) 
 
-To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+To generate your `client_id` and `client_secret` use the `Redirect URL` for customer page: `https://{site-base-url}/index.php/customer/account/login/?option=getOxdSocialLogin` and `Redirect URL` for administrator  page: `https://{site-base-url}/index.php/admin/?option=getOxdAdminLogin`.
 
 > If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
@@ -79,7 +79,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 3. Select `Manage People`.
 4. Find the person(s) who should have access.
 5. Click their user entry.
-6. Add the `User Permission` attribute to the person and specify the same value as in the extension. For instance, if in the extension you have limit enrollment to user(s) with role = `magento`, then you should also have `User Permission` = `magento` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png).
+6. Add the `User Permission` attribute to the person and specify the same value as in the extension. For instance, if in the extension you have limit enrollment to user(s) with role = `magento`, then you should also have `User Permission` = `magento` in the user entry. [See a screenshot example](https://raw.githubusercontent.com/GluuFederation/gluu-magento-sso-login-extension/master/docu/permission.png).
 7. Update the user record.
 8. Go back to the Magento extension and make sure the `permission` scope is requested (see below).
 9. Now they are ready for enrollment at your Magento site.
