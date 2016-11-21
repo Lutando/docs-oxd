@@ -85,7 +85,7 @@ In the Plugin interface you can enable, disable and delete scopes.
 
 #### Authentication
 
-Bypass the local WordPress login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen. When it is not checked, users will see the following screen when trying to loogin: 
+Bypass the local WordPress login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen. When it is not checked, users will see the following screen when trying to login: 
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/6.png) 
 
