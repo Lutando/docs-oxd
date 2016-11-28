@@ -58,6 +58,10 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 > If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
+### Attention
+
+Please add the following line to your config_override.php file `$sugar_config['http_referer']['list'][] = your-openid-provider.uri`;
+
 #### Role based enrollment
 
 Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand navigation menu. Select `Manage People`. Find the person(s) who should have access. Click their user entry. Add the `User Permission` attribute to the person and specify the same value as in the module. For instance, if in the module you have limit enrollment to user(s) with role = `suitecrm`, then you should also have `User Permission` = `suitecrm` in the user entry. Update the user record, and now they are ready for enrollment at your SuiteCRM site. 
