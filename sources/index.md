@@ -33,7 +33,13 @@ oxd is commercially licensed. Each time you install oxd you will need to use you
 Currently oxd has libraries for the following languages and frameworks: Php, Java, Python, Ruby, C#, Node.js, Spring, and Lua.
 
 **How do I get SSO across several websites?**                
-You’ll need two things: (1) a central OpenID Connect Provider that holds the passwords and user information; (2) websites that use the OpenID Connect protocol to authenticate users. An easy way to accomplish the first--[install and configure the free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. The second is accomplished by [installing the oxd service](https://oxd.gluu.org/docs/oxdserver/install/) on each web server that needs SSO. This provides easy to use local API’s that can be called by your web applications, and enables you to use a number of plugins for popular open source software packages.
+You’ll need two things: 
+
+1. A central OpenID Connect Provider that holds the passwords and user information; 
+
+2. Websites that use the OpenID Connect protocol to authenticate users. 
+
+An easy way to accomplish the first--[install and configure the free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. The second is accomplished by [installing the oxd service](https://oxd.gluu.org/docs/oxdserver/install/) on each web server that needs SSO. This provides easy to use local API’s that can be called by your web applications, and enables you to use a number of plugins for popular open source software packages.
 
 **Can I use oxd plugins for social login?**    
 Currently the Gluu Server supports Google authentication. In the next release (2.4.5), we’ll be supporting a new social login module called Passportjs. This will enable you to use over 300 social login sites, including Facebook or Twitter. Stay tuned!
