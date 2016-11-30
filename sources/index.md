@@ -15,7 +15,7 @@ oxd is [commercial software](https://github.com/GluuFederation/oxd/blob/master/L
 oxd is a mediator: it provides API's that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
 
 **Where do I deploy oxd?**    
-oxd is deployed on the same server as the web applications you want to protect.
+oxd is deployed on the same server as the web application(s) you want to protect.
 
 **How is oxd licensed?**        
 oxd is commercially licensed. Each time you install oxd you will need to use your license. Active installations are billed $0.33 per day (roughly $10 USD per month per active installation). Get your oxd license today.  
