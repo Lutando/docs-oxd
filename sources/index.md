@@ -30,7 +30,16 @@ oxd offers a few key improvements over the traditional model of embedding OAuth 
 oxd is commercially licensed. Each time you install oxd you will need to use your license. Active installations are billed $0.33 per day (roughly $10 USD per month per active installation). [Get your oxd license today](http://oxd.gluu.org).  
 
 **Which programming languages and frameworks does oxd have libraries for?**        
-Currently there are oxd libraries for the following languages and frameworks: Php, Java, Python, Ruby, C#, Node.js, Spring, and Lua.
+Currently there are oxd libraries for the following languages and frameworks:    
+
+- Php   
+- Java    
+- Python    
+- Ruby    
+- C#     
+- Node.js    
+- Spring    
+- Lua     
 
 **How do I get SSO across several websites?**                
 You’ll need two things:     
