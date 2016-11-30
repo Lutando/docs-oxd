@@ -53,7 +53,7 @@ An easy way to accomplish the first--utilize [Google as your OP](https://oxd.glu
 The second is accomplished by [installing the oxd service](https://oxd.gluu.org/docs/oxdserver/install/) on each web server that needs SSO. This provides easy to use local API’s that can be called by your web applications, and enables you to use a number of plugins for popular open source software packages.
 
 **Can I use oxd plugins for social login?**    
-Currently the Gluu Server supports Google authentication. In the next release (2.4.5), we’ll be supporting a new social login module called Passportjs. This will enable you to use over 300 social login sites, including Facebook or Twitter. Stay tuned!
+Currently the Gluu Server supports Google authentication. In the next release (3.0), Gluu will support a new social login module called [Passportjs](http://passportjs.org). This will enable you to use over 300 social login sites, including Facebook or Twitter. Stay tuned!
 
 **Can I use oxd plugins for two-factor authentication (2FA)?**    
 You can specify a value for `acr`, which provides the OpenID Connect provider with a hint about what kind of authentication to use. The Gluu Server ships with several built in two-factor authentication mechanisms. Two that are very easy to use are FIDO U2F tokens (like Yubikey) and Duo Security. Gluu also has published a free mobile two factor authentication app for iOS and Android called Super Gluu. If you’re a geek, you can write your own custom authentication script in the Gluu Server, and implement support for any kind of strong authentication technology.
