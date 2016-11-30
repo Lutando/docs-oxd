@@ -39,7 +39,9 @@ You’ll need two things:
 
 2. Websites that use the OpenID Connect protocol to authenticate users.     
 
-An easy way to accomplish the first--[install and configure the free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. The second is accomplished by [installing the oxd service](https://oxd.gluu.org/docs/oxdserver/install/) on each web server that needs SSO. This provides easy to use local API’s that can be called by your web applications, and enables you to use a number of plugins for popular open source software packages.
+An easy way to accomplish the first--utilize [Google as your OP](https://oxd.gluu.org/docs/conf/#using-google-as-an-openid-provider), or install and configure the [free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. 
+
+The second is accomplished by [installing the oxd service](https://oxd.gluu.org/docs/oxdserver/install/) on each web server that needs SSO. This provides easy to use local API’s that can be called by your web applications, and enables you to use a number of plugins for popular open source software packages.
 
 **Can I use oxd plugins for social login?**    
 Currently the Gluu Server supports Google authentication. In the next release (2.4.5), we’ll be supporting a new social login module called Passportjs. This will enable you to use over 300 social login sites, including Facebook or Twitter. Stay tuned!
