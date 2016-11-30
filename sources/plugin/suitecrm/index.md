@@ -60,7 +60,10 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 ### Attention
 
-Please add the following line to your config_override.php file `$sugar_config['http_referer']['list'][] = your-openid-provider.uri`;
+Please add the following lines to your config_override.php file.
+ 
+`$sugar_config['http_referer']['list'][] = your-openid-provider.uri`;
+`$sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );`
 
 #### Role based enrollment
 
