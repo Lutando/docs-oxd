@@ -15,7 +15,7 @@ applications. Gluu is introducing an nginx-based gateway that will
 enable the centralized deployment of an oxd server (and will
 require clients to use https to connect to it)--stay tuned.
 
-oxd API's can be called with by any application that can make REST 
+oxd API's can be called with by any application that can make socket
 calls.  Gluu also provides several native libraries that wrap the
 oxd APIs, currently available for Php, Java, Python, Node, Ruby and C#.
 
