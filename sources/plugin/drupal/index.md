@@ -1,3 +1,5 @@
+[TOC]
+
 # Drupal OpenID Connect Single Sign-On (SSO) Module By Gluu
 
 ![image](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/plugin.jpg)
@@ -15,7 +17,7 @@ In order to use the Drupal module you will need to have a standard OP (like Goog
 ## Installation
  
 ### Download
-[Drupal Module 2.4.4](https://github.com/GluuFederation/gluu-sso-drupal-module/blob/master/gluu_sso.tar.gz?raw=true)
+[Drupal Module](https://github.com/GluuFederation/gluu-sso-drupal-module/blob/master/gluu_sso.tar.gz?raw=true)
 
 1. Open menu tab Modules and click on `Install new module` button
 ![Manager](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/d1.png) 
@@ -52,7 +54,7 @@ If your OpenID Provider supports dynamic registration, no additional steps are r
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/gluu-sso-drupal-module/master/docu/2.png) 
-To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}?option=oxdOpenId`.
+To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?gluuOption=oxdOpenId`.
 
 > If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
