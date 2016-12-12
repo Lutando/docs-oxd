@@ -79,7 +79,7 @@ Scopes are groups of user attributes that are sent from the OP to the applicatio
 
 To view your OP's available scopes, open a web browser and navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
 
-If you are using a Gluu server as your OpenID Provider, you can view all available scopes by navigating to the OpenID Connect > Scopes intefrace inside the Gluu Server. 
+If you are using a Gluu server as your OpenID Provider, you can view all available scopes by navigating to the OpenID Connect > Scopes interface inside the Gluu Server. 
 
 In the Plugin interface you can enable, disable and delete scopes. 
 
@@ -91,7 +91,7 @@ Bypass the local WordPress login page and send users straight to the OP for auth
 
 Select ACR: To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
 
-Navigate to your OpenID Provider confiuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. 
+Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. 
 
 In the `Select acr` section of the plugin page, choose the mechanism which you want for authentication. If the `Select acr` value in the plugin is `none`, users will be sent to pass the OP's default authentication mechanism.
 
