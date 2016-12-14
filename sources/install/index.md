@@ -2,7 +2,9 @@
 
 # oxd Server Installation/Configuration
 
-The easiest way to install oxd is to use one of the Linux packages.
+The easiest way to install oxd is to use one of the Linux packages. 
+
+**You must be a root user on the machine to install oxd.**
 
 ## Ubuntu 14.04(trusty)
 
