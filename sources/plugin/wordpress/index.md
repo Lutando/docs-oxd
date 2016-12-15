@@ -2,7 +2,7 @@
 
 # OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu
 
-![image](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/plugin.jpg)
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/plugin.jpg)
 
 Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can use Google or [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
@@ -17,7 +17,7 @@ In order to use the WordPress plugin you will need a standard OP (like Google or
 ## Installation
  
 ### Download
-[Github source](https://github.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/archive/v2.4.4.zip).
+[Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v2.4.4.zip).
 
 [Link to WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/)
 
@@ -37,7 +37,7 @@ Activate the plugin by performing the following steps:
  
 In your WP admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
 
-![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/1.png) 
+![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png) 
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.
 2. Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
@@ -51,7 +51,7 @@ If your OpenID Provider supports dynamic registration, no additional steps are r
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![General](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/2.png) 
+![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/2.png) 
 
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
@@ -71,7 +71,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 ### OpenID Connect Configuration
 
-![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/5.png)
+![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/5.png)
 
 #### User Scopes
 
@@ -87,7 +87,7 @@ In the Plugin interface you can enable, disable and delete scopes.
 
 Bypass the local WordPress login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen. When it is not checked, users will see the following screen when trying to login: 
 
-![upload](https://raw.githubusercontent.com/GluuFederation/wp_openid_connect_single_sign_on_plugin_by_gluu/master/assets/6.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/6.png) 
 
 Select ACR: To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
 
