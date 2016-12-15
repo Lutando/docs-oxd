@@ -161,3 +161,6 @@ scopes = ["http://photoz.example.com/dev/actions/add",
 
 gat = client.uma_rp_get_gat(scopes)
 ```
+
+## Sample App
+[View the sample app](https://github.com/GluuFederation/oxd-python/tree/master/demosite)
