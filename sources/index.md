@@ -10,6 +10,7 @@ Using oxd to support federation in an application provides both technical and bu
 
 2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards–and the liability associated with poor implementations–it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols;       
 
+
 3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you have someone to call when something goes wrong!       
 
 # Technical Architecture
