@@ -18,24 +18,24 @@ Using oxd to support federation in an application provides both technical and bu
 # Plugins
 
 Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications (more coming!):
-- [Wordpress](https://oxd.gluu.org/docs/plugin/wordpress/)
-- [Magento](https://oxd.gluu.org/docs/plugin/magento/)
-- [Drupal](https://oxd.gluu.org/docs/plugin/drupal/)
-- [OpenCart](https://oxd.gluu.org/docs/plugin/opencart/)
-- [SuiteCRM](https://oxd.gluu.org/docs/plugin/suitecrm/)
-- [SugarCRM](https://oxd.gluu.org/docs/plugin/sugarcrm/)
-- [Roundcube](https://oxd.gluu.org/docs/plugin/roundcube/)
+- [Wordpress](https://oxd.gluu.org/docs/plugin/wordpress/)      
+- [Magento](https://oxd.gluu.org/docs/plugin/magento/)       
+- [Drupal](https://oxd.gluu.org/docs/plugin/drupal/)       
+- [OpenCart](https://oxd.gluu.org/docs/plugin/opencart/)       
+- [SuiteCRM](https://oxd.gluu.org/docs/plugin/suitecrm/)       
+- [SugarCRM](https://oxd.gluu.org/docs/plugin/sugarcrm/)       
+- [Roundcube](https://oxd.gluu.org/docs/plugin/roundcube/)       
 
 For a complete list of oxd plugins, check the [oxd documentations](http://oxd.gluu.org/docs)
 
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.
-- [Python](https://oxd.gluu.org/docs/libraries/python/index.md)
-- [Java](https://oxd.gluu.org/docs/libraries/java/index.md)
-- [Php](https://oxd.gluu.org/docs/libraries/php/index.md)
-- [Node](https://oxd.gluu.org/docs/libraries/node/index.md)
-- [Ruby](https://oxd.gluu.org/docs/libraries/rube/index.md)
-- [C#](https://oxd.gluu.org/docs/libraries/csharp/index.md)
+- [Python](https://oxd.gluu.org/docs/libraries/python/index.md)       
+- [Java](https://oxd.gluu.org/docs/libraries/java/index.md)       
+- [Php](https://oxd.gluu.org/docs/libraries/php/index.md)       
+- [Node](https://oxd.gluu.org/docs/libraries/node/index.md)       
+- [Ruby](https://oxd.gluu.org/docs/libraries/rube/index.md)       
+- [C#](https://oxd.gluu.org/docs/libraries/csharp/index.md)       
 
 # License
 oxd is commercial software licensed by Gluu. Learn more on the [oxd website](https://oxd.gluu.org).
