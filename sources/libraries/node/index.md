@@ -421,8 +421,6 @@ oxd.uma_rs_check_access(oxd.Request,function(response){
 }
 ```
 
-# License
+## Sample App
 
-(MIT License)
-
-Copyright (c) 2016 Gluu
+[View the sample app](https://github.com/GluuFederation/oxd-node/tree/master/oxd-node-demo)
