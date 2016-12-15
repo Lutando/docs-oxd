@@ -124,3 +124,7 @@ def get_gat
 	gat = @uma_command.uma_rp_get_gat(scopes) # Pass scopes array to get GAT
 end
 ```
+
+## Sample App
+
+[View the sample app](https://github.com/GluuFederation/oxd-ruby/tree/master/demosite)
