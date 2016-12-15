@@ -319,3 +319,7 @@ $_SESSION['uma_gat']= $uma_rp_get_gat->getResponseGat();
 echo $uma_rp_get_gat->getResponseGat();
                         
 ```
+
+## Sample App
+
+[View the sample app](https://github.com/GluuFederation/oxd-php/tree/master/client.example.com)
