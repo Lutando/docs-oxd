@@ -14,35 +14,36 @@ pages:
  
 - [index.md, Home]
 
-# oxd Server
-- [oxdserver/index.md, oxd Server, Protocol]
-- [install/index.md, oxd Server, Installation]
-- [conf/index.md, oxd Server, Configuration]
-- [oxdserver/logs/index.md, oxd Server, Logs]
+# Protocol
+- [protocol/index.md, oxd Server, Protocol]
 
-# Libraries
+# 2.4.4
+- [2.4.4/install/index.md, oxd Server, Installation]
+- [2.4.4/conf/index.md, oxd Server, Configuration]
+- [2.4.4/logs/index.md, oxd Server, Logs]
+## Libraries
+- [2.4.4/libraries/api-client-libraries.md, Libraries, oxd API Client Libraries]
+- [2.4.4/libraries/python/index.md, Libraries, Python]
+- [2.4.4/libraries/java/index.md, Libraries, Java]
+- [2.4.4/libraries/php/index.md, Libraries, PHP]
+- [2.4.4/libraries/node/index.md, Libraries, Node]
+- [2.4.4/libraries/ruby/index.md, Libraries, Ruby]
+- [2.4.4/libraries/csharp/index.md, Libraries, CSharp]
+- [2.4.4/libraries/perl/index.md, Libraries, Perl]
 
-- [libraries/api-client-libraries.md, Libraries, oxd API Client Libraries]
-- [libraries/python/index.md, Libraries, Python]
-- [libraries/java/index.md, Libraries, Java]
-- [libraries/php/index.md, Libraries, PHP]
-- [libraries/node/index.md, Libraries, Node]
-- [libraries/ruby/index.md, Libraries, Ruby]
-- [libraries/csharp/index.md, Libraries, CSharp]
+## Plugins
+- [2.4.4/plugin/wordpress/index.md, Plugin, Wordpress]
+- [2.4.4/plugin/magento/index.md, Plugin, Magento]
+- [2.4.4/plugin/drupal/index.md, Plugin, Drupal]
+- [2.4.4/plugin/opencart/index.md, Plugin, OpenCart]
+- [2.4.4/plugin/sugarcrm/index.md, Plugin, SugarCRM]
+- [2.4.4/plugin/suitecrm/index.md, Plugin, SuiteCRM]
+- [2.4.4/plugin/roundcube/index.md, Plugin, RoundCube]
 
-# Plugins
-- [plugin/wordpress/index.md, Plugin, Wordpress]
-- [plugin/magento/index.md, Plugin, Magento]
-- [plugin/drupal/index.md, Plugin, Drupal]
-- [plugin/opencart/index.md, Plugin, OpenCart]
-- [plugin/sugarcrm/index.md, Plugin, SugarCRM]
-- [plugin/suitecrm/index.md, Plugin, SuiteCRM]
-- [plugin/roundcube/index.md, Plugin, RoundCube]
-
-# Framework
-- [framework/spring/index.md, Framework, Java Spring]
-- [framework/play/index.md, Framework, Java Play Framework]
-- [framework/ruby/index.md, Framework, Ruby on Rails]
-- [framework/python/index.md, Framework, Python Flask]
-- [framework/node/index.md, Framework, Node/Express]
+## Framework
+- [2.4.4/framework/spring/index.md, Framework, Java Spring]
+- [2.4.4/framework/play/index.md, Framework, Java Play Framework]
+- [2.4.4/framework/ruby/index.md, Framework, Ruby on Rails]
+- [2.4.4/framework/python/index.md, Framework, Python Flask]
+- [2.4.4/framework/node/index.md, Framework, Node/Express]
 

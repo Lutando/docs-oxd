@@ -7,5 +7,5 @@ Written for client-application developers, the oxd client libraries provide simp
 - [Java](./java/index.md)
 - [Php](./php/index.md)
 - [Node](./node/index.md)
-- [Ruby](./rube/index.md)
+- [Ruby](./ruby/index.md)
 - [C#](./csharp/index.md)
