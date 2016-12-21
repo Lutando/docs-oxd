@@ -27,8 +27,6 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [SugarCRM](https://oxd.gluu.org/docs/plugin/sugarcrm/)       
 - [Roundcube](https://oxd.gluu.org/docs/plugin/roundcube/)       
 
-For a complete list of oxd plugins, check the [oxd documentations](http://oxd.gluu.org/docs)
-
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
 - [Python](https://oxd.gluu.org/docs/libraries/python/index.md)       
