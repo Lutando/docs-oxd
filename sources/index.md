@@ -19,13 +19,13 @@ Using oxd to support federation in an application provides both technical and bu
 # Plugins
 
 Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications (more coming!):      
-- [Wordpress](./plugin/wordpress/)      
-- [Magento](./plugin/magento/)       
-- [Drupal](./plugin/drupal/)       
-- [OpenCart](./plugin/opencart/)       
-- [SuiteCRM](./plugin/suitecrm/)       
-- [SugarCRM](./plugin/sugarcrm/)       
-- [Roundcube](./plugin/roundcube/)       
+- [Wordpress](./plugin/wordpress/index.md)      
+- [Magento](./plugin/magento/index.md)       
+- [Drupal](./plugin/drupal/index.md)       
+- [OpenCart](./plugin/opencart/index.md)       
+- [SuiteCRM](./plugin/suitecrm/index.md)       
+- [SugarCRM](./plugin/sugarcrm/index.md)       
+- [Roundcube](./plugin/roundcube/index.md)       
 
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
