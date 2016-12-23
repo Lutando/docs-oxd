@@ -15,7 +15,7 @@ Using oxd to support federation in an application provides both technical and bu
 3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you have someone to call when something goes wrong!       
 
 # Technical Architecture
-![image](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
+![image](https://cloud.githubusercontent.com/assets/5271048/21401608/d7a8a926-c769-11e6-94d4-7f2420df730a.png)
 
 # Plugins
 
