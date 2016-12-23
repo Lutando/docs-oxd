@@ -19,23 +19,23 @@ Using oxd to support federation in an application provides both technical and bu
 # Plugins
 
 Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications (more coming!):      
-- [Wordpress](./plugin/wordpress/index.md)      
-- [Magento](./plugin/magento/index.md)       
-- [Drupal](./plugin/drupal/index.md)       
-- [OpenCart](./plugin/opencart/index.md)       
-- [SuiteCRM](./plugin/suitecrm/index.md)       
-- [SugarCRM](./plugin/sugarcrm/index.md)       
-- [Roundcube](./plugin/roundcube/index.md)       
+- [Wordpress](./2.4.4/plugin/wordpress/index.md)      
+- [Magento](./2.4.4/plugin/magento/index.md)       
+- [Drupal](./2.4.4/plugin/drupal/index.md)       
+- [OpenCart](./2.4.4/plugin/opencart/index.md)       
+- [SuiteCRM](./2.4.4/plugin/suitecrm/index.md)       
+- [SugarCRM](./2.4.4/plugin/sugarcrm/index.md)       
+- [Roundcube](./2.4.4/plugin/roundcube/index.md)       
 
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
-- [Python](./libraries/python/index.md)       
-- [Java](./libraries/java/index.md)       
-- [Php](./libraries/php/index.md)       
-- [Node](./libraries/node/index.md)       
-- [Ruby](./libraries/rube/index.md)       
-- [C#](./libraries/csharp/index.md)       
-- [Perl](./libraries/perl/index.md)       
+- [Python](./2.4.4/libraries/python/index.md)       
+- [Java](./2.4.4/libraries/java/index.md)       
+- [Php](./2.4.4/libraries/php/index.md)       
+- [Node](./2.4.4/libraries/node/index.md)       
+- [Ruby](./2.4.4/libraries/ruby/index.md)       
+- [C#](./2.4.4/libraries/csharp/index.md)       
+- [Perl](./2.4.4/libraries/perl/index.md)       
 
 # License
 oxd is commercial software licensed by Gluu. Learn more on the [oxd website](https://oxd.gluu.org).
