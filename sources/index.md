@@ -29,7 +29,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
-- [Python](./libraries/python/index.md)       
+- [Python](https://github.com/GluuFederation/docs-oxd/blob/master/sources/plugin/wordpress/index.md)       
 - [Java](./libraries/java/index.md)       
 - [Php](./libraries/php/index.md)       
 - [Node](./libraries/node/index.md)       
