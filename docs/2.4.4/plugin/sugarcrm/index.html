@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SugarCRM - oxd Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/gluu_favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> oxd Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+			
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../..">Home</a>
+        
+    </li>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>oxd Server</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../protocol/">Protocol</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../install/">Installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../conf/">Configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../logs/">Logs</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/api-client-libraries/">oxd API Client Libraries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/python/">Python</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/php/">PHP</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/node/">Node</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/ruby/">Ruby</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/csharp/">CSharp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../libraries/perl/">Perl</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Plugin</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../wordpress/">Wordpress</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../magento/">Magento</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../drupal/">Drupal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../opencart/">OpenCart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">SugarCRM</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#sugarcrm-openid-connect-single-sign-on-sso-module-by-gluu">SugarCRM OpenID Connect Single Sign-On (SSO) Module By Gluu</a></li>
+                
+                    <li><a class="toctree-l4" href="#requirements">Requirements</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration">Configuration</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../suitecrm/">SuiteCRM</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../roundcube/">RoundCube</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Framework</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/spring/">Java Spring</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/play/">Java Play Framework</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/ruby/">Ruby on Rails</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/python/">Python Flask</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/node/">Node/Express</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+		
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">oxd Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Plugin &raquo;</li>	 
+        
+      
+    
+    <li>SugarCRM</li>
+    <li class="wy-breadcrumbs-aside">
+           
+      
+        
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4/plugin/sugarcrm/index.md" class="icon icon-github"> Edit on GitHub</a>
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <div class="toc">
+<ul>
+<li><a href="#sugarcrm-openid-connect-single-sign-on-sso-module-by-gluu">SugarCRM OpenID Connect Single Sign-On (SSO) Module By Gluu</a><ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#download">Download</a></li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a><ul>
+<li><a href="#general">General</a></li>
+<li><a href="#attention">Attention</a><ul>
+<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+</ul>
+</li>
+<li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
+<li><a href="#user-scopes">User Scopes</a></li>
+<li><a href="#authentication">Authentication</a><ul>
+<li><a href="#bypass-the-local-sugarcrm-login-page-and-send-users-straight-to-the-op-for-authentication">Bypass the local SugarCRM login page and send users straight to the OP for authentication</a></li>
+<li><a href="#select-acr">Select acr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="sugarcrm-openid-connect-single-sign-on-sso-module-by-gluu">SugarCRM OpenID Connect Single Sign-On (SSO) Module By Gluu</h1>
+<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/plugin.jpg" /></p>
+<p>Gluu's OpenID Connect Single Sign-On (SSO) SugarCRM module will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can <a href="https://gluu.org/docs/deployment">deploy the free open source Gluu Server</a>.  </p>
+<h2 id="requirements">Requirements</h2>
+<p>In order to use the SugarCRM module you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.</p>
+<ul>
+<li>
+<p><a href="https://www.gluu.org/docs/deployment/">Gluu Server Installation Guide</a>.</p>
+</li>
+<li>
+<p><a href="https://oxd.gluu.org/docs/oxdserver/install/">oxd Server Installation Guide</a></p>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="download">Download</h3>
+<p><a href="https://github.com/GluuFederation/sugarcrm-oxd-module/blob/master/gluu-sso-SugarCRM-module.zip?raw=true">Github source</a></p>
+<ol>
+<li>
+<p>Open menu tab Admin and click on <code>Module loader</code> button
+<img alt="Manager" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/1.png" /> 
+<img alt="Manager" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/2.png" /> </p>
+</li>
+<li>
+<p>Choose downloaded module and click on <code>Upload</code> button. 
+<img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d3.png" /> </p>
+</li>
+<li>
+<p>Click on <code>Install</code> button. 
+<img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d4.png" /> </p>
+</li>
+<li>
+<p>Open menu tab OpenID Connect (SSO) Module by Gluu 
+<img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d5.png" /> </p>
+</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<h3 id="general">General</h3>
+<p>In your SugarCRM admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:</p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d6.png" /> </p>
+<ol>
+<li>Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your SugarCRM site. They will be assigned the new user default role specified below.</li>
+<li>Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>sugarcrm</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>New User Default Role: specify which role to give to new users upon registration.  </li>
+<li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
+<li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
+<li>oxd port: enter the oxd-server port (you can find this in the <code>oxd-server/conf/oxd-conf.json</code> file).</li>
+<li>Click <code>Register</code> to continue.</li>
+</ol>
+<p>If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the <a href="#openid-connect-configuration">OpenID Connect Configuration</a> tab. </p>
+<p>If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider <code>client_id</code> and <code>client_secret</code> on the following page.</p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d7.png" />  </p>
+<p>To generate your <code>client_id</code> and <code>client_secret</code> use the redirect uri: <code>https://{site-base-url}/index.php?option=oxdOpenId</code>.</p>
+<blockquote>
+<p>If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect &gt; Clients page. Search for your <code>oxd id</code>.</p>
+</blockquote>
+<h3 id="attention">Attention</h3>
+<p>Please add the following lines to your config_override.php file.</p>
+<p><code>$sugar_config['http_referer']['list'][] = your-openid-provider.uri</code>;
+<code>$sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );</code></p>
+<h4 id="role-based-enrollment">Role based enrollment</h4>
+<p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the module. For instance, if in the module you have limit enrollment to user(s) with role = <code>sugarcrm</code>, then you should also have <code>User Permission</code> = <code>sugarecrm</code> in the user entry. Update the user record, and now they are ready for enrollment at your SugarCRM site. </p>
+<h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d8.png" /> </p>
+<h4 id="user-scopes">User Scopes</h4>
+<p>Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are <code>profile</code>, <code>email</code>, and <code>openid</code>.  </p>
+<p>To view your OP's available scopes, in a web browser navigate to <code>https://OpenID-Provider/.well-known/openid-configuration</code>. For example, here are the scopes you can request if you're using <a href="https://accounts.google.com/.well-known/openid-configuration">Google as your OP</a>. </p>
+<p>If you are using a Gluu server as your OpenID Provider, you can view all available scopes by navigating to the OpenID Connect &gt; Scopes interface. </p>
+<p>In the module interface you can enable, disable and delete scopes. </p>
+<blockquote>
+<p>If you have chosen to limit enrollment to users with specific roles in the OP, you will also need to request the <code>Permission</code> scope, as shown in the above screenshot. </p>
+</blockquote>
+<h4 id="authentication">Authentication</h4>
+<h5 id="bypass-the-local-sugarcrm-login-page-and-send-users-straight-to-the-op-for-authentication">Bypass the local SugarCRM login page and send users straight to the OP for authentication</h5>
+<p>Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local SugarCRM login screen.
+When it is not checked, it will give proof the following screen.   </p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d9.png" /> </p>
+<h5 id="select-acr">Select acr</h5>
+<p>To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  </p>
+<p>Navigate to your OpenID Provider configuration webpage <code>https://OpenID-Provider/.well-known/openid-configuration</code> to see supported <code>acr_values</code>. In the <code>Select acr</code> section of the module page, choose the mechanism which you want for authentication. </p>
+<p>Note: If the <code>Select acr</code> value is <code>none</code>, users will be sent to pass the OP's default authentication mechanism.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../suitecrm/" class="btn btn-neutral float-right" title="SuiteCRM"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../opencart/" class="btn btn-neutral" title="OpenCart"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../opencart/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../suitecrm/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
