@@ -9,3 +9,4 @@ Written for client-application developers, the oxd client libraries provide simp
 - [Node](./node/index.md)
 - [Ruby](./ruby/index.md)
 - [C#](./csharp/index.md)
+- [Perl](./perl/index.md)
