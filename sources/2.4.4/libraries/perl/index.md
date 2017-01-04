@@ -1,18 +1,22 @@
 [TOC]
 
 This page is created to document the `perl` library for oxD Server 2.4.4.
+
 #oxd-perl
 
 oxd-perl is a client library for the oxD Server 2.4.4. 
 
 ## Installation
 
-**Source**<br />
+**Source**
+
 oxd-perl source is available on Github:
+
 - [Github sources](https://github.com/GluuFederation/oxd-perl)
 
 
 oxd-perl source is available on cpan:
+
 - [OxdPerlModule](http://search.cpan.org/~inderpal/)
 
 **Download and install manually using following command**
