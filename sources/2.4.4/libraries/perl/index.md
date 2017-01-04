@@ -1,7 +1,6 @@
 [TOC]
 
 This page is created to document the `perl` library for oxD Server 2.4.4.
-
 #oxd-perl
 
 oxd-perl is a client library for the oxD Server 2.4.4. 
@@ -18,7 +17,7 @@ oxd-perl source is available on cpan:
 
 **Download and install manually using following command**
 
- ``` {.code }   
+``` {.code }   
 
 Path : /var/www/html/oxd-perl/oxdPerl/
 
@@ -31,9 +30,10 @@ sudo ./Build install
  
 **Install from http://search.cpan.org**
 
+``` {.code }
+
 Run following commands in terminal
 
- ``` {.code }
 cpan 
 cpan > install INDERPAL/OxdPerlModule-0.01.tar.gz
  
