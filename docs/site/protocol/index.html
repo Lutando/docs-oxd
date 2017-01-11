@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protocol - oxd Docs</title>
+  
+
+  <link rel="shortcut icon" href="../img/gluu_favicon.ico">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> oxd Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+			
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>oxd Server</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Protocol</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#oxd-server-overview">oxd server overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#openid-connect-authentication-overview">OpenID Connect Authentication Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-resource-server-apis">UMA Resource Server API's</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-client-apis">UMA Client API's</a></li>
+                
+                    <li><a class="toctree-l4" href="#gluu-oauth2-access-management-apis">Gluu OAuth2 Access Management API's</a></li>
+                
+                    <li><a class="toctree-l4" href="#references">References</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/install/">Installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/conf/">Configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/logs/">Logs</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Libraries</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/api-client-libraries/">oxd API Client Libraries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/python/">Python</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/php/">PHP</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/node/">Node</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/ruby/">Ruby</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/csharp/">CSharp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/libraries/perl/">Perl</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Plugin</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/wordpress/">Wordpress</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/magento/">Magento</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/drupal/">Drupal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/opencart/">OpenCart</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/sugarcrm/">SugarCRM</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/suitecrm/">SuiteCRM</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/roundcube/">RoundCube</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+			
+            <li>
+    <ul class="subnav">
+    <li><span>Framework</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/spring/">Java Spring</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/play/">Java Play Framework</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/ruby/">Ruby on Rails</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/python/">Python Flask</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/node/">Node/Express</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+		
+          
+		
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">oxd Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>oxd Server &raquo;</li>	 
+        
+      
+    
+    <li>Protocol</li>
+    <li class="wy-breadcrumbs-aside">
+           
+      
+        
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/protocol/index.md" class="icon icon-github"> Edit on GitHub</a>
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="oxd-server-overview">oxd server overview</h1>
+<p>oxd makes it super simple to authenticate a person with OpenID Connect, 
+to protect web resources with OAuth2, or to write a client that calls an 
+OAuth2 protected API. </p>
+<p>The oxd Server is designed to work as a standalone service demon. It's 
+actually a web server, running in an embedded 
+<a href="http://www.eclipse.org/jetty/">Jetty</a> server.  Just start it and stop 
+it like you would any other unix service.</p>
+<p>oxd's API's make it easier for developers to use OAuth2 protocols.  By 
+default, it's restricted to <code>localhost,</code> which means these API's cannot 
+be reached from another server on the network--only by services running 
+locally server. You deploy oxd on each server that has web 
+applications. Gluu is introducing an nginx-based gateway that will 
+enable the centralized deployment of an oxd server (and will
+require clients to use https to connect to it)--stay tuned.</p>
+<p>oxd API's can be called with by any application that can make REST 
+calls.  Gluu also provides several native libraries that wrap the
+oxd APIs, currently available for Php, Java, Python, Node, Ruby and C#.</p>
+<p>oxd is commercial software. There is a free version that is limited 
+to two transactions per second--which is enough for a low volume web 
+site. For more information on purchasing a commercial version of oxd, 
+see the <a href="http://oxd.gluu.org">website</a></p>
+<p><img alt="oxd-overview" src="https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg" /></p>
+<h2 id="openid-connect-authentication-overview">OpenID Connect Authentication Overview</h2>
+<p>OpenID Connect is one of the most popular API's for an application 
+to identify a person. Technically it is not an authentication protocol--
+it enables a person to authorize the release of information to 
+an application from a remote "identity provider". In the
+process, of authorizting this release, the person is authenticated (if 
+no previous session exists). If you are familiar with Google 
+authentication, you've used OpenID Connect. </p>
+<p>If you want to launch an OpenID Connect Provider for your organization, 
+you should consider deploying the Gluu Server, which is available for 
+many Linux distributions, and is easy to install 
+and configure. For more information, see our <a href="http://gluu.org">website</a>. 
+The Gluu Server will enable your organization to consolidate 
+authentication in one place, and to enable Single Sign-on (SSO) to many 
+applications. It's a standard OpenID Connect Provider, but it also 
+supports SAML.</p>
+<p>oxd uses the Authorization Code Flow for authentication. Future versions 
+of oxd may support the Hybrid Flow. Implicit Flow is not supported 
+because it is intended for Javascript client-side applications where 
+the client does not authenticate.</p>
+<p>oxd provides six API's for OpenID Connect authentication. In general,
+you can think of the Authorization Code Flow as a three step process: </p>
+<ul>
+<li>Redirect person to the authorization URL and obtain a code</li>
+<li>Use code to obtain tokens (access, id_token, refresh)</li>
+<li>Use access token to obtain user claims</li>
+</ul>
+<p>The other three oxd API's are:</p>
+<ul>
+<li>Register site (called once--the first time your application uses oxd)</li>
+<li>Update site registration (not used often)</li>
+<li>Logout</li>
+</ul>
+<h3 id="register-site">Register site</h3>
+<p>First of all, the web site must register itself with oxd server. If 
+registration is successful, ox will return an identifier for the 
+application, which must be presented in subsequent API calls. This
+is the <code>oxd-id</code>, not to be confused with the OpenID Connect client id.</p>
+<p>During the registration operation, oxd will dynamically register an 
+OpenID Connect client and save its configuration.</p>
+<p>All parameters to <code>register_site</code> are optional except the 
+<code>authorization_redirect_uri</code>. This is the URL on your website that the 
+OpenID Connect Provider (OP) will redirect the person to after 
+successful authorization.</p>
+<p><code>register_site</code> has many parameters, but you can ignore most of them!
+Default configuration values are taken from
+<a href="https://oxd.gluu.org/docs/oxdserver/conf/">conf/oxd-default-site-config.json</a>.
+Even most of these options may be blank, with one exception: if the 
+<code>op_host</code> is missing from the <code>register_site</code> command parameters, 
+it must be present in this file--we need to know which OpenID Provider
+will be used! </p>
+<p>The <code>register_site</code> command returns <code>oxd_id</code>. Several applications may 
+share an instance of oxd, and this identifier is used by oxd to 
+distinguish differences in configuration between them.</p>
+<p><code>op_host</code> must point to a valid OpenID Connect Provider that supports 
+<a href="http://openid.net/specs/openid-connect-registration-1_0.html">client registration</a>, 
+for example, a <a href="http://gluu.org/docs">Gluu Server CE installation</a>. 
+Sample: <code>"op_host":"https://idp.example.org"</code></p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;register_site&quot;,
+    &quot;params&quot;: {
+        &quot;authorization_redirect_uri&quot;: &quot;https://client.example.org/cb&quot;, &lt;- REQUIRED
+        &quot;op_host&quot;:&quot;https://ce-dev.gluu.org&quot;                            &lt;- OPTIONAL (But if missing, must be present in defaults)
+        &quot;post_logout_redirect_uri&quot;: &quot;https://client.example.org/cb&quot;,   &lt;- OPTIONAL 
+        &quot;application_type&quot;: &quot;web&quot;,                                     &lt;- OPTIONAL
+        &quot;response_types&quot;: [&quot;code&quot;],                                    &lt;- OPTIONAL
+        &quot;grant_types&quot;: [&quot;authorization_code&quot;],                         &lt;- OPTIONAL 
+        &quot;scope&quot;: [&quot;openid&quot;],                                           &lt;- OPTIONAL
+        &quot;acr_values&quot;: [&quot;basic&quot;],                                       &lt;- OPTIONAL
+        &quot;client_name&quot;: &quot;&quot;,                                             &lt;- OPTIONAL
+        &quot;client_jwks_uri&quot;: &quot;&quot;,                                         &lt;- OPTIONAL
+        &quot;client_token_endpoint_auth_method&quot;: &quot;&quot;,                       &lt;- OPTIONAL
+        &quot;client_request_uris&quot;: [],                                     &lt;- OPTIONAL
+        &quot;client_logout_uris&quot;: [],                                      &lt;- OPTIONAL
+        &quot;client_sector_identifier_uri&quot;: [],                            &lt;- OPTIONAL
+        &quot;contacts&quot;: [&quot;foo_bar@spam.org&quot;],                              &lt;- OPTIONAL
+        &quot;ui_locales&quot;: [],                                              &lt;- OPTIONAL
+        &quot;claims_locales&quot;: [],                                          &lt;- OPTIONAL
+        &quot;client_id&quot;: &quot;&lt;client id of existing client&gt;&quot;,                 &lt;- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+        &quot;client_secret&quot;: &quot;&lt;client secret of existing client&gt;&quot;          &lt;- OPTIONAL must be used together with client_secret.
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;
+    }
+}
+</code></pre>
+
+<h3 id="update-site-registration">Update site registration</h3>
+<p>API used to update a current registration.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;update_site_registration&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,              &lt;- REQUIRED
+        &quot;authorization_redirect_uri&quot;: &quot;https://client.example.org/cb&quot;,&lt;- OPTIONAL 
+        &quot;post_logout_redirect_uri&quot;: &quot;https://client.example.org/cb&quot;,  &lt;- OPTIONAL 
+        &quot;client_logout_uris&quot;:[&quot;https://client.example.org/logout&quot;],   &lt;- OPTIONAL
+        &quot;response_type&quot;:[&quot;code&quot;],                                     &lt;- OPTIONAL
+        &quot;grant_types&quot;:[],                                             &lt;- OPTIONAL
+        &quot;scope&quot;: [&quot;opeind&quot;, &quot;profile&quot;],                               &lt;- OPTIONAL
+        &quot;acr_values&quot;: [&quot;duo&quot;],                                        &lt;- OPTIONAL
+        &quot;client_name&quot;: &quot;&quot;,                                            &lt;- OPTIONAL
+        &quot;client_secret_expires_at&quot;:1335205592410,                     &lt;- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
+        &quot;client_jwks_uri&quot;: &quot;&quot;,                                        &lt;- OPTIONAL
+        &quot;client_token_endpoint_auth_method&quot;: &quot;&quot;,                      &lt;- OPTIONAL
+        &quot;client_request_uris&quot;:[],                                     &lt;- OPTIONAL
+        &quot;client_logout_uris&quot;:[],                                      &lt;- OPTIONAL
+        &quot;client_sector_identifier_uri&quot;:&quot;&quot;,                            &lt;- OPTIONAL
+        &quot;contacts&quot;:[&quot;foo_bar@spam.org&quot;],                              &lt;- OPTIONAL
+        &quot;ui_locales&quot;:[],                                              &lt;- OPTIONAL
+        &quot;claims_locales&quot;:[],                                          &lt;- OPTIONAL
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;
+}
+</code></pre>
+
+<h3 id="get-authorization-url">Get authorization url</h3>
+<p>Returns the URL at the OpenID Provider (OP) to which your application 
+must redirect the person to authorize the release of personal data (and
+perhaps be authenticated in the process if no previous session exists).
+The Response from the OP will include the code and state 
+values, which should be used to subsequently obtain tokens.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;get_authorization_url&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;: &quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;, &lt;- required, obtained after registration
+        &quot;scope&quot;: [&quot;openid&quot;],                              &lt;- optional, may be skipped (by default takes scopes that was registered during register_site command)
+        &quot;acr_values&quot;: [&quot;duo&quot;],                            &lt;- optional, may be skipped (default is basic)
+        &quot;prompt&quot;: &quot;login&quot;                                 &lt;- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;authorization_url&quot;:&quot;  https://server.example.com/authorize?response_type=code
+    &amp;client_id=s6BhdRkqt3
+    &amp;redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+    &amp;scope=openid%20profile
+    &amp;acr_values=duo
+    &amp;state=af0ifjsldkj
+    &amp;nonce=n-0S6_WzA2Mj&quot;
+    }
+}
+</code></pre>
+
+<p>After redirecting to the above URL, the OpenID Provider will return a 
+response that looks like this to the URL your application registered as 
+the redirect URI (parse out the code and state):</p>
+<pre><code>HTTP/1.1 302 Found
+Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=af0ifjsldkj&amp;scopes=openid%20profile
+</code></pre>
+
+<h3 id="get-tokens-id-access-by-code">Get Tokens (ID &amp; Access) by Code</h3>
+<p>Use the code and state obtained in the previous step to call this API to retrieve tokens.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;get_tokens_by_code&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;, &lt;- Required
+        &quot;code&quot;:&quot;I6IjIifX0&quot;,                              &lt;- Required, code from OP redirect url (see example above)
+        &quot;state&quot;:&quot;af0ifjsldkj&quot;                            &lt;- Required
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code>{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;access_token&quot;:&quot;SlAV32hkKG&quot;,
+        &quot;expires_in&quot;:3600,
+        &quot;refresh_token&quot;:&quot;aaAV32hkKG1&quot;
+        &quot;id_token&quot;:&quot;eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso&quot;,
+        &quot;id_token_claims&quot;: {
+             &quot;iss&quot;: &quot;https://server.example.com&quot;,
+             &quot;sub&quot;: &quot;24400320&quot;,
+             &quot;aud&quot;: &quot;s6BhdRkqt3&quot;,
+             &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,
+             &quot;exp&quot;: 1311281970,
+             &quot;iat&quot;: 1311280970,
+             &quot;at_hash&quot;: &quot;MTIzNDU2Nzg5MDEyMzQ1Ng&quot;
+        }
+    }
+}
+</code></pre>
+
+<h3 id="get-user-info">Get User Info</h3>
+<p>Use the access token from the step above to retrieve a JSON object 
+with the user claims.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;get_user_info&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,
+        &quot;access_token&quot;:&quot;SlAV32hkKG&quot;
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;claims&quot;:{
+            &quot;sub&quot;: [&quot;248289761001&quot;],
+            &quot;name&quot;: [&quot;Jane Doe&quot;],
+            &quot;given_name&quot;: [&quot;Jane&quot;],
+            &quot;family_name&quot;: [&quot;Doe&quot;],
+            &quot;preferred_username&quot;: [&quot;j.doe&quot;],
+            &quot;email&quot;: [&quot;janedoe@example.com&quot;],
+            &quot;picture&quot;: [&quot;http://example.com/janedoe/me.jpg&quot;]
+        }
+    }
+}
+</code></pre>
+
+<h3 id="log-out-uri">Log out URI</h3>
+<p>Uses front channel logout--a page is returned with iFrames, each of 
+which contains the logout URL of the applications that have a session 
+in that browser. These iFrames should be loaded automatically--enabling 
+each application to get a notification of logout, and to hopefully clean 
+up any cookies in the person's browser. If the person blocks 
+<a href="https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie">third-party cookies</a>
+in their browser, logout will not work.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;get_logout_uri&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,
+        &quot;id_token_hint&quot;: &quot;eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso&quot;,&lt;-- OPTIONAL (oxd server will use last used ID Token)
+        &quot;post_logout_redirect_uri&quot;: &quot;&lt;post logout redirect uri here&gt;&quot;,        &lt;-- OPTIONAL
+        &quot;state&quot;: &quot;&lt;site state&gt;&quot;,                                              &lt;-- OPTIONAL
+        &quot;session_state&quot;: &quot;&lt;session state&gt;&quot;                                    &lt;-- OPTIONAL
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;uri&quot;:&quot;https://&lt;server&gt;/end_session?id_token_hint=&lt;id token&gt;&amp;state=&lt;state&gt;&amp;post_logout_redirect_uri=&lt;...&gt;&quot;
+    }
+}
+</code></pre>
+
+<h2 id="uma-resource-server-apis">UMA Resource Server API's</h2>
+<p>A client, acting as an <a href="https://tools.ietf.org/html/rfc6749#section-1.1">OAuth2 Resource Server</a>,
+MUST:</p>
+<ul>
+<li>Register a protection document (with uma_rs_protect command)</li>
+<li>Intercept HTTP call (before actual REST resource call) and check whether it's allowed to proceed with call or reject it according to uma_rs_check_access command response:<ul>
+<li>Allow access - if response from uma_rs_check_access is "allowed" or "not_protected" error is returned.</li>
+<li>uma_rs_check_access returned "denied" with ticket then return back HTTP response</li>
+</ul>
+</li>
+</ul>
+<pre><code class="http">HTTP/1.1 401 Unauthorized
+WWW-Authenticate: UMA realm=&quot;example&quot;,
+      as_uri=&quot;https://as.example.com&quot;,
+      ticket=&quot;016f84e8-f9b9-11e0-bd6f-0021cc6004de&quot;
+</code></pre>
+
+<pre><code>- uma_rs_check_access returned "denied" without ticket then return back HTTP response
+</code></pre>
+<pre><code class="http">HTTP/1.1 403 Forbidden
+Warning: 199 - &quot;UMA Authorization Server Unreachable&quot;
+</code></pre>
+
+<h3 id="uma-rs-protect-resources">UMA RS Protect resources</h3>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;uma_rs_protect&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,   &lt;- REQUIRED
+        &quot;resources&quot;:[        &lt;-  REQUIRED as parameter here we have protection json that describes resources on RS
+            {
+                &quot;path&quot;:&quot;/photo&quot;,
+                &quot;conditions&quot;:[
+                    {
+                        &quot;httpMethods&quot;:[&quot;GET&quot;],
+                        &quot;scopes&quot;:[
+                            &quot;http://photoz.example.com/dev/actions/view&quot;
+                        ]
+                    },
+                    {
+                        &quot;httpMethods&quot;:[&quot;PUT&quot;, &quot;POST&quot;],
+                        &quot;scopes&quot;:[
+                            &quot;http://photoz.example.com/dev/actions/all&quot;,
+                            &quot;http://photoz.example.com/dev/actions/add&quot;
+                        ],
+                        &quot;ticketScopes&quot;:[
+                            &quot;http://photoz.example.com/dev/actions/add&quot;
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;path&quot;:&quot;/document&quot;,
+                &quot;conditions&quot;:[
+                    {
+                        &quot;httpMethods&quot;:[&quot;GET&quot;],
+                        &quot;scopes&quot;:[
+                            &quot;http://photoz.example.com/dev/actions/view&quot;
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;
+}
+</code></pre>
+
+<h3 id="uma-rs-check-access">UMA RS Check Access</h3>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;uma_rs_check_access&quot;,
+    &quot;params&quot;: {
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,
+        &quot;rpt&quot;:&quot;eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso&quot;,    &lt;-- REQUIRED RPT or blank value if absent (not send by RP)
+        &quot;path&quot;:&quot;&lt;path of resource&gt;&quot;,                                   &lt;-- REQUIRED Path of resource (e.g. http://rs.com/phones), /phones should be passed
+        &quot;http_method&quot;:&quot;&lt;http method of RP request&gt;&quot;                    &lt;-- REQUIRED Http method of RP request (GET, POST, PUT, DELETE)
+    }
+}
+</code></pre>
+
+<p>Sample of RP request:</p>
+<pre><code>GET /users/alice/album/photo HTTP/1.1
+Authorization: Bearer vF9dft4qmT
+Host: photoz.example.com
+</code></pre>
+
+<p>Params:</p>
+<pre><code>rpt: 'vF9dft4qmT'
+path: /users/alice/album/photo
+http_method: GET
+</code></pre>
+
+<p>Access Granted response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;access&quot;:&quot;granted&quot;
+    }
+}
+</code></pre>
+
+<p>Access Denied with ticket response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;access&quot;:&quot;denied&quot;
+        &quot;www-authenticate_header&quot;:&quot;UMA realm=\&quot;example\&quot;,
+                                   as_uri=\&quot;https://as.example.com\&quot;,
+                                   error=\&quot;insufficient_scope\&quot;,
+                                   ticket=\&quot;016f84e8-f9b9-11e0-bd6f-0021cc6004de\&quot;&quot;,
+        &quot;ticket&quot;:&quot;016f84e8-f9b9-11e0-bd6f-0021cc6004de&quot;
+    }
+}
+</code></pre>
+
+<p>Access Denied without ticket response:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;access&quot;:&quot;denied&quot;
+    }
+}
+</code></pre>
+
+<p>Errors:</p>
+<p>Resource is not protected</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;error&quot;,
+    &quot;data&quot;:{
+        &quot;error&quot;:&quot;invalid_request&quot;,
+        &quot;error_description&quot;:&quot;Resource is not protected. Please protect your resource first with uma_rs_protect command.&quot;
+    }
+}
+</code></pre>
+
+<h2 id="uma-client-apis">UMA Client API's</h2>
+<p>If your appliation is calling UMA protected resources, use these API's to obtain an RPT token.</p>
+<h3 id="uma-rp-get-rpt">UMA RP - Get RPT</h3>
+<p>For latest and most up to date parameters of command please check latest successful <a href="https://ox.gluu.org/jenkins/job/oxd">jenkins build</a></p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;uma_rp_get_rpt&quot;,
+    &quot;params&quot;: {
+         &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,  &lt;- REQUIRED
+         &quot;force_new&quot;: false                                &lt;- REQUIRED indicates whether return new RPT, in general should be false, so oxd server can cache/reuse same RPT
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+     &quot;status&quot;:&quot;ok&quot;,
+     &quot;data&quot;:{
+         &quot;rpt&quot;:&quot;vF9dft4qmT&quot;
+     }
+}
+</code></pre>
+
+<h3 id="uma-rp-authorize-rpt">UMA RP - Authorize RPT</h3>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;uma_rp_authorize_rpt&quot;,
+    &quot;params&quot;: {
+         &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,  &lt;- REQUIRED
+         &quot;rpt&quot;: &quot;vF9dft4qmT&quot;,                              &lt;- REQUIRED
+         &quot;ticket&quot;: &quot;016f84e8-f9b9-11e0-bd6f-0021cc6004de&quot;  &lt;- REQUIRED
+    }
+}
+</code></pre>
+
+<p>Authorized Response (Success):</p>
+<pre><code class="json">{
+     &quot;status&quot;:&quot;ok&quot;,
+}
+</code></pre>
+
+<p>Not authorized error:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;error&quot;,
+    &quot;data&quot;:{
+        &quot;code&quot;:&quot;not_authorized&quot;,
+        &quot;description&quot;:&quot;RPT is not authorized.&quot;
+    }
+}
+</code></pre>
+
+<p>Invalid ticket error:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;error&quot;,
+    &quot;data&quot;:{
+        &quot;code&quot;:&quot;invalid_ticket&quot;,
+        &quot;description&quot;:&quot;Ticket is not valid (outdated or not present on Authorization Server).&quot;
+    }
+}
+</code></pre>
+
+<p>Invalid rpt error:</p>
+<pre><code class="json">{
+    &quot;status&quot;:&quot;error&quot;,
+    &quot;data&quot;:{
+        &quot;code&quot;:&quot;invalid_rpt&quot;,
+        &quot;description&quot;:&quot;RPT is not valid (outdated or not present on Authorization Server).&quot;
+    }
+}
+</code></pre>
+
+<h2 id="gluu-oauth2-access-management-apis">Gluu OAuth2 Access Management API's</h2>
+<p>GAT stands for Gluu Access Token. It is invented by Gluu and is described here: 
+https://ox.gluu.org/doku.php?id=uma:oauth2_access_management.</p>
+<p>Request:</p>
+<pre><code class="json">{
+    &quot;command&quot;:&quot;uma_rp_get_gat&quot;,
+    &quot;params&quot;: {
+         &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;,  &lt;- REQUIRED
+         &quot;scopes&quot;: [                                       &lt;- REQUIRED RP should know required scopes in advance
+             &quot;http://photoz.example.com/dev/actions/add&quot;,
+             &quot;http://photoz.example.com/dev/actions/view&quot;,
+             &quot;http://photoz.example.com/dev/actions/edit&quot;
+         ]
+    }
+}
+</code></pre>
+
+<p>Response:</p>
+<pre><code class="json">{
+     &quot;status&quot;:&quot;ok&quot;,
+     &quot;data&quot;:{
+         &quot;rpt&quot;:&quot;fg6vF9dft4qmT&quot;
+     }
+}
+</code></pre>
+
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.kantarainitiative.org/uma/rec-uma-core.html#permission-failure-to-client">UMA 1.0.1 Specification</a></li>
+<li><a href="https://github.com/GluuFederation/uma-rs/blob/master/uma-rs-resteasy/src/main/java/org/xdi/oxd/rs/protect/resteasy/RptPreProcessInterceptor.java">Sample RS of Java Resteasy HTTP interceptor of uma-rs</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../2.4.4/install/" class="btn btn-neutral float-right" title="Installation"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../2.4.4/install/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
