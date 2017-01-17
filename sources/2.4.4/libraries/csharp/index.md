@@ -7,9 +7,9 @@ oxd c# is a client library for the oxd Server.
 Download the zip file from the 
 [Github Page](https://github.com/GluuFederation/oxd-csharp)
 
-* [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client)
+* [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
 
-* [CSharp API Documentation](https://oxd.gluu.org/api-docs/csharp/2.4.4/)
+* [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
 
 ### Using the Library in your website
 
