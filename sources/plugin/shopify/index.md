@@ -2,7 +2,7 @@
 
 # OpenID Connect Single Sign-On (SSO) Shopify App By Gluu
 
-![image](http://localhost/docs-oxd/sources/img/plugin.png)
+![image](../img/plugin.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) Shopify App will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can use Google or [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
@@ -13,7 +13,7 @@ In order to use the Shopify App you will need a standard OP (like Google or a Gl
 
 * [oxd Webpage](https://oxd.gluu.org)
 
-![General](http://localhost/docs-oxd/sources/img/apps.png) 
+![General](../img/apps.png) 
 ## Installation
  
 ### Download
@@ -32,12 +32,12 @@ App Automatic Redirect To Plugin Settings:
 Then you can see login page in shopify
 
 ## Configuration
-![image](http://localhost/docs-oxd/sources/img/account.png)
+![image](../img/account.png)
 ### General
  
 In your shopify app store on frontend login page you see the button to login with gluu server
 
-![General](http://localhost/docs-oxd/sources/img/login.png) 
+![General](../img/login.png) 
 
 1. Click on login button with gluu server and iframe will open and login to glu server it automatic create account on shopify same as (social app)
 
