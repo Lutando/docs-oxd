@@ -14,7 +14,7 @@ oxd c# is a client library for the oxd Server.
 ```
 1) You have to install gluu server in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
    library with your application.
-2) Application will not be working if your host does not have https://.
+2) Application will not be working if your host does not have https://. 
 
 ```
 
