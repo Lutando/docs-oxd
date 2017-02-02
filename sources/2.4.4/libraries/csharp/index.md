@@ -2,6 +2,22 @@
 
 oxd c# is a client library for the oxd Server.
 
+## Installation
+* [Github sources](https://github.com/GluuFederation/oxd-csharp)
+* [Gluu Server](https://www.gluu.org/docs/deployment/ubuntu/)
+* [oxd server](https://oxd.gluu.org/docs/install/)
+
+**Note:** Install Gluu server in Ubuntu 14 VM. VM will need at least 4GB or RAM and 2 CPU units. So you can communicate with gluu server from your c# library. you can start oxd server in your windows machine it self. 
+
+**Prerequisite**
+
+```
+1) You have to install gluu server in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
+   library with your application.
+2) Application will not be working if your host does not have https://.
+
+```
+
 ## Deployment
 
 Download the zip file from the 
