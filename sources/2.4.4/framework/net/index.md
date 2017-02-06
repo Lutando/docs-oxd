@@ -24,6 +24,6 @@ First set the GluuDemoWebsite as startup project and run.
 
 # How to use:
 
-1. Download source code for demo client application [oxd-net-demo]
+1. Download source code for demo client application [oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
 2. First set the GluuDemoWebsite as startup project
 3. Run the project
