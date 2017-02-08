@@ -32,9 +32,9 @@ Activate the plugin by performing the following steps:
  
 1. Go to `https://{site-base-url}/index.php/settings/apps`
 2. In tab `Not enabled` find OpenID Connect SSO Plugin By Gluu and click the `Enable` button.
-![upload](https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/docu/1.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/nextcloud-oxd-module/master/docu/1.png) 
 3. Open menu tab OpenID Connect SSO
-![upload](https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/docu/2.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/nextcloud-oxd-module/master/docu/2.png) 
 
 ## Configuration
 
