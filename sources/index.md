@@ -25,7 +25,8 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [OpenCart](./2.4.4/plugin/opencart/index.md)       
 - [SuiteCRM](./2.4.4/plugin/suitecrm/index.md)       
 - [SugarCRM](./2.4.4/plugin/sugarcrm/index.md)       
-- [Roundcube](./2.4.4/plugin/roundcube/index.md)       
+- [Roundcube](./2.4.4/plugin/roundcube/index.md)  
+- [NextCloud](./2.4.4/plugin/nextcloud/index.md) 
 
 # Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     

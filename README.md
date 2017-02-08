@@ -27,6 +27,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [SuiteCRM](https://oxd.gluu.org/docs/plugin/suitecrm/)       
 - [SugarCRM](https://oxd.gluu.org/docs/plugin/sugarcrm/)       
 - [Roundcube](https://oxd.gluu.org/docs/plugin/roundcube/)       
+- [NextCloud](https://oxd.gluu.org/docs/plugin/nextcloud/)  
 
 For a complete list of oxd plugins, check the [oxd documentation](http://oxd.gluu.org/docs)
 
