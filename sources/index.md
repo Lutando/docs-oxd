@@ -1,17 +1,24 @@
 All rights reserved -- Copyright 2015 Gluu Inc.
 
 # oxd
+Gluu offers commercial OAuth 2.0 client software called oxd to make securing and integrating applications with the Gluu Server easier. 
 
 oxd is a mediator, a service demon that listens on localhost, providing easy APIs that can be called by a web application to simplify using an OpenID Connect Provider, like Google or the [Gluu Server](http://gluu.org/docs), for authentication or authorization. oxd is not a proxy--sometimes it makes API calls on behalf of an application, but other times it just forms the right URLs and returns them to the application.
 
-Using oxd to support federation in an application provides both technical and business advantages:
+If you're using the Gluu Server as an OpenID Connect Provider (OP), your application can use any client software that implements the open standards the Gluu Server supports. However, you may want to consider using oxd because:
 
-1. oxd consolidates the OAuth2 code in one package. If new vulnerabilities are discovered in OAuth2/OpenID Connect, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you don’t have to change and regression test your applications;       
+(1). oxd is super-easy to use;
 
-2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards–and the liability associated with poor implementations–it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols;       
+(2). We keep updating oxd to address the latest OAuth 2.0 security knowledge;
 
+(3). We can provide more complete end-to-end support if we know both the client and server software;
 
-3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you have someone to call when something goes wrong!       
+(4). oxd subscriptions help support this project so you can see more enhancements faster;
+
+(5). There are oxd libraries for Php, Python, Java, Node, Ruby, C#, Perl and Go. If your application is programmed in another language, oxd has a simple JSON/REST API;
+
+(6). There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.
+
 
 # Technical Architecture
 ![image](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
