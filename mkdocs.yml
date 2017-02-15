@@ -48,6 +48,7 @@ pages:
 - [2.4.4/framework/ruby/index.md, Framework, Ruby on Rails]
 - [2.4.4/framework/python/index.md, Framework, Python Flask]
 - [2.4.4/framework/node/index.md, Framework, Node/Express]
+- [2.4.4/framework/net/index.md, Framework, .Net]
 
 # master docs
 - [install/index.md, hidden, hidden]
