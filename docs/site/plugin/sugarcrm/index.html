@@ -323,7 +323,7 @@
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a></li>
 <li><a href="#attention">Attention</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#role-based-enrollment">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -382,7 +382,7 @@
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d6.png" /> </p>
 <ol>
 <li>Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your SugarCRM site. They will be assigned the new user default role specified below.</li>
-<li>Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>sugarcrm</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>sugarcrm</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>New User Default Role: specify which role to give to new users upon registration.  </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
@@ -400,7 +400,7 @@
 <p>Please add the following lines to your config_override.php file.</p>
 <p><code>$sugar_config['http_referer']['list'][] = your-openid-provider.uri</code>;
 <code>$sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );</code></p>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="role-based-enrollment">Enrollment and Access Management</h4>
 <p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the module. For instance, if in the module you have limit enrollment to user(s) with role = <code>sugarcrm</code>, then you should also have <code>User Permission</code> = <code>sugarecrm</code> in the user entry. Update the user record, and now they are ready for enrollment at your SugarCRM site. </p>
 <h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d8.png" /> </p>

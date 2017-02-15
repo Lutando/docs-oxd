@@ -315,7 +315,7 @@
 </li>
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#role-based-enrollment">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -364,7 +364,7 @@
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/1.png" /> </p>
 <ol>
 <li>Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site. </li>
-<li>Only login users with the following role(s) in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance <code>roundcube</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance <code>roundcube</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
 <li>oxd port: enter the oxd-server port (you can find this in the <code>oxd-server/conf/oxd-conf.json</code> file).</li>
@@ -377,7 +377,7 @@
 <blockquote>
 <p>If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect &gt; Clients page. Search for your <code>oxd id</code>.</p>
 </blockquote>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="role-based-enrollment">Enrollment and Access Management</h4>
 <p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = <code>roundcube</code>, then you should also have <code>User Permission</code> = <code>roundcube</code> in the user entry. Update the user record, and now they are ready for enrollment at your Roundcube site. </p>
 <h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/3.png" /> </p>

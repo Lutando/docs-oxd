@@ -317,7 +317,7 @@
 </li>
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#role-based-enrollment">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -362,7 +362,7 @@
 <p><img alt="General" src="https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png" /> </p>
 <ol>
 <li>Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.</li>
-<li>Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>wordpress</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>wordpress</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>New User Default Role: specify which role to give to new users upon registration.  </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
@@ -376,7 +376,7 @@
 <blockquote>
 <p>If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect &gt; Clients page. Search for your <code>oxd id</code>.</p>
 </blockquote>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="role-based-enrollment">Enrollment and Access Management</h4>
 <ol>
 <li>Navigate to your Gluu Server admin GUI. </li>
 <li>Click the <code>Users</code> tab in the left hand navigation menu. </li>

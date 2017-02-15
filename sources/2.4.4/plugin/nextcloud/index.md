@@ -64,12 +64,12 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 #### Enrollment
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your NextCloud site. They will be assigned the new user default role specified below.
-2. Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `nextcloud`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
+2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `nextcloud`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
 3. Disable Automatic Registration: Choose this option if you do not want to support automatic enrollment. If chosen, the NextCloud admin will need to manually add accounts for users in NextCloud.
 4.  New User Default Group: specify which Group to give to new users upon registration.  
 
-##### Role based enrollment
-Follow these steps if you are using a Gluu Server as your OP and want to enforce role based enrollment (i.e. you only want to allow users with a certain role, like `nextcloud`, to register. 
+##### Enrollment and Access Management
+Follow these steps if you are using a Gluu Server as your OP and want to enforce Enrollment and Access Management (i.e. you only want to allow users with a certain role, like `nextcloud`, to register. 
 
 1. Navigate to your Gluu Server admin GUI. 
 2. Click the `Users` tab in the left hand navigation menu. 
@@ -87,7 +87,7 @@ Follow these steps if you are using a Gluu Server as your OP and want to enforce
 
 #### User Scopes
 
-Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  If you are enforcing role based enrollment, you will also need to request the `User Permission` scope. 
+Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  If you are enforcing Enrollment and Access Management, you will also need to request the `User Permission` scope. 
 
 To view your OP's available scopes, open a web browser and navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
 
