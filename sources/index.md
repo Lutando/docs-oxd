@@ -13,11 +13,11 @@ If you're using the Gluu Server as an OpenID Connect Provider (OP), your applica
 
 (4). oxd subscriptions help support this project so you can see more enhancements faster;
 
-(5). There are oxd libraries for Php, Python, Java, Node, Ruby, C#, Perl and Go. If your application is programmed in another language, oxd has a simple JSON/REST API;
+(5). There are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go. If your application is programmed in another language, oxd has a simple JSON/REST API;
 
 (6). There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.
 
-Peruse these docs and the [oxd code on Github](https://github.com/GluuFederation/oxd) to learn more about how oxd works. When you're ready to deploy, head over to the website to [get your oxd license](https://oxd.gluu.org). 
+Peruse these docs and the [oxd code on Github](https://github.com/GluuFederation/oxd) to learn more about the project. When you're ready to deploy, head over to the website to [get your oxd license](https://oxd.gluu.org). 
 
 # Overview
 
