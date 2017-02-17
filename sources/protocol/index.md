@@ -8,8 +8,9 @@ process of authorizting this release, the person is authenticated (if
 no previous session exists). If you are familiar with Google 
 authentication, you've used OpenID Connect. 
 
-If you want to launch an OpenID Connect Provider for your organization, you should consider [deploying the Gluu Server](http://gluu.org/deploy), which is available for many Linux distributions, and is easy to install and configure. The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. It's a standard OpenID Connect Provider, but it also supports SAML.
-
+!!! note
+    If you need to launch an OpenID Connect Provider for your organization, you should consider [deploying the Gluu Server](http://gluu.org/deploy). The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. 
+    
 oxd uses the Authorization Code Flow for authentication. Future versions 
 of oxd may support the Hybrid Flow. Implicit Flow is not supported 
 because it is intended for Javascript client-side applications where 
