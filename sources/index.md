@@ -22,7 +22,7 @@ If you're using the Gluu Server as an OpenID Connect Provider (OP), your applica
 Feel free to peruse these docs and the [oxd code on Github](https://github.com/GluuFederation/oxd). When you're ready to spin up an oxd server, head over to the [oxd website to sign up for your license](https://oxd.gluu.org). 
 
 # Technical Architecture
-![image](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
 # Plugins
 
