@@ -8,7 +8,7 @@
   <title>SugarCRM - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -225,6 +225,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -270,6 +284,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -307,7 +328,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4/plugin/sugarcrm/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4\plugin\sugarcrm\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -329,7 +350,7 @@
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a></li>
 <li><a href="#attention">Attention</a><ul>
-<li><a href="#role-based-enrollment">Enrollment and Access Management</a></li>
+<li><a href="#enrollment-and-access-management">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -406,7 +427,7 @@
 <p>Please add the following lines to your config_override.php file.</p>
 <p><code>$sugar_config['http_referer']['list'][] = your-openid-provider.uri</code>;
 <code>$sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );</code></p>
-<h4 id="role-based-enrollment">Enrollment and Access Management</h4>
+<h4 id="enrollment-and-access-management">Enrollment and Access Management</h4>
 <p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the module. For instance, if in the module you have limit enrollment to user(s) with role = <code>sugarcrm</code>, then you should also have <code>User Permission</code> = <code>sugarecrm</code> in the user entry. Update the user record, and now they are ready for enrollment at your SugarCRM site. </p>
 <h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/sugarcrm-oxd-module/master/docu/d8.png" /> </p>

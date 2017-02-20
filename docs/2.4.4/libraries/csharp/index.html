@@ -8,7 +8,7 @@
   <title>CSharp - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -147,7 +147,9 @@
             
                 <li class="toctree-l3"><a href="#oxd-csharp">oxd-csharp</a></li>
                 
-                    <li><a class="toctree-l4" href="#deployment">Deployment</a></li>
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#sample-code">Sample Code</a></li>
                 
             
             </ul>
@@ -221,6 +223,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../plugin/nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -266,6 +282,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -303,7 +326,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4/libraries/csharp/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4\libraries\csharp\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -316,31 +339,26 @@
               
                 <h1 id="oxd-csharp">oxd-csharp</h1>
 <p>oxd c# is a client library for the oxd Server.</p>
-<h2 id="deployment">Deployment</h2>
-<p>Download the zip file from the 
-<a href="https://github.com/GluuFederation/oxd-csharp">Github Page</a></p>
+<h2 id="installation">Installation</h2>
 <ul>
-<li>
-<p><a href="https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client">Tests in Github</a></p>
-</li>
-<li>
-<p><a href="https://oxd.gluu.org/api-docs/csharp/2.4.4/">CSharp API Documentation</a></p>
-</li>
+<li><a href="https://github.com/GluuFederation/oxd-csharp">Github sources</a></li>
+<li>[Gluu Server]   (https://www.gluu.org/docs/deployment/ubuntu/)</li>
+<li>[oxd server]    (https://oxd.gluu.org/docs/install/)</li>
 </ul>
-<h3 id="using-the-library-in-your-website">Using the Library in your website</h3>
+<p><strong>Note:</strong> Install Gluu server in Ubuntu 14 VM in your windows machine. VM will need at least 4GB or RAM and 2 CPU units. So you can communicate with gluu server from your c# library. you can start oxd server in your windows machine it self. </p>
+<p><strong>Prerequisite</strong></p>
+<pre><code>1) You have to install gluu server in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
+   library with your application.
+2) Application will not be working if your host does not have https://. 
+</code></pre>
+
+<h2 id="sample-code">Sample Code</h2>
 <h4 id="register-site">Register Site</h4>
-<p>The following snippet can be used to register the website</p>
-<p>The required parameters are </p>
-<ul>
-<li>op_host</li>
-<li>port - the port of the oxd server</li>
-<li>redirectURI - A URL which the OP is authorized to redirect the user
-after authorization.</li>
-</ul>
-<p>The response returned is </p>
-<ul>
-<li>oxd-id (Type: String)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port        - the port of the oxd server
+* redirectURI - A URL which the OP is authorized to redirect the user after authorization.</p>
+<p><strong>Request:</strong></p>
 <pre><code>public RegisterSiteResponse RegisterSite(string host, int port, string redirectUrl)
     {
         try
@@ -370,21 +388,20 @@ after authorization.</li>
     }
 </code></pre>
 
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;oxd_id&quot;:&quot;6F9619FF-8B86-D011-B42D-00CF4FC964FF&quot;
+    }
+}
+</code></pre>
+
 <h4 id="update-site-registration">Update Site Registration</h4>
-<p>The following snippet can be used to update the website registration </p>
-<p>The required parameters are </p>
-<ul>
-<li>
-<p>op_host</p>
-</li>
-<li>
-<p>port</p>
-</li>
-</ul>
-<p>The response returned is</p>
-<ul>
-<li>oxd-id (Type: String)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port</p>
+<p><strong>Request:</strong></p>
 <pre><code>    public UpdateSiteResponse UpdateSiteRegisteration(string host, int port)
     {
         try
@@ -421,21 +438,17 @@ after authorization.</li>
     } 
 </code></pre>
 
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;
+}
+</code></pre>
+
 <h4 id="get-authorization-url">Get Authorization URL</h4>
-<p>The following snippet can be used to get the authorization URL.</p>
-<p>The required parameters are </p>
-<ul>
-<li>
-<p>op_host</p>
-</li>
-<li>
-<p>port</p>
-</li>
-</ul>
-<p>The response is</p>
-<ul>
-<li>authorization_url (Type: String)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port</p>
+<p><strong>Request:</strong></p>
 <pre><code>    public string GetAuthorizationURL(string host, int port)
     {
         try
@@ -465,27 +478,22 @@ after authorization.</li>
     }
 </code></pre>
 
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;authorization_url&quot;:&quot;https://server.example.com/authorize?response_type=code&amp;client_id=s6BhdRkqt3&amp;redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&amp;scope=openid%20profile&amp;acr_values=duo&amp;state=af0ifjsldkj&amp;nonce=n-0S6_WzA2Mj&quot;
+    }
+}
+</code></pre>
+
 <h4 id="get-tokens-by-code">Get Tokens by Code</h4>
-<p>The following snippet can be used to get tokens by code.</p>
-<p>The required parameters are </p>
-<ul>
-<li>
-<p>op_host</p>
-</li>
-<li>
-<p>port</p>
-</li>
-<li>
-<p>userId</p>
-</li>
-<li>
-<p>userSecret</p>
-</li>
-</ul>
-<p>The response is </p>
-<ul>
-<li>access_token (Type: String)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port
+<em> userId
+</em> userSecret</p>
+<p><strong>Request:</strong></p>
 <pre><code>    public GetTokensByCodeResponse GetTokenByCode(string host, int port, string userId, string userSecret)
     {
         try
@@ -509,6 +517,28 @@ after authorization.</li>
             return null;
         }
     }
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;access_token&quot;:&quot;SlAV32hkKG&quot;,
+        &quot;expires_in&quot;:3600,
+        &quot;refresh_token&quot;:&quot;aaAV32hkKG1&quot;
+        &quot;id_token&quot;:&quot;eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso&quot;,
+        &quot;id_token_claims&quot;: {
+             &quot;iss&quot;: &quot;https://server.example.com&quot;,
+             &quot;sub&quot;: &quot;24400320&quot;,
+             &quot;aud&quot;: &quot;s6BhdRkqt3&quot;,
+             &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,
+             &quot;exp&quot;: 1311281970,
+             &quot;iat&quot;: 1311280970,
+             &quot;at_hash&quot;: &quot;MTIzNDU2Nzg5MDEyMzQ1Ng&quot;
+        }
+    }
+}
+
 </code></pre>
 
 <p><strong>Note:</strong> GetTokenByCode method further calls the GetAuthorizationCode for the Authorization code to be used</p>
@@ -540,23 +570,11 @@ after authorization.</li>
 </code></pre>
 
 <h4 id="get-user-info">Get User Info</h4>
-<p>The following snippet can be used to get user information.</p>
-<p>The required parameters are </p>
-<ul>
-<li>
-<p>op_host</p>
-</li>
-<li>
-<p>port</p>
-</li>
-<li>
-<p>accessToken</p>
-</li>
-</ul>
-<p>The response is </p>
-<ul>
-<li>response_claims (Type: Array)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port
+* accessToken</p>
+<p><strong>Request:</strong></p>
 <pre><code>    public GetUserInfoResponse GetUserInfo(string host, int port, string accessToken)
     {
         try
@@ -584,21 +602,28 @@ after authorization.</li>
     }   
 </code></pre>
 
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;claims&quot;:{
+            &quot;sub&quot;: [&quot;248289761001&quot;],
+            &quot;name&quot;: [&quot;Jane Doe&quot;],
+            &quot;given_name&quot;: [&quot;Jane&quot;],
+            &quot;family_name&quot;: [&quot;Doe&quot;],
+            &quot;preferred_username&quot;: [&quot;j.doe&quot;],
+            &quot;email&quot;: [&quot;janedoe@example.com&quot;],
+            &quot;picture&quot;: [&quot;http://example.com/janedoe/me.jpg&quot;]
+        }
+    }
+}
+</code></pre>
+
 <h4 id="logout">Logout</h4>
-<p>The following snippet can be used to logout.</p>
-<p>The required parameters are </p>
-<ul>
-<li>
-<p>op_host</p>
-</li>
-<li>
-<p>port</p>
-</li>
-</ul>
-<p>The response returned is</p>
-<ul>
-<li>response_html (Type: String)</li>
-</ul>
+<p><strong>Required parameters:</strong>
+<em> op_host
+</em> port</p>
+<p><strong>Request:</strong></p>
 <pre><code>    public LogoutResponse GetLogoutURL(string host, int port)
     {
         try
@@ -625,6 +650,170 @@ after authorization.</li>
             return null;
         }
     }  
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;status&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;uri&quot;:&quot;https://&lt;server&gt;/end_session?id_token_hint=&lt;id token&gt;&amp;state=&lt;state&gt;&amp;post_logout_redirect_uri=&lt;...&gt;&quot;
+    }
+}
+</code></pre>
+
+<h4 id="uma-rs-resource-protection">UMA RS Resource protection</h4>
+<p><strong>Request:</strong></p>
+<pre><code>   private UmaRsProtectResponse ProtectResources(OxdModel oxdModel)
+   {
+        var protectParams = new UmaRsProtectParams();
+        var protectClient = new UmaRsProtectClient();
+
+        //prepare input params for Protect Resource
+        protectParams.OxdId = oxdModel.OxdId;
+        protectParams.ProtectResources = new List&lt;ProtectResource&gt;
+        {
+            new ProtectResource
+            {
+                Path = &quot;/scim&quot;,
+                ProtectConditions = new List&lt;ProtectCondition&gt;
+                {
+                    new ProtectCondition
+                    {
+                        HttpMethods = new List&lt;string&gt; { &quot;GET&quot; },
+                        Scopes = new List&lt;string&gt; { &quot;https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1&quot; },      // Your hosted Gluu server URL
+                        TicketScopes = new List&lt;string&gt; { &quot;https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1&quot; } // Your hosted Gluu server URL
+                    }
+                }
+            }
+        };
+
+        //Protect Resources
+        var protectResponse = protectClient.ProtectResources(oxdModel.OxdHost, oxdModel.OxdPort, protectParams);
+
+        //process response
+        if(protectResponse.Status.ToLower().Equals(&quot;ok&quot;))
+        {
+            return protectResponse;
+        }
+        throw new Exception(&quot;Procteting Resource is not successful. Check OXD Server log for error details.&quot;);
+   }
+</code></pre>
+
+<h4 id="uma-rs-check-access">UMA RS Check access</h4>
+<p><strong>Request:</strong></p>
+<pre><code>    private UmaRsCheckAccessResponse CheckAccess(string rpt, string path, string httpMethod, OxdModel oxdModel)
+    {
+        var checkAccessParams = new UmaRsCheckAccessParams();
+        var checkAccessClient = new UmaRsCheckAccessClient();
+
+        //prepare input params for Check Access
+        checkAccessParams.OxdId = oxdModel.OxdId;
+        checkAccessParams.RPT = rpt;
+        checkAccessParams.Path = path;
+        checkAccessParams.HttpMethod = httpMethod;
+
+        //Check Access
+        var checkAccessResponse = checkAccessClient.CheckAccess(oxdModel.OxdHost, oxdModel.OxdPort, checkAccessParams);
+
+        //process response
+        return checkAccessResponse;
+    }   
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code>Access Denied with valid Ticket 
+</code></pre>
+
+<h4 id="uma-get-rpt">UMA Get RPT</h4>
+<p><strong>Request:</strong></p>
+<pre><code>  private GetRPTResponse ObtainRpt(OxdModel oxdModel)
+    {
+        var getRptParams = new UmaRpGetRptParams();
+        var getRptClient = new UmaRpGetRptClient();
+
+        //prepare input params for Protect Resource
+        getRptParams.OxdId = oxdModel.OxdId;
+        getRptParams.ForceNew = false;
+
+        //Get RPT
+        var getRptResponse = getRptClient.GetRPT(oxdModel.OxdHost, oxdModel.OxdPort, getRptParams);
+
+        //process response
+        if (getRptResponse.Status.ToLower().Equals(&quot;ok&quot;))
+        {
+            return getRptResponse;
+        }
+
+        throw new Exception(&quot;Obtaining RPT is not successful. Check OXD Server log for error details.&quot;);
+    } 
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code>Expect a valid RPT is returned
+</code></pre>
+
+<p>Note : Once you get valid RPT you need to follow this steps again:</p>
+<p>1) UMA RS Check access  with valid RPT 
+<strong>Request:</strong></p>
+<pre><code>UMA RS Check access again with valid RPT
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code>Access Denied with valid data
+</code></pre>
+
+<p>2) Authorize RPT<br />
+<strong>Request:</strong></p>
+<pre><code>    private UmaRpAuthorizeRptResponse AuthorizeRpt(string rpt, string ticket, OxdModel oxdModel)
+    {
+        var authorizeRptParams = new UmaRpAuthorizeRptParams();
+        var authorizeRptClient = new UmaRpAuthorizeRptClient();
+
+        //prepare input params for Check Access
+        authorizeRptParams.OxdId = oxdModel.OxdId;
+        authorizeRptParams.RPT = rpt;
+        authorizeRptParams.Ticket = ticket;
+
+        //Authorize RPT
+        var authorizeRptResponse = authorizeRptClient.AuthorizeRpt(oxdModel.OxdHost, oxdModel.OxdPort, authorizeRptParams);
+
+        //process response
+        return authorizeRptResponse;
+    }
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code>Status should be ok
+</code></pre>
+
+<p>3) UMA RS Check access (Check Access again after authorizing RPT)
+<strong>Request:</strong></p>
+<pre><code>UMA RS Check access again after authorizing RPT 
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre><code>Access Granted
+</code></pre>
+
+<h4 id="uma-get-gat">UMA Get GAT</h4>
+<p><strong>Request:</strong></p>
+<pre><code>public ActionResult GetGat(OxdModel oxd)
+{
+    var getGatInputParams = new GetGATParams();
+    var getGatClient = new GetGATClient();
+
+    //prepare input params for Getting GAT
+    getGatInputParams.OxdId = oxd.OxdId;
+    getGatInputParams.Scopes = new List&lt;string&gt; {
+                                    &quot;https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1&quot;,
+                                    &quot;https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas2&quot; };
+
+    //Get GAT
+    var getGatResponse = getGatClient.GetGat(oxd.OxdHost, oxd.OxdPort, getGatInputParams);
+
+    //Process response
+    return Json(new { getGatResponse = getGatResponse.Data.Rpt });
+}   
 </code></pre>
               
             </div>
