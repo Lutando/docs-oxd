@@ -8,7 +8,7 @@
   <title>Perl - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -152,6 +152,13 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#oxd-perl">oxd-perl</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuration">Configuration</a></li>
+                
+            
             </ul>
         
     </li>
@@ -216,6 +223,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../plugin/nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -261,6 +282,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -298,7 +326,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4/libraries/perl/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4\libraries\perl\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -310,9 +338,348 @@
             <div class="section">
               
                 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#oxd-perl">oxd-perl</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a><ul>
+<li><a href="#sample-code">Sample code</a></li>
+<li><a href="#oxdconfigpm">OxdConfig.pm</a></li>
+<li><a href="#oxdregisterpm">OxdRegister.pm</a></li>
+<li><a href="#updateregistrationpm">UpdateRegistration.pm</a></li>
+<li><a href="#getauthorizationurlpm">GetAuthorizationUrl.pm</a></li>
+<li><a href="#gettokenbycodepm">GetTokenByCode.pm</a></li>
+<li><a href="#getuserinfopm">GetUserInfo.pm</a></li>
+<li><a href="#oxdlogoutpm">OxdLogout.pm</a></li>
+<li><a href="#for-uma-authentications-open-this-url-in-browser">For UMA authentications open this url in browser</a></li>
+<li><a href="#umarsprotectpm">UmaRsProtect.pm</a></li>
+<li><a href="#umarscheckaccesspm">UmaRsCheckAccess.pm</a></li>
+<li><a href="#umarpgetrptpm">UmaRpGetRpt.pm</a></li>
+<li><a href="#umarpauthorizerptpm">UmaRpAuthorizeRpt.pm</a></li>
+<li><a href="#umarpgetgatpm">UmaRpGetGat.pm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <p>This page is created to document the <code>perl</code> library for oxD Server 2.4.4.</p>
+<h1 id="oxd-perl">oxd-perl</h1>
+<p>oxd-perl is a client library for the oxD Server 2.4.4. </p>
+<h2 id="installation">Installation</h2>
+<p><strong>Source</strong></p>
+<p>oxd-perl source is available on Github:</p>
+<ul>
+<li><a href="https://github.com/GluuFederation/oxd-perl">Github sources</a></li>
+</ul>
+<p>oxd-perl source is available on cpan:</p>
+<ul>
+<li><a href="http://search.cpan.org/~inderpal/">OxdPerlModule</a></li>
+</ul>
+<p><strong>Download and install manually using following command</strong></p>
+<pre><code class="code">
+Path : /var/www/html/oxd-perl/oxdPerl/
+
+perl Build.PL
+./Build
+./Build test
+sudo ./Build install
+
+</code></pre>
+
+<p><strong>Install from http://search.cpan.org</strong></p>
+<pre><code class="code">
+Run following commands in terminal
+
+cpan 
+cpan &gt; install INDERPAL/OxdPerlModule-0.01.tar.gz
+
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+<p>The oxd-perl configuration file is located in 'oxd-settings.json'. The values here are used during registration. For a full list of supported oxd configuration parameters, see the oxd documentation Below is a typical configuration data set for registration:</p>
+<pre><code class="code">    {
+      &quot;op_host&quot;: &quot;https://ce-dev2.gluu.org&quot;,
+      &quot;oxd_host_port&quot;:8099,
+      &quot;authorization_redirect_uri&quot; : &quot;https://oxd-perl-example.com/login.cgi&quot;,
+      &quot;post_logout_redirect_uri&quot; : &quot;https://oxd-perl-example.com/logout.cgi&quot;,
+      &quot;scope&quot; : [ &quot;openid&quot;, &quot;profile&quot;,&quot;uma_protection&quot;,&quot;uma_authorization&quot; ],
+      &quot;application_type&quot; : &quot;web&quot;,
+      &quot;response_types&quot; : [&quot;code&quot;],
+      &quot;grant_types&quot;:[&quot;authorization_code&quot;],
+      &quot;acr_values&quot; : [ &quot;basic&quot; ]
+    }
+</code></pre>
+
+<ul>
+<li>oxd_host_port - oxd port or socket</li>
+</ul>
+<h3 id="sample-code">Sample code</h3>
+<h3 id="oxdconfigpm">OxdConfig.pm</h3>
+<pre><code>Class description.
+Oxd RP config.
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="code">
+OxdConfig:
+
+    Configuration Values from oxd-settings.json
+
+    $object = new OxdConfig();
+    my $opHost = $object-&gt;getOpHost();
+    my $oxdHostPort = $object-&gt;getOxdHostPort();
+    my $authorizationRedirectUrl = $object-&gt;getAuthorizationRedirectUrl();
+    my $postLogoutRedirectUrl = $object-&gt;setPostLogoutRedirectUrl();
+    my $scope = $object-&gt;getScope();
+    my $applicationType = $object-&gt;getApplicationType();
+    my $responseType = $object-&gt;getResponseType();
+    my $grantType = $object-&gt;getGrantTypes();
+    my $acrValues = $object-&gt;getAcrValues();
+
+</code></pre>
+
+<h3 id="oxdregisterpm">OxdRegister.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#register-site">Register_site protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">OxdRegister:
+my $register_site = new OxdRegister( );
+
+$register_site-&gt;setRequestOpHost($gluu_server_url);
+$register_site-&gt;setRequestAcrValues($acrValues);
+$register_site-&gt;setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
+$register_site-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$register_site-&gt;setRequestContacts([$emal]);
+$register_site-&gt;setRequestGrantTypes($grantType);
+$register_site-&gt;setRequestResponseTypes($responseType);
+$register_site-&gt;setRequestScope($scope);
+$register_site-&gt;setRequestApplicationType($applicationType);
+$register_site-&gt;request();
+
+# storing data in the session
+$session-&gt;param('oxd_id', $register_site-&gt;getResponseOxdId());
+
+</code></pre>
+
+<h3 id="updateregistrationpm">UpdateRegistration.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#update-site-registration">Update_site_registration protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UpdateRegistration:
+
+$update_site_registration = new UpdateRegistration();
+
+$update_site_registration-&gt;setRequestAcrValues($acrValues);
+$update_site_registration-&gt;setRequestOxdId($oxd_id);
+$update_site_registration-&gt;setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
+$update_site_registration-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$update_site_registration-&gt;setRequestContacts([$emal]);
+$update_site_registration-&gt;setRequestGrantTypes($grantType);
+$update_site_registration-&gt;setRequestResponseTypes($responseType);
+$update_site_registration-&gt;setRequestScope($scope);
+$update_site_registration-&gt;request();
+
+$session-&gt;param('oxd_id', $update_site_registration-&gt;getResponseOxdId());
+
+</code></pre>
+
+<h3 id="getauthorizationurlpm">GetAuthorizationUrl.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#get-authorization-url">Get_authorization_url protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetAuthorizationUrl:
+
+$get_authorization_url = new GetAuthorizationUrl( );
+$get_authorization_url-&gt;setRequestOxdId($session-&gt;param('oxd_id'));
+$get_authorization_url-&gt;setRequestScope($scope);
+$get_authorization_url-&gt;setRequestAcrValues($acrValues);
+$get_authorization_url-&gt;request();
+my $oxdurl = $get_authorization_url-&gt;getResponseAuthorizationUrl();
+</code></pre>
+
+<h3 id="gettokenbycodepm">GetTokenByCode.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#get-tokens-id-access-by-code">Get_tokens_by_code protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetTokenByCode:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+my $code = $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;code&quot;));
+my $state = $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;state&quot;));
+
+$get_tokens_by_code = new GetTokenByCode();
+$get_tokens_by_code-&gt;setRequestOxdId($oxd_id);
+$get_tokens_by_code-&gt;setRequestCode($code);
+$get_tokens_by_code-&gt;setRequestState($state);
+$get_tokens_by_code-&gt;request();
+#store values in sessions
+$session-&gt;param('user_oxd_id_token', $get_tokens_by_code-&gt;getResponseIdToken());
+$session-&gt;param('state', $state);
+$session-&gt;param('session_state', $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;session_state&quot;)));
+
+print Dumper( $get_user_info-&gt;getResponseObject() );        
+
+</code></pre>
+
+<h3 id="getuserinfopm">GetUserInfo.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#get-user-info">Get_user_info protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetUserInfo:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+
+$get_user_info = new GetUserInfo();
+$get_user_info-&gt;setRequestOxdId($oxd_id);
+$get_user_info-&gt;setRequestAccessToken($get_tokens_by_code-&gt;getResponseAccessToken());
+$get_user_info-&gt;request();
+
+print Dumper( $get_user_info-&gt;getResponseObject() );
+
+</code></pre>
+
+<h3 id="oxdlogoutpm">OxdLogout.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#log-out-uri">Get_logout_uri protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">OxdLogout:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+my $user_oxd_id_token = $cgi-&gt;escapeHTML($session-&gt;param(&quot;user_oxd_id_token&quot;));
+my $session_state = $cgi-&gt;escapeHTML($session-&gt;param(&quot;session_state&quot;));
+my $state = $cgi-&gt;escapeHTML($session-&gt;param(&quot;state&quot;));
+
+$logout = new OxdLogout();
+$logout-&gt;setRequestOxdId($oxd_id);
+$logout-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$logout-&gt;setRequestIdToken($user_oxd_id_token);
+$logout-&gt;setRequestSessionState($session_state);
+$logout-&gt;setRequestState($state);
+$logout-&gt;request();
+
+$session-&gt;delete();
+$logoutUrl = $logout-&gt;getResponseObject()-&gt;{data}-&gt;{uri};
+
+</code></pre>
+
+<h3 id="for-uma-authentications-open-this-url-in-browser">For UMA authentications open this url in browser</h3>
+<ul>
+<li><a href="https://oxd-perl-example.com/uma.cgi">https://oxd-perl-example.com/uma.cgi</a>.</li>
+</ul>
+<h3 id="umarsprotectpm">UmaRsProtect.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#uma-protect-resources">Uma_rs_protect protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRsProtect:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+$uma_rs_protect = new UmaRsProtect();
+$uma_rs_protect-&gt;setRequestOxdId($oxdId);
+
+$uma_rs_protect-&gt;addConditionForPath([&quot;GET&quot;],[&quot;https://photoz.example.com/dev/actions/view&quot;], [&quot;https://photoz.example.com/dev/actions/view&quot;]);
+$uma_rs_protect-&gt;addConditionForPath([&quot;POST&quot;],[ &quot;https://photoz.example.com/dev/actions/add&quot;],[ &quot;https://photoz.example.com/dev/actions/add&quot;]);
+$uma_rs_protect-&gt;addConditionForPath([&quot;DELETE&quot;],[&quot;https://photoz.example.com/dev/actions/remove&quot;], [&quot;https://photoz.example.com/dev/actions/remove&quot;]);
+$uma_rs_protect-&gt;addResource('/photo');
+
+$uma_rs_protect-&gt;request();
+print Dumper( $uma_rs_protect-&gt;getResponseObject() );
+
+
+</code></pre>
+
+<h3 id="umarscheckaccesspm">UmaRsCheckAccess.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#uma-check-access">Uma_rs_check_access protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRsCheckAccess:
+
+my $oxdId = $session-&gt;param('oxd_id');
+my $umaRpt = $session-&gt;param('uma_rpt');
+
+$uma_rs_authorize_rpt = new UmaRsCheckAccess();
+$uma_rs_authorize_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rs_authorize_rpt-&gt;setRequestRpt($umaRpt);
+$uma_rs_authorize_rpt-&gt;setRequestPath(&quot;/photo&quot;);
+$uma_rs_authorize_rpt-&gt;setRequestHttpMethod(&quot;GET&quot;);
+$uma_rs_authorize_rpt-&gt;request();
+
+print Dumper($uma_rs_authorize_rpt-&gt;getResponseObject());
+my $uma_ticket= $uma_rs_authorize_rpt-&gt;getResponseTicket();
+$session-&gt;param('uma_ticket', $uma_ticket);
+
+</code></pre>
+
+<h3 id="umarpgetrptpm">UmaRpGetRpt.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#uma-rp-get-rpt">Uma_rp_get_rpt protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpGetRpt:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+
+$uma_rp_get_rpt = new UmaRpGetRpt();
+$uma_rp_get_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rp_get_rpt-&gt;request();
+
+print Dumper($uma_rp_get_rpt-&gt;getResponseObject());
+
+my $uma_rpt= $uma_rp_get_rpt-&gt;getResponseRpt();
+$session-&gt;param('uma_rpt', $uma_rpt);
+
+</code></pre>
+
+<h3 id="umarpauthorizerptpm">UmaRpAuthorizeRpt.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#uma-rp-authorize-rpt">Uma_rp_authorize_rpt protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpAuthorizeRpt:
+
+my $oxdId = $session-&gt;param('oxd_id');
+my $uma_rpt = $session-&gt;param('uma_rpt');
+my $uma_ticket = $session-&gt;param('uma_ticket');
+
+$uma_rp_authorize_rpt = new UmaRpAuthorizeRpt();
+$uma_rp_authorize_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rp_authorize_rpt-&gt;setRequestRpt($uma_rpt);
+$uma_rp_authorize_rpt-&gt;setRequestTicket($uma_ticket);
+$uma_rp_authorize_rpt-&gt;request();
+
+print Dumper($uma_rp_authorize_rpt-&gt;getResponseObject());
+
+</code></pre>
+
+<h3 id="umarpgetgatpm">UmaRpGetGat.pm</h3>
+<ul>
+<li><a href="https://oxd.gluu.org/docs/protocol/#uma-rp-get-gat">Uma_rp_get_gat protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpGetGat:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+$uma_rp_get_gat = new UmaRpGetGat();
+$uma_rp_get_gat-&gt;setRequestOxdId($oxdId);
+$uma_rp_get_gat-&gt;setRequestScopes([&quot;https://photoz.example.com/dev/actions/add&quot;,&quot;https://photoz.example.com/dev/actions/view&quot;, &quot;https://photoz.example.com/dev/actions/edit&quot;]);
+$uma_rp_get_gat-&gt;request();
+
+print Dumper( $uma_rp_get_gat-&gt;getResponseObject() );
+
+my $uma_gat= $uma_rp_get_gat-&gt;getResponseGat();
+$session-&gt;param('uma_gat', $uma_gat);
+print Dumper( $uma_rp_get_gat-&gt;getResponseGat() );
+
+</code></pre>
               
             </div>
           </div>
