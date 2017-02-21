@@ -9,6 +9,8 @@ Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to a
 ## Requirements
 In order to use the WordPress plugin you will need a standard OP (like Google or a Gluu Server) and the oxd server.
 
+* Compatibility : 2.9 <= 4.7.2 versions
+
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Webpage](https://oxd.gluu.org)

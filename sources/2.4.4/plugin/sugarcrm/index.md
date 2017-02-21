@@ -9,6 +9,8 @@ Gluu's OpenID Connect Single Sign-On (SSO) SugarCRM module will enable you to au
 ## Requirements
 In order to use the SugarCRM module you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
+* Compatibility : 6.5 <= 7.6 versions
+
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)

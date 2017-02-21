@@ -9,6 +9,8 @@ Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to a
 ## Requirements
 In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
+* Compatibility : 0.6.0 <= 10.21 versions
+
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)

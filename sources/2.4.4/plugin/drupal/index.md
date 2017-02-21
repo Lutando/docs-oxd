@@ -9,6 +9,8 @@ Gluu's OpenID Connect Single Sign-On (SSO) Drupal module will enable you to auth
 ## Requirements
 In order to use the Drupal module you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
+* Compatibility : 7.x versions
+
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)

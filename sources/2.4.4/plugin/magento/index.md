@@ -9,6 +9,8 @@ Gluu's OpenID Connect Single Sign-On (SSO) Magento Extension will enable you to 
 ## Requirements
 In order to use the Magento Extension you will need a standard OP (like Google or a Gluu Server) and the oxd server.
 
+* Compatibility : 1.5 <= 1.9.2 version
+
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
 * [oxd Webpage](https://oxd.gluu.org)
