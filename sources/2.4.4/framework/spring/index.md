@@ -4,7 +4,7 @@ The following documentation shows how to configure Java Spring apps to use oxd f
 ## Requirements
 The oxd-spring requires the oxD Server. Please use the following link to install it
 
-* [oxd Server Installation Guide](https://oxd.gluu.org/docs/oxdserver/install/)
+* [oxd Server Installation Guide](https://oxd.gluu.org/docs/2.4.4/install/)
 
 
 ## Install oxd-spring
