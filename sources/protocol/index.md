@@ -11,7 +11,7 @@ authentication, you've used OpenID Connect.
 !!! Note
     If you need to launch an OpenID Connect Provider for your organization, you should consider [deploying the Gluu Server](http://gluu.org/deploy). The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. 
 
-## OpenID Connect Code Flow
+## Authentication Flow
 oxd uses the Authorization Code Flow for authentication. Future versions 
 of oxd may support the Hybrid Flow. Implicit Flow is not supported 
 because it is intended for Javascript client-side applications where 
