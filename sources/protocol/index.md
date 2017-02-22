@@ -1,4 +1,4 @@
-## OpenID Connect Authentication Overview
+# OpenID Connect Authentication Overview
 
 OpenID Connect is one of the most popular API's for an application 
 to identify a person. Technically it is not an authentication protocol--
@@ -10,12 +10,16 @@ authentication, you've used OpenID Connect.
 
 !!! Note
     If you need to launch an OpenID Connect Provider for your organization, you should consider [deploying the Gluu Server](http://gluu.org/deploy). The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. 
-    
+
+## OpenID Connect Code Flow
 oxd uses the Authorization Code Flow for authentication. Future versions 
 of oxd may support the Hybrid Flow. Implicit Flow is not supported 
 because it is intended for Javascript client-side applications where 
 the client does not authenticate.
 
+Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+
+## oxd APIs
 oxd provides six API's for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three step process: 
 
