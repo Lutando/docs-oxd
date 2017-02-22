@@ -76,7 +76,7 @@ Request:
         "grant_types": ["authorization_code"],                         <- OPTIONAL 
         "scope": ["openid"],                                           <- OPTIONAL
         "acr_values": ["basic"],                                       <- OPTIONAL
-        "client_name": "",                                             <- OPTIONAL
+        "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
         "client_jwks_uri": "",                                         <- OPTIONAL
         "client_token_endpoint_auth_method": "",                       <- OPTIONAL
         "client_request_uris": [],                                     <- OPTIONAL
