@@ -4,7 +4,7 @@ OpenID Connect is one of the most popular API's for an application
 to identify a person. Technically it is not an authentication protocol--
 it enables a person to authorize the release of information to 
 an application from a remote "identity provider". In the
-process of authorizting this release, the person is authenticated (if 
+process of authorizing this release, the person is authenticated (if 
 no previous session exists). If you are familiar with Google 
 authentication, you've used OpenID Connect. 
 
