@@ -2,12 +2,14 @@
 
 # RoundCube OpenID Connect Single Sign-On (SSO) Plugin By Gluu
 
-![image](https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/plugin.jpg)
+![image](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/roundcube.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
 ## Requirements
 In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
+
+* Compatibility : 0.6.0 <= 10.21 versions
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
@@ -18,14 +20,14 @@ In order to use the RoundCube plugin you will need to have a standard OP (like G
  
 ### Download
 
-[Github source](https://github.com/GluuFederation/roundcube-oxd-plugin/archive/v2.4.4.zip).
+[Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v2.4.4.zip).
 
-[Link to RoundCube repository](https://plugins.roundcube.net/packages/GluuFederation/roundcube-oxd-plugin)
+[Link to RoundCube repository](https://plugins.roundcube.net/packages/gluufederation/roundcube_oxd_plugin)
 
 To install RoundCube OpenID Connect Single Sign On (SSO) Plugin By Gluu via Composer, execute the following command 
 
 ```
-$ composer install `composer require "GluuFederation/roundcube-oxd-plugin": "2.4.4"`
+$ composer install `composer require "gluufederation/roundcube_oxd_plugin": "2.4.4"`
 
 ```
 
@@ -36,10 +38,10 @@ $ composer install `composer require "GluuFederation/roundcube-oxd-plugin": "2.4
  
 In your RoundCube admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
 
-![upload](https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/1.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/1.png) 
 
 1. Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site. 
-2. Only login users with the following role(s) in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
+2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
 3. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
 4. Custom URI after logout: custom URI after logout (for example "Thank you" page).
 5. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file).
@@ -49,19 +51,19 @@ If your OpenID Provider supports dynamic registration, no additional steps are r
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![upload](https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/2.png)  
+![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/2.png)  
 
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 > If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
-#### Role based enrollment
+#### Enrollment and Access Management
 
 Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand navigation menu. Select `Manage People`. Find the person(s) who should have access. Click their user entry. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `roundcube`, then you should also have `User Permission` = `roundcube` in the user entry. Update the user record, and now they are ready for enrollment at your Roundcube site. 
 
 ### OpenID Connect Configuration
 
-![upload](https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/3.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/3.png) 
 
 #### User Scopes
 
@@ -88,7 +90,7 @@ For example : `imapHost` = `ssl://imap.gmail.com` ; `imapPort` = `993` ; `imapUs
 Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local RoundCube login screen.
 When it is not checked, it will give proof the following screen.   
 
-![upload](https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/4.png) 
+![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/4.png) 
 
 ##### Select acr
 

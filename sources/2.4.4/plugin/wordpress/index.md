@@ -2,12 +2,14 @@
 
 # OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/plugin.jpg)
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/wordpress.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can use Google or [deploy the free open source Gluu Server](https://gluu.org/docs/deployment).  
 
 ## Requirements
 In order to use the WordPress plugin you will need a standard OP (like Google or a Gluu Server) and the oxd server.
+
+* Compatibility : 2.9 <= 4.7.2 versions
 
 * [Gluu Server Installation Guide](https://www.gluu.org/docs/deployment/).
 
@@ -40,7 +42,7 @@ In your WP admin menu panel you should now see the OpenID Connect menu tab. Clic
 ![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png) 
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.
-2. Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
+2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
 3. New User Default Role: specify which role to give to new users upon registration.  
 4. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
 5. Custom URI after logout: custom URI after logout (for example "Thank you" page).
@@ -57,7 +59,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 > If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
-#### Role based enrollment
+#### Enrollment and Access Management
 
 1. Navigate to your Gluu Server admin GUI. 
 2. Click the `Users` tab in the left hand navigation menu. 

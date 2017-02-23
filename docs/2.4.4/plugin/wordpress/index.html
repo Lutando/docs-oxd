@@ -8,7 +8,7 @@
   <title>Wordpress - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -225,6 +225,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -270,6 +284,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -307,7 +328,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4/plugin/wordpress/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/2.4.4\plugin\wordpress\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -330,7 +351,7 @@
 </li>
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#enrollment-and-access-management">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -345,7 +366,7 @@
 </ul>
 </div>
 <h1 id="openid-connect-single-sign-on-sso-wordpress-plugin-by-gluu">OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu</h1>
-<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/plugin.jpg" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/wordpress.png" /></p>
 <p>Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can use Google or <a href="https://gluu.org/docs/deployment">deploy the free open source Gluu Server</a>.  </p>
 <h2 id="requirements">Requirements</h2>
 <p>In order to use the WordPress plugin you will need a standard OP (like Google or a Gluu Server) and the oxd server.</p>
@@ -375,7 +396,7 @@
 <p><img alt="General" src="https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png" /> </p>
 <ol>
 <li>Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.</li>
-<li>Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>wordpress</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>wordpress</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>New User Default Role: specify which role to give to new users upon registration.  </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
@@ -389,7 +410,7 @@
 <blockquote>
 <p>If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect &gt; Clients page. Search for your <code>oxd id</code>.</p>
 </blockquote>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="enrollment-and-access-management">Enrollment and Access Management</h4>
 <ol>
 <li>Navigate to your Gluu Server admin GUI. </li>
 <li>Click the <code>Users</code> tab in the left hand navigation menu. </li>

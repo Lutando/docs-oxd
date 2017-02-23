@@ -41,12 +41,14 @@ pages:
 - [2.4.4/plugin/suitecrm/index.md, Plugin, SuiteCRM]
 - [2.4.4/plugin/roundcube/index.md, Plugin, RoundCube]
 - [2.4.4/plugin/shopify/index.md, Plugin, Shopify]
+- [2.4.4/plugin/nextcloud/index.md, Plugin, NextCloud]
 ## Framework
 - [2.4.4/framework/spring/index.md, Framework, Java Spring]
 - [2.4.4/framework/play/index.md, Framework, Java Play Framework]
 - [2.4.4/framework/ruby/index.md, Framework, Ruby on Rails]
 - [2.4.4/framework/python/index.md, Framework, Python Flask]
 - [2.4.4/framework/node/index.md, Framework, Node/Express]
+- [2.4.4/framework/net/index.md, Framework, .Net]
 
 # master docs
 - [install/index.md, hidden, hidden]
@@ -67,6 +69,7 @@ pages:
 - [plugin/sugarcrm/index.md, hidden, hidden]
 - [plugin/suitecrm/index.md, hidden, hidden]
 - [plugin/roundcube/index.md, hidden, hidden]
+- [plugin/nextcloud/index.md, hidden, hidden]
 - [framework/spring/index.md, hidden, hidden]
 - [framework/play/index.md, hidden, hidden]
 - [framework/ruby/index.md, hidden, hidden]

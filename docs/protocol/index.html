@@ -8,7 +8,7 @@
   <title>Protocol - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -65,17 +65,39 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#oxd-server-overview">oxd server overview</a></li>
+                <li class="toctree-l3"><a href="#openid-connect-authentication-overview">OpenID Connect Authentication Overview</a></li>
                 
-                    <li><a class="toctree-l4" href="#openid-connect-authentication-overview">OpenID Connect Authentication Overview</a></li>
+                    <li><a class="toctree-l4" href="#register-site">Register site</a></li>
                 
-                    <li><a class="toctree-l4" href="#uma-resource-server-apis">UMA Resource Server API's</a></li>
+                    <li><a class="toctree-l4" href="#update-site-registration">Update site registration</a></li>
                 
-                    <li><a class="toctree-l4" href="#uma-client-apis">UMA Client API's</a></li>
+                    <li><a class="toctree-l4" href="#get-authorization-url">Get authorization url</a></li>
                 
-                    <li><a class="toctree-l4" href="#gluu-oauth2-access-management-apis">Gluu OAuth2 Access Management API's</a></li>
+                    <li><a class="toctree-l4" href="#get-tokens-id-access-by-code">Get Tokens (ID &amp; Access) by Code</a></li>
                 
-                    <li><a class="toctree-l4" href="#references">References</a></li>
+                    <li><a class="toctree-l4" href="#get-user-info">Get User Info</a></li>
+                
+                    <li><a class="toctree-l4" href="#log-out-uri">Log out URI</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#uma-resource-server-apis">UMA Resource Server API's</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-rs-protect-resources">UMA RS Protect resources</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-rs-check-access">UMA RS Check Access</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#uma-client-apis">UMA Client API's</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-rp-get-rpt">UMA RP - Get RPT</a></li>
+                
+                    <li><a class="toctree-l4" href="#uma-rp-authorize-rpt">UMA RP - Authorize RPT</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#gluu-oauth2-access-management-apis">Gluu OAuth2 Access Management API's</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#references">References</a></li>
                 
             
             </ul>
@@ -229,6 +251,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/plugin/nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -274,6 +310,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../2.4.4/framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -311,7 +354,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/protocol/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/protocol\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -322,45 +365,18 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="oxd-server-overview">oxd server overview</h1>
-<p>oxd makes it super simple to authenticate a person with OpenID Connect, 
-to protect web resources with OAuth2, or to write a client that calls an 
-OAuth2 protected API. </p>
-<p>The oxd Server is designed to work as a standalone service demon. It's 
-actually a web server, running in an embedded 
-<a href="http://www.eclipse.org/jetty/">Jetty</a> server.  Just start it and stop 
-it like you would any other unix service.</p>
-<p>oxd's API's make it easier for developers to use OAuth2 protocols.  By 
-default, it's restricted to <code>localhost,</code> which means these API's cannot 
-be reached from another server on the network--only by services running 
-locally server. You deploy oxd on each server that has web 
-applications. Gluu is introducing an nginx-based gateway that will 
-enable the centralized deployment of an oxd server (and will
-require clients to use https to connect to it)--stay tuned.</p>
-<p>oxd API's can be called with by any application that can make REST 
-calls.  Gluu also provides several native libraries that wrap the
-oxd APIs, currently available for Php, Java, Python, Node, Ruby and C#.</p>
-<p>oxd is commercial software. There is a free version that is limited 
-to two transactions per second--which is enough for a low volume web 
-site. For more information on purchasing a commercial version of oxd, 
-see the <a href="http://oxd.gluu.org">website</a></p>
-<p><img alt="oxd-overview" src="https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg" /></p>
-<h2 id="openid-connect-authentication-overview">OpenID Connect Authentication Overview</h2>
+                <h2 id="openid-connect-authentication-overview">OpenID Connect Authentication Overview</h2>
 <p>OpenID Connect is one of the most popular API's for an application 
 to identify a person. Technically it is not an authentication protocol--
 it enables a person to authorize the release of information to 
 an application from a remote "identity provider". In the
-process, of authorizting this release, the person is authenticated (if 
+process of authorizting this release, the person is authenticated (if 
 no previous session exists). If you are familiar with Google 
 authentication, you've used OpenID Connect. </p>
-<p>If you want to launch an OpenID Connect Provider for your organization, 
-you should consider deploying the Gluu Server, which is available for 
-many Linux distributions, and is easy to install 
-and configure. For more information, see our <a href="http://gluu.org">website</a>. 
-The Gluu Server will enable your organization to consolidate 
-authentication in one place, and to enable Single Sign-on (SSO) to many 
-applications. It's a standard OpenID Connect Provider, but it also 
-supports SAML.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to launch an OpenID Connect Provider for your organization, you should consider <a href="http://gluu.org/deploy">deploying the Gluu Server</a>. The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. </p>
+</div>
 <p>oxd uses the Authorization Code Flow for authentication. Future versions 
 of oxd may support the Hybrid Flow. Implicit Flow is not supported 
 because it is intended for Javascript client-side applications where 

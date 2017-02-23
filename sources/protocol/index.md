@@ -1,57 +1,22 @@
-# oxd server overview
-
-oxd makes it super simple to authenticate a person with OpenID Connect, 
-to protect web resources with OAuth2, or to write a client that calls an 
-OAuth2 protected API. 
-
-The oxd Server is designed to work as a standalone service demon. It's 
-actually a web server, running in an embedded 
-[Jetty](http://www.eclipse.org/jetty/) server.  Just start it and stop 
-it like you would any other unix service.
-
-oxd's API's make it easier for developers to use OAuth2 protocols.  By 
-default, it's restricted to `localhost,` which means these API's cannot 
-be reached from another server on the network--only by services running 
-locally server. You deploy oxd on each server that has web 
-applications. Gluu is introducing an nginx-based gateway that will 
-enable the centralized deployment of an oxd server (and will
-require clients to use https to connect to it)--stay tuned.
-
-oxd API's can be called with by any application that can make REST 
-calls.  Gluu also provides several native libraries that wrap the
-oxd APIs, currently available for Php, Java, Python, Node, Ruby and C#.
-
-oxd is commercial software. There is a free version that is limited 
-to two transactions per second--which is enough for a low volume web 
-site. For more information on purchasing a commercial version of oxd, 
-see the [website](http://oxd.gluu.org)
-
-![oxd-overview](https://raw.githubusercontent.com/GluuFederation/docs-oxd/master/sources/img/Overview.jpg)
-
-## OpenID Connect Authentication Overview
+# OpenID Connect Authentication Overview
 
 OpenID Connect is one of the most popular API's for an application 
 to identify a person. Technically it is not an authentication protocol--
 it enables a person to authorize the release of information to 
 an application from a remote "identity provider". In the
-process, of authorizting this release, the person is authenticated (if 
+process of authorizing this release of information, the person is authenticated (if 
 no previous session exists). If you are familiar with Google 
 authentication, you've used OpenID Connect. 
 
-If you want to launch an OpenID Connect Provider for your organization, 
-you should consider deploying the Gluu Server, which is available for 
-many Linux distributions, and is easy to install 
-and configure. For more information, see our [website](http://gluu.org). 
-The Gluu Server will enable your organization to consolidate 
-authentication in one place, and to enable Single Sign-on (SSO) to many 
-applications. It's a standard OpenID Connect Provider, but it also 
-supports SAML.
+!!! Note
+    If you need to launch an OpenID Connect Provider for your organization, you should consider [deploying the Gluu Server](http://gluu.org/deploy). The Gluu Server will enable your organization to consolidate authentication in one place, and to enable Single Sign-on (SSO) to many applications. 
 
-oxd uses the Authorization Code Flow for authentication. Future versions 
-of oxd may support the Hybrid Flow. Implicit Flow is not supported 
-because it is intended for Javascript client-side applications where 
-the client does not authenticate.
+## Authentication Flow
+oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. Future versions of oxd may support the Hybrid Flow. Implicit Flow is not supported because it is intended for Javascript client-side applications where the client does not authenticate.
 
+Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+
+## oxd APIs
 oxd provides six API's for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three step process: 
 
@@ -111,7 +76,7 @@ Request:
         "grant_types": ["authorization_code"],                         <- OPTIONAL 
         "scope": ["openid"],                                           <- OPTIONAL
         "acr_values": ["basic"],                                       <- OPTIONAL
-        "client_name": "",                                             <- OPTIONAL
+        "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
         "client_jwks_uri": "",                                         <- OPTIONAL
         "client_token_endpoint_auth_method": "",                       <- OPTIONAL
         "client_request_uris": [],                                     <- OPTIONAL

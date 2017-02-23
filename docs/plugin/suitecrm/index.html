@@ -8,7 +8,7 @@
   <title>hidden - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -212,6 +212,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/plugin/nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -257,6 +271,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -294,7 +315,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/plugin/suitecrm/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/plugin\suitecrm\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -316,7 +337,7 @@
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a></li>
 <li><a href="#attention">Attention</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#enrollment-and-access-management">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -335,7 +356,7 @@
 </ul>
 </div>
 <h1 id="suitecrm-openid-connect-single-sign-on-sso-module-by-gluu">SuiteCRM OpenID Connect Single Sign-On (SSO) Module By Gluu</h1>
-<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/plugin.jpg" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/suitecrm.png" /></p>
 <p>Gluu's OpenID Connect Single Sign-On (SSO) SuiteCRM module will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can <a href="https://gluu.org/docs/deployment">deploy the free open source Gluu Server</a>.  </p>
 <h2 id="requirements">Requirements</h2>
 <p>In order to use the SuiteCRM module you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.</p>
@@ -349,7 +370,7 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="download">Download</h3>
-<p><a href="https://github.com/GluuFederation/gluu-sso-SugarCRM-module/blob/master/gluu-sso-SugarCRM-module.zip?raw=true">Github source</a></p>
+<p><a href="https://github.com/GluuFederation/sugarcrm-oxd-module/blob/master/sugarcrm-oxd-module.zip?raw=true">Github source</a></p>
 <ol>
 <li>
 <p>Open menu tab Admin and click on <code>Module loader</code> button
@@ -375,7 +396,7 @@
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/docu/d6.png" /> </p>
 <ol>
 <li>Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your SuiteCRM site. They will be assigned the new user default role specified below.</li>
-<li>Only register users with the following role(s) in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>suitecrm</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance <code>suitecrm</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>New User Default Role: specify which role to give to new users upon registration.  </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
@@ -393,7 +414,7 @@
 <p>Please add the following lines to your config_override.php file.</p>
 <p><code>$sugar_config['http_referer']['list'][] = your-openid-provider.uri</code>;
 <code>$sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );</code></p>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="enrollment-and-access-management">Enrollment and Access Management</h4>
 <p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the module. For instance, if in the module you have limit enrollment to user(s) with role = <code>suitecrm</code>, then you should also have <code>User Permission</code> = <code>suitecrm</code> in the user entry. Update the user record, and now they are ready for enrollment at your SuiteCRM site. </p>
 <h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
 <p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/suitecrm-oxd-module/master/docu/d8.png" /> </p>

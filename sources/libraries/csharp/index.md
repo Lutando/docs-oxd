@@ -1,310 +1,379 @@
 # oxd-csharp
 
-oxd c# is a client library for the oxd Server.
+oxd-Csharp is a C# .Net library (DLL) to interact with Gluu's OXD Server. For information about oxD, visit [http://oxd.gluu.org](http://oxd.gluu.org)
 
-## Deployment
+## Installation
 
-Download the zip file from the 
-[Github Page](https://github.com/GluuFederation/oxd-csharp)
+### Prerequisites
 
-* [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/client)
+* Visual Studio 2015
+* Gluu oxD Server - [Installation docs](https://oxd.gluu.org/docs/install/)
 
-* [CSharp API Documentation](https://oxd.gluu.org/api-docs/csharp/2.4.4/)
+### Library
 
-### Using the Library in your website
+* *Official Gluu's Nuget Package* - Install using the Visual Studio Nuget package manager console from the Gluu's official Nuget Package. Click [here](https://www.nuget.org/packages/Gluu.Oxd.OxdCSharp/) and follow the installation steps.
+
+
+## Configuration
+
+The minimal configuration required to get oxd-csharp working:
+
+```
+[oxd]
+host = 127.0.0.1 //IP represents localhost
+port = 8099
+
+[client]
+authorization_redirect_uri=https://your.site.org/callback
+```
+
+All the required and optional configuration items are with application developer. The oxd-csharp library does not have any specific configuration items itself.
+
+## Using the oxd-csharp Library in your website
 
 #### Register Site
-The following snippet can be used to register the website
 
-The required parameters are 
+The following are the required information for registering a Site: 
 
-* op_host
-* port - the port of the oxd server
-* redirectURI - A URL which the OP is authorized to redirect the user
-after authorization.
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *AuthorizationRedirectUri* - A URL which the OP is authorized to redirect the user after authorization.
 
-The response returned is 
+The following code snippet can be used to register a site.
 
-* oxd-id (Type: String)
+```csharp
+[HttpPost]
+public ActionResult RegisterSite(OxdModel oxdModel)
+{
+	//prepare input params for Register Site
+    var registerSiteInputParams = new RegisterSiteParams();
+    registerSiteInputParams.AuthorizationRedirectUri = oxdModel.RedirectUrl;
+    registerSiteInputParams.OpHost = "https://scim-test.gluu.org";
+    registerSiteInputParams.ClientName = "OxdTestingClient";
 
-```
-public RegisterSiteResponse RegisterSite(string host, int port, string redirectUrl)
-    {
-        try
-        {
-            CommandClient client = new CommandClient(host, port);
-            RegisterSiteParams param = new RegisterSiteParams();
-            param.SetAuthorizationRedirectUri(redirectUrl);
-            param.SetPostLogoutRedirectUri(redirectUrl);
-            param.SetClientLogoutUri(Lists.newArrayList(new string[] { "" }));
+    //Register Site
+    var registerSiteClient = new RegisterSiteClient();
+    var registerSiteResponse = registerSiteClient.RegisterSite(oxdModel.OxdHost, oxdModel.OxdPort, registerSiteInputParams);
 
-            Command cmd = new Command(CommandType.register_site);
-            cmd.setParamsObject(param);
-
-            string commandresponse = client.send(cmd);
-            RegisterSiteResponse response = new RegisterSiteResponse(JsonConvert.DeserializeObject<dynamic>(commandresponse).data);
-            Assert.IsNotNull(response);
-            Assert.IsTrue(!String.IsNullOrEmpty(response.getOxdId()));
-            StoredValues._oxd_id = response.getOxdId();
-            return response;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return null;
-        }
-    }
-```
-
-#### Update Site Registration
-The following snippet can be used to update the website registration 
-
-The required parameters are 
-
-* op_host
-
-* port
-
-The response returned is
-
-* oxd-id (Type: String)
-
-```
-    public UpdateSiteResponse UpdateSiteRegisteration(string host, int port)
-    {
-        try
-        {
-            CommandClient client = new CommandClient(host, port);
-            UpdateSiteParams param = new UpdateSiteParams();
-            param.SetOxdId(StoredValues._oxd_id);
-            param.SetAuthorizationRedirectUri("http://www.test.com/wp-login.php");
-            param.SetPostLogoutRedirectUri("http://www.test.com/wp-login.php?action=logout&_wpnonce=a3c70643e9");
-            param.SetApplicationType("web");
-            param.SetRedirectUris(Lists.newArrayList(new string[] { "http://www.test.com/wp-login.php" }));
-            param.SetAcrValues(new List<string>());
-            param.SetClientJwksUri("");
-            param.SetContacts(Lists.newArrayList(new string[] { "test@gmail.com" }));
-            param.SetGrantType(Lists.newArrayList(new string[] { "authorization_code" }));
-            param.SetClientTokenEndpointAuthMethod("");
-            param.SetClientLogoutUri(Lists.newArrayList(new string[] { "http://www.test.com/wp-login.php?action=logout&_wpnonce=a3c70643e9" }));
-
-            Command cmd = new Command(CommandType.update_site_registration);
-            cmd.setParamsObject(param);
-
-            string commandresponse = client.send(cmd);
-            UpdateSiteResponse response = new UpdateSiteResponse(JsonConvert.DeserializeObject<dynamic>(commandresponse).data);
-            Assert.IsNotNull(response);
-            Assert.IsTrue(!String.IsNullOrEmpty(response.getOxdId()));
-            return response;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return null;
-        }
-    } 
+    //Process the response
+    return Json(new { oxdId = registerSiteResponse.Data.OxdId });
+}
 ```
 
 #### Get Authorization URL
-The following snippet can be used to get the authorization URL.
 
-The required parameters are 
+The following are the required information for Getting Authorization URL: 
 
-* op_host
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
 
-* port
+The following code snippet can be used to Get Authorization URL.
 
-The response is
+```csharp
+[HttpPost]
+public ActionResult GetAuthorizationUrl(OxdModel oxdModel)
+{
+	//prepare input params for Getting Auth URL from a site
+    var getAuthUrlInputParams = new GetAuthorizationUrlParams();
+    getAuthUrlInputParams.OxdId = oxdModel.OxdId;
 
-* authorization_url (Type: String)
+    //Get Auth URL
+    var getAuthUrlClient = new GetAuthorizationUrlClient();
+    var getAuthUrlResponse = getAuthUrlClient.GetAuthorizationURL(oxdModel.OxdHost, oxdModel.OxdPort, getAuthUrlInputParams);
 
-```
-    public string GetAuthorizationURL(string host, int port)
-    {
-        try
-        {
-            CommandClient client = new CommandClient(host, port);
-
-            GetAuthorizationUrlParams param = new GetAuthorizationUrlParams();
-            param.SetOxdId(StoredValues._oxd_id);
-            param.SetAcrValues(new List<string>());
-
-            Command cmd = new Command(CommandType.get_authorization_url);
-            cmd.setParamsObject(param);
-
-            string response = client.send(cmd);
-            GetAuthorizationUrlResponse res = new GetAuthorizationUrlResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
-
-            Assert.IsNotNull(res);
-            Assert.IsTrue(!String.IsNullOrEmpty(res.getAuthorizationUrl()));
-            return res.getAuthorizationUrl();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return ex.Message;
-        }
-    }
+    //Process Response
+    return Json(new { authUrl = getAuthUrlResponse.Data.AuthorizationUrl });
+}
 ```
 
 #### Get Tokens by Code
-The following snippet can be used to get tokens by code.
 
-The required parameters are 
+The following are the required information for Getting Tokens by Code: 
 
-* op_host
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+- *Code* - The Code from OP redirect url
+- *State* - The State from OP redirect url
 
-* port
+> **Note:** Before using this Get Tokens by Code API, you must obtain the Code and State values by authenticating the user using AuthorizationRedirectUri.
 
-* userId
+The following code snippet can be used to Get Tokens by Code.
 
-* userSecret
-
-The response is 
-
-* access_token (Type: String)
-
-```
-    public GetTokensByCodeResponse GetTokenByCode(string host, int port, string userId, string userSecret)
-    {
-        try
-        {
-            CommandClient client = new CommandClient(host, port);
-            GetTokensByCodeParams param = new GetTokensByCodeParams();
-            param.SetOxdId(StoredValues._oxd_id);
-            param.SetCode(get_authorization_code.GetAuthorizationCode(host, port, userId, userSecret));
-            param.SetScopes(Lists.newArrayList(new string[] { "openid", "profile" }));
-            Command cmd = new Command(CommandType.get_tokens_by_code);
-            cmd.setParamsObject(param);
-            string commandresponse = client.send(cmd);
-            GetTokensByCodeResponse response = new GetTokensByCodeResponse(JsonConvert.DeserializeObject<dynamic>(commandresponse).data);
-            Assert.IsNotNull(response);
-            return response;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return null;
-        }
-    }
-```
-
-**Note:** GetTokenByCode method further calls the GetAuthorizationCode for the Authorization code to be used
-
-```
-public static string GetAuthorizationCode(string host, int port, string userId, string userSecret)
+```csharp
+[HttpPost]
+public ActionResult GetTokensByCode(OxdModel oxdModel)
 {
-    try
-    {
-        CommandClient client = new CommandClient(host, port);
-        GetAuthorizationCodeParams param = new GetAuthorizationCodeParams();
-        param.SetOxdId(StoredValues._oxd_id);
-        param.SetUserName(userId);
-        param.SetPassword(userSecret);
-        param.SetAcrValues(new List<string>());
-        Command cmd = new Command(CommandType.get_authorization_code);
-        cmd.setParamsObject(param);
-        string response = client.send(cmd);
-        GetAuthorizationCodeResponse res = new GetAuthorizationCodeResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
-        Assert.IsNotNull(res);
-        Assert.IsTrue(!String.IsNullOrEmpty(res.getCode()));
-        return res.getCode();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-        Logger.Debug(ex.Message);
-        return ex.Message;
-    }
+	//prepare input params for Getting Tokens from a site
+    var getTokenByCodeInputParams = new GetTokensByCodeParams();
+    getTokenByCodeInputParams.OxdId = oxdModel.OxdId;
+    getTokenByCodeInputParams.Code = oxdModel.AuthCode;
+    getTokenByCodeInputParams.State = oxdModel.AuthState;
+
+    //Get Tokens by Code
+    var getTokenByCodeClient = new GetTokensByCodeClient();
+    var getTokensByCodeResponse = getTokenByCodeClient.GetTokensByCode(oxdModel.OxdHost, oxdModel.OxdPort, getTokenByCodeInputParams);
+
+    //Process response
+    return Json(new { accessToken = getTokensByCodeResponse.Data.AccessToken, refreshToken = getTokensByCodeResponse.Data.RefreshToken });
 }
 ```
 
 #### Get User Info
-The following snippet can be used to get user information.
 
-The required parameters are 
+The following are the required information for Getting User Info: 
 
-* op_host
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+- *AccessToken* - The _Access Token_ of the authenticated user
 
-* port
+The following code snippet can be used to Get User Info.
 
-* accessToken
+```csharp
+[HttpPost]
+public ActionResult GetUserInfo(OxdModel oxdModel)
+{
+	//prepare input params for Getting User Info from a site
+    var getUserInfoInputParams = new GetUserInfoParams();
+    getUserInfoInputParams.OxdId = oxdModel.OxdId;
+    getUserInfoInputParams.AccessToken = oxdModel.AccessToken;
 
-The response is 
+    //Get User Info
+    var getUserInfoClient = new GetUserInfoClient();
+    var getUserInfoResponse = getUserInfoClient.GetUserInfo(oxdModel.OxdHost, oxdModel.OxdPort, getUserInfoInputParams);
 
-* response_claims (Type: Array)
+    //Process response
+    var userName = getUserInfoResponse.Data.UserClaims.Name.First();
+    var userEmail = getUserInfoResponse.Data.UserClaims.Email == null ? string.Empty : getUserInfoResponse.Data.UserClaims.Email.FirstOrDefault();
 
+    return Json(new { userName = userName });
+}
 ```
-    public GetUserInfoResponse GetUserInfo(string host, int port, string accessToken)
+
+#### Get Logout URI
+
+The following are the required information for Getting Logout URI: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to Get Logout URI.
+
+```csharp
+[HttpPost]
+public ActionResult GetLogoutUri(OxdModel oxdModel)
+{
+	//prepare input params for Getting Logout URI from a site
+    var getLogoutUriInputParams = new GetLogoutUrlParams();
+    getLogoutUriInputParams.OxdId = oxd.OxdId;
+
+    //Get Logout URI
+    var getLogoutUriClient = new GetLogoutUriClient();
+    var getLogoutUriResponse = getLogoutUriClient.GetLogoutURL(oxd.OxdHost, oxd.OxdPort, getLogoutUriInputParams);
+
+    //Process response
+    return Json(new { logoutUri = getLogoutUriResponse.Data.LogoutUri });
+}
+```
+
+#### Update Site Registration
+
+The following are the required information for updating a registered Site: 
+
+- *OxdHost* - Oxd Server's Host address
+- *OxdPort* - Oxd Server's Port number
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to update a site.
+
+```csharp
+[HttpPost]
+public ActionResult UpdateSiteRegistration(OxdModel oxdModel)
+{
+	//prepare input params for Update Site Registration
+    var updateSiteInputParams = new UpdateSiteParams();
+    updateSiteInputParams.OxdId = oxdModel.OxdId;
+    updateSiteInputParams.Contacts = new List<string> { oxdModel.OxdEmail };
+    updateSiteInputParams.PostLogoutRedirectUri = oxdModel.PostLogoutRedirectUrl;
+
+    //Update Site Registration
+    var updateSiteClient = new UpdateSiteRegistrationClient();
+    var updateSiteResponse = updateSiteClient.UpdateSiteRegistration(oxdModel.OxdHost, oxdModel.OxdPort, updateSiteInputParams);
+
+    //Process the response
+    return Json(new { status = updateSiteResponse.Status });
+}
+```
+
+#### UMA RS Protect Resources
+
+The following are the required information for Protecting UMA resource in Resoruce Server: 
+
+- *OxdId* - The _OXD ID_ of registered site
+
+The following code snippet can be used to Protect UMA resources in Rssource Server.
+
+```csharp
+private UmaRsProtectResponse ProtectResources(OxdModel oxdModel)
+{
+	var protectParams = new UmaRsProtectParams();
+    var protectClient = new UmaRsProtectClient();
+
+    //prepare input params for Protect Resource
+    protectParams.OxdId = oxdModel.OxdId;
+    protectParams.ProtectResources = new List<ProtectResource>
     {
-        try
+    	new ProtectResource
         {
-            CommandClient client = new CommandClient(host, port);
-
-            GetUserInfoParams param = new GetUserInfoParams();
-            param.setOxdId(StoredValues._oxd_id);
-            param.setAccessToken(accessToken);
-
-            Command cmd = new Command(CommandType.get_user_info);
-            cmd.setParamsObject(param);
-
-            string response = client.send(cmd);
-            GetUserInfoResponse res = new GetUserInfoResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
-            Assert.IsNotNull(res);
-            return res;
+        	Path = "/scim",
+            ProtectConditions = new List<ProtectCondition>
+            {
+            	new ProtectCondition
+                {
+                	HttpMethods = new List<string> { "GET" },
+                    Scopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" },
+                    TicketScopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" }
+                }
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return null;
-        }
-    }   
-```
+	};
+   	
 
-#### Logout
-The following snippet can be used to logout.
+    //Protect Resources
+    var protectResponse = protectClient.ProtectResources(oxdModel.OxdHost, oxdModel.OxdPort, protectParams);
 
-The required parameters are 
-
-* op_host
-
-* port
-
-The response returned is
-
-* response_html (Type: String)
-
-```
-    public LogoutResponse GetLogoutURL(string host, int port)
+    //process response
+    if(protectResponse.Status.ToLower().Equals("ok"))
     {
-        try
-        {
-            CommandClient client = new CommandClient(host, port);
+    	return protectResponse;
+    }
 
-            GetLogoutUrlParams param = new GetLogoutUrlParams();
-            param.setOxdId(StoredValues._oxd_id);
-            param.setIdTokenHint("dummy_token"); 
-            param.setState(Guid.NewGuid().ToString());
-
-            Command cmd = new Command(CommandType.get_logout_uri);
-            cmd.setParamsObject(param);
-
-            string response = client.send(cmd);
-            LogoutResponse res = new LogoutResponse(JsonConvert.DeserializeObject<dynamic>(response).data);
-            Assert.IsNotNull(res);
-            return res;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Logger.Debug(ex.Message);
-            return null;
-        }
-    }  
+    throw new Exception("Procteting Resource is not successful. Check OXD Server log for error details.");
+}
 ```
 
+#### UMA RS Check Access
+
+The following are the required information for Checking Access of a UMA resource in Resource Server: 
+
+- *OxdId* 		- The _OXD ID_ of registered site
+- *RPT* 		- Requesting Party Token
+- *Path* 		- Path of resource (e.g. http://rs.com/phones), /phones should be passed
+- *HttpMethod* 	- Http method of RP request (GET, POST, PUT, DELETE)
+
+The following code snippet can be used to Check Access of a UMA resource protected in Resource Server.
+
+```csharp
+private UmaRsCheckAccessResponse CheckAccess(string rpt, string path, string httpMethod, OxdModel oxdModel)
+{
+	var checkAccessParams = new UmaRsCheckAccessParams();
+    var checkAccessClient = new UmaRsCheckAccessClient();
+
+    //prepare input params for Check Access
+    checkAccessParams.OxdId = oxdModel.OxdId;
+    checkAccessParams.RPT = rpt;
+    checkAccessParams.Path = path;
+    checkAccessParams.HttpMethod = httpMethod;
+
+    //Check Access
+    var checkAccessResponse = checkAccessClient.CheckAccess(oxdModel.OxdHost, oxdModel.OxdPort, checkAccessParams);
+
+    //process response
+    return checkAccessResponse;
+}
+```
+
+#### UMA RP - Get RPT
+
+The following are the required information for Getting RPT from RP: 
+
+- *OxdId* 		- The _OXD ID_ of registered site
+- *ForceNew* 	- Indicates whether return new RPT, In General it should be false, so oxd server can cache/reuse same RPT
+
+The following code snippet can be used to get RPT from RP.
+
+```csharp
+private GetRPTResponse GetRpt(OxdModel oxdModel)
+{
+	var getRptParams = new UmaRpGetRptParams();
+    var getRptClient = new UmaRpGetRptClient();
+
+    //prepare input params for Protect Resource
+    getRptParams.OxdId = oxdModel.OxdId;
+    getRptParams.ForceNew = false;
+
+    //Get RPT
+    var getRptResponse = getRptClient.GetRPT(oxdModel.OxdHost, oxdModel.OxdPort, getRptParams);
+
+    //process response
+    if (getRptResponse.Status.ToLower().Equals("ok"))
+    {
+    	return getRptResponse;
+    }
+
+    throw new Exception("Obtaining RPT is not successful. Check OXD Server log for error details.");
+}
+```
+
+#### UMA RP - Authorize RPT
+
+The following are the required information for Authorizing RPT from RP: 
+
+- *OxdId*	- The _OXD ID_ of registered site
+- *RPT* 	- Requesting Party Token
+- *Ticket* 	- Ticket from Check Access command response if the resource is protected with Ticket Scope
+
+The following code snippet can be used to authorize RPT from RP.
+
+```csharp
+private UmaRpAuthorizeRptResponse AuthorizeRpt(string rpt, string ticket, OxdModel oxdModel)
+{
+	var authorizeRptParams = new UmaRpAuthorizeRptParams();
+    var authorizeRptClient = new UmaRpAuthorizeRptClient();
+
+    //prepare input params for Check Access
+    authorizeRptParams.OxdId = oxdModel.OxdId;
+    authorizeRptParams.RPT = rpt;
+    authorizeRptParams.Ticket = ticket;
+
+    //Authorize RPT
+    var authorizeRptResponse = authorizeRptClient.AuthorizeRpt(oxdModel.OxdHost, oxdModel.OxdPort, authorizeRptParams);
+
+    //process response
+    return authorizeRptResponse;
+}
+```
+
+#### UMA RP Get GAT
+
+The following are the required information for Getting GAT from RP: 
+
+- *OxdId* 	- The _OXD ID_ of registered site
+- *Scopes* 	- Required scopes. RP should know required scopes in advance
+
+The following code snippet can be used to get GAT from RP.
+
+```csharp
+[HttpPost]
+public ActionResult GetGat(OxdModel oxd)
+{
+	var getGatInputParams = new GetGATParams();
+    var getGatClient = new GetGATClient();
+
+    //prepare input params for Getting GAT
+    getGatInputParams.OxdId = oxd.OxdId;
+    getGatInputParams.Scopes = new List<string> {
+    									"https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1",
+                                        "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas2" 
+                                        };
+
+	//Get GAT
+    var getGatResponse = getGatClient.GetGat(oxd.OxdHost, oxd.OxdPort, getGatInputParams);
+
+    //Process response
+    return Json(new { getGatResponse = getGatResponse.Data.Rpt });
+}
+```

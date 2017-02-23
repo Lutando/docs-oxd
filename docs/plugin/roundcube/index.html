@@ -8,7 +8,7 @@
   <title>hidden - oxd Docs</title>
   
 
-  <link rel="shortcut icon" href="../../img/gluu_favicon.ico">
+  <link rel="shortcut icon" href="/img/gluu_favicon.ico">
   
 
   
@@ -212,6 +212,20 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/plugin/shopify/">Shopify</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/plugin/nextcloud/">NextCloud</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -257,6 +271,13 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../2.4.4/framework/net/">.Net</a>
+        
+    </li>
+
+        
     </ul>
 <li>
 		
@@ -294,7 +315,7 @@
            
       
         
-          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/plugin/roundcube/index.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/GluuFederation/docs-oxd//blob/master/sources/plugin\roundcube\index.md" class="icon icon-github"> Edit on GitHub</a>
       
         
       
@@ -315,7 +336,7 @@
 </li>
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#general">General</a><ul>
-<li><a href="#role-based-enrollment">Role based enrollment</a></li>
+<li><a href="#enrollment-and-access-management">Enrollment and Access Management</a></li>
 </ul>
 </li>
 <li><a href="#openid-connect-configuration">OpenID Connect Configuration</a><ul>
@@ -337,7 +358,7 @@
 </ul>
 </div>
 <h1 id="roundcube-openid-connect-single-sign-on-sso-plugin-by-gluu">RoundCube OpenID Connect Single Sign-On (SSO) Plugin By Gluu</h1>
-<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/plugin.jpg" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/roundcube.png" /></p>
 <p>Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can <a href="https://gluu.org/docs/deployment">deploy the free open source Gluu Server</a>.  </p>
 <h2 id="requirements">Requirements</h2>
 <p>In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.</p>
@@ -351,20 +372,20 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="download">Download</h3>
-<p><a href="https://github.com/GluuFederation/roundcube-oxd-plugin/archive/v2.4.4.zip">Github source</a>.</p>
-<p><a href="https://plugins.roundcube.net/packages/GluuFederation/roundcube-oxd-plugin">Link to RoundCube repository</a></p>
+<p><a href="https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v2.4.4.zip">Github source</a>.</p>
+<p><a href="https://plugins.roundcube.net/packages/gluufederation/roundcube_oxd_plugin">Link to RoundCube repository</a></p>
 <p>To install RoundCube OpenID Connect Single Sign On (SSO) Plugin By Gluu via Composer, execute the following command </p>
-<pre><code>$ composer install `composer require &quot;GluuFederation/roundcube-oxd-plugin&quot;: &quot;2.4.4&quot;`
+<pre><code>$ composer install `composer require &quot;gluufederation/roundcube_oxd_plugin&quot;: &quot;2.4.4&quot;`
 
 </code></pre>
 
 <h2 id="configuration">Configuration</h2>
 <h3 id="general">General</h3>
 <p>In your RoundCube admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:</p>
-<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/1.png" /> </p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/1.png" /> </p>
 <ol>
 <li>Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site. </li>
-<li>Only login users with the following role(s) in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance <code>roundcube</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
+<li>Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance <code>roundcube</code>. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. <a href="#role-based-enrollment">Follow the instructions below</a> to limit access based on an OP role. </li>
 <li>URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.</li>
 <li>Custom URI after logout: custom URI after logout (for example "Thank you" page).</li>
 <li>oxd port: enter the oxd-server port (you can find this in the <code>oxd-server/conf/oxd-conf.json</code> file).</li>
@@ -372,15 +393,15 @@
 </ol>
 <p>If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the <a href="#openid-connect-configuration">OpenID Connect Configuration</a> tab. </p>
 <p>If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider <code>client_id</code> and <code>client_secret</code> on the following page.</p>
-<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/2.png" />  </p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/2.png" />  </p>
 <p>To generate your <code>client_id</code> and <code>client_secret</code> use the redirect uri: <code>https://{site-base-url}/index.php?option=oxdOpenId</code>.</p>
 <blockquote>
 <p>If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect &gt; Clients page. Search for your <code>oxd id</code>.</p>
 </blockquote>
-<h4 id="role-based-enrollment">Role based enrollment</h4>
+<h4 id="enrollment-and-access-management">Enrollment and Access Management</h4>
 <p>Navigate to your Gluu Server admin GUI. Click the <code>Users</code> tab in the left hand navigation menu. Select <code>Manage People</code>. Find the person(s) who should have access. Click their user entry. Add the <code>User Permission</code> attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = <code>roundcube</code>, then you should also have <code>User Permission</code> = <code>roundcube</code> in the user entry. Update the user record, and now they are ready for enrollment at your Roundcube site. </p>
 <h3 id="openid-connect-configuration">OpenID Connect Configuration</h3>
-<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/3.png" /> </p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/3.png" /> </p>
 <h4 id="user-scopes">User Scopes</h4>
 <p>Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are <code>profile</code>, <code>imapData</code>, <code>email</code>, and <code>openid</code>.  </p>
 <p>To view your OP's available scopes, in a web browser navigate to <code>https://OpenID-Provider/.well-known/openid-configuration</code>.  </p>
@@ -397,7 +418,7 @@ For example : <code>imapHost</code> = <code>ssl://imap.gmail.com</code> ; <code>
 <h5 id="bypass-the-local-roundcube-login-page-and-send-users-straight-to-the-op-for-authentication">Bypass the local RoundCube login page and send users straight to the OP for authentication</h5>
 <p>Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local RoundCube login screen.
 When it is not checked, it will give proof the following screen.   </p>
-<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube-oxd-plugin/master/docu/4.png" /> </p>
+<p><img alt="upload" src="https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/4.png" /> </p>
 <h5 id="select-acr">Select acr</h5>
 <p>To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  </p>
 <p>Navigate to your OpenID Provider configuration webpage <code>https://OpenID-Provider/.well-known/openid-configuration</code> to see supported <code>acr_values</code>. In the <code>Select acr</code> section of the plugin page, choose the mechanism which you want for authentication. </p>
@@ -409,7 +430,7 @@ When it is not checked, it will give proof the following screen.   </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../framework/spring/" class="btn btn-neutral float-right" title="hidden"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../nextcloud/" class="btn btn-neutral float-right" title="hidden"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../suitecrm/" class="btn btn-neutral" title="hidden"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -444,7 +465,7 @@ When it is not checked, it will give proof the following screen.   </p>
         <span><a href="../suitecrm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../framework/spring/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../nextcloud/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
